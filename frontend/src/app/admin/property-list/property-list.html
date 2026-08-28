@@ -1,0 +1,127 @@
+<header class="pagina__topo">
+  <div>
+    <h1>Imóveis</h1>
+    <p>{{ imoveis().length }} {{ imoveis().length === 1 ? 'imóvel' : 'imóveis' }} na listagem.</p>
+  </div>
+  <a class="btn btn--primary btn--sm" routerLink="/admin/imoveis/novo">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+      <path d="M12 5v14M5 12h14" />
+    </svg>
+    Cadastrar imóvel
+  </a>
+</header>
+
+<section class="filtros" aria-label="Filtros administrativos">
+  <div class="field">
+    <label for="fa-q">Buscar</label>
+    <input type="search" id="fa-q" [value]="valorDe('q')" (change)="aoDigitar($event)"
+           placeholder="Código ou título" />
+  </div>
+
+  <div class="field">
+    <label for="fa-situacao">Situação</label>
+    <select id="fa-situacao" [value]="valorDe('situacao')" (change)="aoSelecionar('situacao', $event)">
+      @for (s of SITUACOES; track s.valor) {
+        <option [value]="s.valor">{{ s.rotulo }}</option>
+      }
+    </select>
+  </div>
+
+  <div class="field">
+    <label for="fa-categoria">Categoria</label>
+    <select id="fa-categoria" [value]="valorDe('categoria')" (change)="aoSelecionar('categoria', $event)">
+      <option value="">Todas</option>
+      <option value="URBANO">Urbano</option>
+      <option value="RURAL">Rural</option>
+    </select>
+  </div>
+
+  <button class="btn btn--ghost btn--sm" type="button" (click)="limpar()">Limpar</button>
+</section>
+
+@if (carregando()) {
+  <p class="estado">Carregando imóveis…</p>
+} @else if (imoveis().length === 0) {
+  <p class="estado">Nenhum imóvel encontrado com esses filtros.</p>
+} @else {
+  <div class="tabela-rolagem">
+    <table class="tabela">
+      <caption class="sr-only">Imóveis cadastrados</caption>
+      <thead>
+        <tr>
+          <th scope="col">Código</th>
+          <th scope="col">Imóvel</th>
+          <th scope="col">Categoria</th>
+          <th scope="col">Localização</th>
+          <th scope="col">Área</th>
+          <th scope="col">Valor</th>
+          <th scope="col">Corretor</th>
+          <th scope="col">Situação</th>
+          <th scope="col">Parceiros</th>
+          <th scope="col">Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (im of imoveis(); track im.id) {
+          <tr>
+            <td class="tabela__codigo">{{ im.codigo }}</td>
+            <td>
+              <a [routerLink]="im.url">{{ im.titulo }}</a>
+              <small>{{ im.tipo }} · {{ im.finalidadeRotulo }}</small>
+            </td>
+            <td>
+              <span class="pilula" [class.pilula--rural]="im.categoria === 'RURAL'">
+                {{ im.categoriaRotulo }}
+              </span>
+            </td>
+            <td>{{ im.localizacao }}</td>
+            <td class="tabela__num">{{ im.areaTexto }}</td>
+            <td class="tabela__num">{{ im.precoTexto }}{{ im.precoSufixo ?? '' }}</td>
+            <td>{{ im.corretor.nome }}</td>
+            <td>
+              <span class="situacao" [class.situacao--publicado]="im.situacao === 'PUBLICADO'">
+                {{ rotuloSituacao(im.situacao) }}
+              </span>
+            </td>
+            <td>
+              @if (im.categoria === 'RURAL') {
+                <button class="btn btn--ghost btn--sm" type="button" (click)="alternarSugestoes(im)">
+                  {{ imovelExpandido() === im.id ? 'Ocultar' : 'Ver parceiros' }}
+                </button>
+              } @else {
+                <span class="estado--inline">—</span>
+              }
+            </td>
+            <td class="tabela__acoes">
+              <a class="btn btn--ghost btn--sm" [routerLink]="['/admin/imoveis', im.id, 'editar']">Editar</a>
+              <button class="btn btn--ghost btn--sm btn--perigo" type="button" (click)="excluir(im)">Excluir</button>
+            </td>
+          </tr>
+          @if (imovelExpandido() === im.id) {
+            <tr class="linha-sugestoes">
+              <td colspan="10">
+                @if (carregandoSugestoes()) {
+                  <p class="estado estado--compacto">Buscando parceiros em {{ im.municipio }}…</p>
+                } @else if (sugestoes().length === 0) {
+                  <p class="estado estado--compacto">
+                    Nenhum parceiro cadastrado ainda em {{ im.municipio }}-{{ im.uf }}.
+                  </p>
+                } @else {
+                  <ul class="sugestoes-lista">
+                    @for (s of sugestoes(); track s.id) {
+                      <li>
+                        <a [routerLink]="['/admin/parceiros', s.id]">{{ s.nomeFantasia }}</a>
+                        <span class="pilula">{{ s.setorRotulo }}</span>
+                        <small>{{ s.whatsapp ?? s.telefoneCelular ?? s.telefoneFixo ?? s.email ?? 'sem contato' }}</small>
+                      </li>
+                    }
+                  </ul>
+                }
+              </td>
+            </tr>
+          }
+        }
+      </tbody>
+    </table>
+  </div>
+}

@@ -1,0 +1,229 @@
+@if (salvo(); as p) {
+  <section class="sucesso" role="status">
+    <div class="sucesso__icone">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="9" /><path d="m8 12 3 3 5-6" />
+      </svg>
+    </div>
+    <div>
+      <h1>{{ modoEdicao() ? 'Parceiro atualizado' : 'Parceiro cadastrado' }}</h1>
+      <p>{{ p.nomeFantasia }} — {{ p.municipio }}-{{ p.uf }}</p>
+      <div class="sucesso__acoes">
+        <a class="btn btn--primary" [routerLink]="['/admin/parceiros', p.id]">Ver parceiro</a>
+        <a class="btn btn--ghost" routerLink="/admin/parceiros">Voltar para a lista</a>
+      </div>
+    </div>
+  </section>
+} @else if (carregando()) {
+  <p class="estado">Carregando parceiro…</p>
+} @else {
+  <header class="pagina__topo">
+    <div>
+      <nav aria-label="Você está aqui">
+        <ol class="trilha">
+          <li><a routerLink="/admin">Painel</a></li>
+          <li><a routerLink="/admin/parceiros">Parceiros</a></li>
+          <li><span aria-current="page">{{ modoEdicao() ? 'Editar' : 'Novo parceiro' }}</span></li>
+        </ol>
+      </nav>
+      <h1>{{ modoEdicao() ? 'Editar parceiro' : 'Cadastrar parceiro' }}</h1>
+      <p>Empresa/organização da base de prospecção — cliente ou parceiro comercial.</p>
+    </div>
+  </header>
+
+  <form class="formulario" [formGroup]="form" (ngSubmit)="salvar()" novalidate>
+    <section class="bloco">
+      <h2 class="bloco__titulo">Identificação</h2>
+
+      <div class="grade-3">
+        <div class="field" [class.is-invalid]="invalido('nomeFantasia')">
+          <label for="f-nome">Nome da empresa *</label>
+          <input type="text" id="f-nome" formControlName="nomeFantasia" placeholder="Nome fantasia" />
+          <span class="field__error">{{ invalido('nomeFantasia') ? 'Informe o nome da empresa.' : '' }}</span>
+        </div>
+        <div class="field">
+          <label for="f-razao">Razão social</label>
+          <input type="text" id="f-razao" formControlName="razaoSocial" />
+        </div>
+        <div class="field" [class.is-invalid]="invalido('setor')">
+          <label for="f-setor">Setor *</label>
+          <select id="f-setor" formControlName="setor">
+            @for (s of SETORES; track s.valor) {
+              <option [value]="s.valor">{{ s.rotulo }}</option>
+            }
+          </select>
+          <span class="field__error">{{ invalido('setor') ? 'Selecione o setor.' : '' }}</span>
+        </div>
+      </div>
+
+      <div class="grade-3">
+        <div class="field">
+          <label for="f-cnpj">CNPJ</label>
+          <input type="text" id="f-cnpj" formControlName="cnpj" placeholder="00.000.000/0000-00" />
+        </div>
+        <div class="field">
+          <label for="f-situacao-cad">Situação cadastral</label>
+          <input type="text" id="f-situacao-cad" formControlName="situacaoCadastral" placeholder="ATIVA" />
+        </div>
+        <div class="field">
+          <label for="f-site">Site</label>
+          <input type="text" id="f-site" formControlName="site" placeholder="https://…" />
+        </div>
+      </div>
+    </section>
+
+    <section class="bloco">
+      <h2 class="bloco__titulo">Localização</h2>
+
+      <div class="grade-3">
+        <div class="field" [class.is-invalid]="invalido('municipio')">
+          <label for="f-municipio">Cidade *</label>
+          <input type="text" id="f-municipio" formControlName="municipio" list="cidades-projeto" />
+          <datalist id="cidades-projeto">
+            @for (c of CIDADES; track c) {
+              <option [value]="c"></option>
+            }
+          </datalist>
+          <span class="field__error">{{ invalido('municipio') ? 'Informe a cidade.' : '' }}</span>
+        </div>
+        <div class="field" [class.is-invalid]="invalido('uf')">
+          <label for="f-uf">UF *</label>
+          <input type="text" id="f-uf" formControlName="uf" maxlength="2" placeholder="MG" />
+          <span class="field__error">{{ invalido('uf') ? 'Informe a UF (2 letras).' : '' }}</span>
+        </div>
+        <div class="field">
+          <label for="f-cep">CEP</label>
+          <input type="text" id="f-cep" formControlName="cep" placeholder="00000-000" />
+        </div>
+      </div>
+
+      <div class="grade-endereco">
+        <div class="field">
+          <label for="f-logradouro">Logradouro</label>
+          <input type="text" id="f-logradouro" formControlName="logradouro" />
+        </div>
+        <div class="field">
+          <label for="f-numero">Número</label>
+          <input type="text" id="f-numero" formControlName="numero" />
+        </div>
+        <div class="field">
+          <label for="f-complemento">Complemento</label>
+          <input type="text" id="f-complemento" formControlName="complemento" />
+        </div>
+        <div class="field">
+          <label for="f-bairro">Bairro</label>
+          <input type="text" id="f-bairro" formControlName="bairro" />
+        </div>
+      </div>
+    </section>
+
+    <section class="bloco">
+      <h2 class="bloco__titulo">
+        Titulares
+        <button class="btn btn--ghost btn--sm" type="button" (click)="adicionarTitular()">Adicionar titular</button>
+      </h2>
+
+      @if (titulares.length === 0) {
+        <p class="vazio-lista">Nenhum titular informado.</p>
+      }
+
+      <div formArrayName="titulares" class="lista-dinamica">
+        @for (t of titulares.controls; track $index; let i = $index) {
+          <fieldset [formGroupName]="i" class="item-dinamico">
+            <legend class="sr-only">Titular {{ i + 1 }}</legend>
+            <div class="field" [class.is-invalid]="invalidoItem(titulares, i, 'nome')">
+              <label [attr.for]="'titular-nome-' + i">Nome *</label>
+              <input type="text" [id]="'titular-nome-' + i" formControlName="nome" placeholder="Nome completo" />
+              <span class="field__error">{{ invalidoItem(titulares, i, 'nome') ? 'Informe o nome ou remova esta linha.' : '' }}</span>
+            </div>
+            <div class="field">
+              <label [attr.for]="'titular-qualif-' + i">Qualificação</label>
+              <input type="text" [id]="'titular-qualif-' + i" formControlName="qualificacao" placeholder="Sócio-Administrador" />
+            </div>
+            <div class="field">
+              <label [attr.for]="'titular-cpf-' + i">CPF (mascarado)</label>
+              <input type="text" [id]="'titular-cpf-' + i" formControlName="cpfMascarado" placeholder="***.999.999-**" />
+            </div>
+            <label class="marcador marcador--inline">
+              <input type="checkbox" formControlName="principal" /><span>Principal</span>
+            </label>
+            <button class="remover" type="button" (click)="removerTitular(i)" aria-label="Remover titular">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+                <path d="M6 6l12 12M18 6 6 18" />
+              </svg>
+            </button>
+          </fieldset>
+        }
+      </div>
+    </section>
+
+    <section class="bloco">
+      <h2 class="bloco__titulo">
+        Contatos
+        <button class="btn btn--ghost btn--sm" type="button" (click)="adicionarContato()">Adicionar contato</button>
+      </h2>
+
+      @if (contatos.length === 0) {
+        <p class="vazio-lista">Nenhum contato informado.</p>
+      }
+
+      <div formArrayName="contatos" class="lista-dinamica">
+        @for (c of contatos.controls; track $index; let i = $index) {
+          <fieldset [formGroupName]="i" class="item-dinamico item-dinamico--contato">
+            <legend class="sr-only">Contato {{ i + 1 }}</legend>
+            <div class="field" [class.is-invalid]="invalidoItem(contatos, i, 'tipo')">
+              <label [attr.for]="'contato-tipo-' + i">Tipo *</label>
+              <select [id]="'contato-tipo-' + i" formControlName="tipo">
+                @for (t of TIPOS_CONTATO; track t.valor) {
+                  <option [value]="t.valor">{{ t.rotulo }}</option>
+                }
+              </select>
+            </div>
+            <div class="field" [class.is-invalid]="invalidoItem(contatos, i, 'valor')">
+              <label [attr.for]="'contato-valor-' + i">Valor *</label>
+              <input type="text" [id]="'contato-valor-' + i" formControlName="valor" placeholder="(38) 99999-9999" />
+              <span class="field__error">{{ invalidoItem(contatos, i, 'valor') ? 'Informe o valor ou remova esta linha.' : '' }}</span>
+            </div>
+            <label class="marcador marcador--inline">
+              <input type="checkbox" formControlName="principal" /><span>Principal</span>
+            </label>
+            <button class="remover" type="button" (click)="removerContato(i)" aria-label="Remover contato">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+                <path d="M6 6l12 12M18 6 6 18" />
+              </svg>
+            </button>
+          </fieldset>
+        }
+      </div>
+    </section>
+
+    <section class="bloco">
+      <h2 class="bloco__titulo">Origem do dado</h2>
+      <div class="grade-3">
+        <div class="field">
+          <label for="f-fonte">Fonte da informação</label>
+          <input type="text" id="f-fonte" formControlName="fonteInformacao" placeholder="Ex.: Receita Federal (BrasilAPI) + site oficial" />
+        </div>
+        <div class="field">
+          <label for="f-data-coleta">Data da coleta</label>
+          <input type="date" id="f-data-coleta" formControlName="dataColeta" />
+        </div>
+      </div>
+      <div class="field">
+        <label for="f-observacoes">Observações</label>
+        <textarea id="f-observacoes" formControlName="observacoes" rows="3"></textarea>
+      </div>
+    </section>
+
+    @if (erro()) {
+      <p class="erro" role="alert">{{ erro() }}</p>
+    }
+
+    <footer class="acoes">
+      <a class="btn btn--ghost" routerLink="/admin/parceiros">Cancelar</a>
+      <button class="btn btn--primary" type="submit" [disabled]="salvando()">
+        {{ salvando() ? 'Salvando…' : (modoEdicao() ? 'Salvar alterações' : 'Cadastrar parceiro') }}
+      </button>
+    </footer>
+  </form>
+}

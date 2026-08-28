@@ -1,0 +1,130 @@
+@if (parceiro(); as p) {
+  <a class="voltar" routerLink="/admin/parceiros">← Voltar para a listagem</a>
+
+  <header class="pagina__topo">
+    <div>
+      <h1>{{ p.nomeFantasia }}</h1>
+      <p>
+        <span class="pilula">{{ p.setorRotulo }}</span>
+        {{ p.municipio }}-{{ p.uf }}
+        @if (p.razaoSocial) { · {{ p.razaoSocial }} }
+      </p>
+    </div>
+    <div class="cabecalho__acoes">
+      <span class="status-parceiro status-parceiro--lg" [attr.data-status]="p.status">{{ p.statusRotulo }}</span>
+      <a class="btn btn--ghost btn--sm" [routerLink]="['/admin/parceiros', p.id, 'editar']">Editar</a>
+      <button class="btn btn--ghost btn--sm btn--perigo" type="button" (click)="excluir()" [disabled]="excluindo()">
+        {{ excluindo() ? 'Excluindo…' : 'Excluir' }}
+      </button>
+    </div>
+  </header>
+
+  <div class="grade">
+    <section class="painel">
+      <h2>Dados cadastrais</h2>
+      <dl class="ficha">
+        <div><dt>CNPJ</dt><dd>{{ p.cnpj ?? 'não localizado' }}</dd></div>
+        <div><dt>Situação cadastral</dt><dd>{{ p.situacaoCadastral ?? '—' }}</dd></div>
+        <div><dt>Endereço</dt><dd>{{ p.enderecoCompleto }}</dd></div>
+        <div>
+          <dt>Site</dt>
+          <dd>
+            @if (p.site) { <a [href]="p.site" target="_blank" rel="noopener">{{ p.site }}</a> } @else { — }
+          </dd>
+        </div>
+        <div>
+          <dt>Geolocalização</dt>
+          <dd>
+            @if (p.geolocalizacaoUrl) {
+              <a [href]="p.geolocalizacaoUrl" target="_blank" rel="noopener">Ver no mapa</a>
+            } @else { — }
+          </dd>
+        </div>
+        <div><dt>Fonte da informação</dt><dd>{{ p.fonteInformacao ?? '—' }}</dd></div>
+        <div><dt>Data da coleta</dt><dd>{{ p.dataColeta ?? '—' }}</dd></div>
+      </dl>
+
+      @if (p.observacoes) {
+        <h3>Observações</h3>
+        <p class="observacoes">{{ p.observacoes }}</p>
+      }
+    </section>
+
+    <section class="painel">
+      <h2>Titulares</h2>
+      @if (p.titulares.length === 0) {
+        <p class="estado estado--compacto">Nenhum titular identificado nas fontes públicas consultadas.</p>
+      } @else {
+        <ul class="lista-titulares">
+          @for (t of p.titulares; track t.nome) {
+            <li>
+              <strong>{{ t.nome }}</strong>
+              @if (t.principal) { <span class="tag-principal">principal</span> }
+              <small>{{ t.qualificacao ?? '—' }} · CPF {{ t.cpfMascarado ?? 'não divulgado' }}</small>
+            </li>
+          }
+        </ul>
+      }
+
+      <h2>Contatos</h2>
+      @if (p.contatos.length === 0) {
+        <p class="estado estado--compacto">Nenhum contato encontrado — precisa de checagem em campo.</p>
+      } @else {
+        <ul class="lista-contatos">
+          @for (c of p.contatos; track c.valor + c.tipo) {
+            <li>
+              <span class="lista-contatos__tipo">{{ c.tipoRotulo }}</span>
+              {{ c.valor }}
+            </li>
+          }
+        </ul>
+      }
+    </section>
+
+    <section class="painel">
+      <h2>Atualizar status</h2>
+      <form [formGroup]="form" (ngSubmit)="atualizar()" class="form-status">
+        <div class="field" [class.is-invalid]="invalido('status')">
+          <label for="pd-status">Novo status *</label>
+          <select id="pd-status" formControlName="status">
+            <option value="" disabled>Selecione…</option>
+            @for (s of STATUS; track s.valor) {
+              <option [value]="s.valor">{{ s.rotulo }}</option>
+            }
+          </select>
+          <span class="field__error">{{ invalido('status') ? 'Selecione o novo status.' : '' }}</span>
+        </div>
+        <div class="field" [class.is-invalid]="invalido('responsavel')">
+          <label for="pd-responsavel">Responsável *</label>
+          <input type="text" id="pd-responsavel" formControlName="responsavel" placeholder="Seu nome" />
+          <span class="field__error">{{ invalido('responsavel') ? 'Informe quem fez a atualização.' : '' }}</span>
+        </div>
+        <div class="field">
+          <label for="pd-observacao">Observação (opcional)</label>
+          <textarea id="pd-observacao" formControlName="observacao" rows="3"
+                    placeholder="O que aconteceu nesse contato?"></textarea>
+        </div>
+        @if (erroSalvar()) {
+          <p class="erro">{{ erroSalvar() }}</p>
+        }
+        <button class="btn btn--primary btn--sm" type="submit" [disabled]="salvando()">
+          {{ salvando() ? 'Salvando…' : 'Registrar atualização' }}
+        </button>
+      </form>
+
+      <h2>Histórico</h2>
+      <ol class="linha-tempo">
+        @for (evento of historicoRecente(p); track evento.data + evento.status) {
+          <li>
+            <span class="status-parceiro" [attr.data-status]="evento.status">{{ evento.statusRotulo }}</span>
+            <time>{{ evento.data }}</time>
+            @if (evento.responsavel) { <small>por {{ evento.responsavel }}</small> }
+            @if (evento.observacao) { <p>{{ evento.observacao }}</p> }
+          </li>
+        }
+      </ol>
+    </section>
+  </div>
+} @else {
+  <p class="estado">Carregando parceiro…</p>
+}

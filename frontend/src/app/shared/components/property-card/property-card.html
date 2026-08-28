@@ -1,0 +1,108 @@
+@let im = imovel();
+
+<article class="card" [class.card--rural]="ehRural()">
+  <div class="card__media">
+    <img
+      [src]="im.imagem.url"
+      [alt]="im.imagem.alt"
+      width="900"
+      height="675"
+      [loading]="prioritaria() ? 'eager' : 'lazy'"
+      [attr.fetchpriority]="prioritaria() ? 'high' : null"
+      decoding="async"
+    />
+
+    <div class="card__badges">
+      <span class="badge" [class.badge--brand]="!ehRural()" [class.badge--rural]="ehRural()">
+        {{ im.categoriaRotulo }}
+      </span>
+      <span class="badge">{{ im.finalidadeRotulo }}</span>
+      @for (selo of im.selos.slice(0, 2); track selo) {
+        <span class="badge badge--accent">{{ selo }}</span>
+      }
+    </div>
+
+    <span class="card__codigo">{{ im.codigo }}</span>
+  </div>
+
+  <div class="card__body">
+    <p class="card__price">
+      {{ im.precoTexto }}
+      @if (im.precoSufixo) {
+        <small>{{ im.precoSufixo }}</small>
+      }
+    </p>
+
+    <h3 class="card__title">
+      <a [routerLink]="im.url">{{ im.titulo }}</a>
+    </h3>
+
+    <p class="card__loc">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+        <circle cx="12" cy="10" r="3" />
+      </svg>
+      <span>{{ im.localizacao }}</span>
+    </p>
+
+    @if (ehRural() && im.resumoRural) {
+      <p class="card__rural">{{ im.resumoRural }}</p>
+    } @else {
+      <p class="card__chamada">{{ im.chamada }}</p>
+    }
+
+    <ul class="card__specs">
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M4 4h16v16H4z" />
+          <path d="M9 4v3M4 9h3M20 15h-3M15 20v-3" />
+        </svg>
+        <span>{{ im.areaTexto }}</span>
+      </li>
+
+      @if (mostrarAmbientes()) {
+        @if (im.ambientes.dormitorios > 0) {
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M3 18v-6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v6" />
+              <path d="M3 18h18" />
+              <path d="M7 10V7a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v3" />
+            </svg>
+            <span>{{ im.ambientes.dormitorios }} <span class="sr-only">dormitórios</span>dorm.</span>
+          </li>
+        }
+        @if (im.ambientes.banheiros > 0) {
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M4 12h16v3a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4v-3Z" />
+              <path d="M6 12V6a2 2 0 0 1 4 0" />
+              <path d="M7 19l-1 2M17 19l1 2" />
+            </svg>
+            <span>{{ im.ambientes.banheiros }} banh.</span>
+          </li>
+        }
+        @if (im.ambientes.vagas > 0) {
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M5 13l1.5-4.5A2 2 0 0 1 8.4 7h7.2a2 2 0 0 1 1.9 1.5L19 13" />
+              <path d="M4 13h16v4H4z" />
+              <circle cx="7.5" cy="17.5" r="1.2" />
+              <circle cx="16.5" cy="17.5" r="1.2" />
+            </svg>
+            <span>{{ im.ambientes.vagas }} vagas</span>
+          </li>
+        }
+      }
+    </ul>
+
+    <div class="card__footer">
+      <span class="card__corretor">{{ im.corretor.nome }}</span>
+      <span class="card__acao">
+        Ver detalhes
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M5 12h14M13 6l6 6-6 6" />
+        </svg>
+      </span>
+    </div>
+  </div>
+</article>

@@ -1,0 +1,226 @@
+@if (naoEncontrado()) {
+  <section class="section">
+    <div class="wrap vazio">
+      <h1>Imóvel não encontrado</h1>
+      <p>Este anúncio pode ter sido vendido, alugado ou retirado do ar.</p>
+      <a class="btn btn--primary" routerLink="/imoveis">Ver imóveis disponíveis</a>
+    </div>
+  </section>
+} @else if (imovel(); as d) {
+  @let im = d.resumo;
+
+  <div class="wrap trilha">
+    <nav aria-label="Você está aqui">
+      <ol class="breadcrumb">
+        <li><a routerLink="/">Início</a></li>
+        <li><a routerLink="/imoveis">Imóveis</a></li>
+        <li>
+          <a routerLink="/imoveis" [queryParams]="{ categoria: im.categoria }">{{ im.categoriaRotulo }}</a>
+        </li>
+        <li><span aria-current="page">{{ im.titulo }}</span></li>
+      </ol>
+    </nav>
+  </div>
+
+  <div class="wrap">
+    <div class="galeria">
+      @for (foto of d.galeria.slice(0, 5); track foto.url; let i = $index) {
+        <a [href]="foto.url" target="_blank" rel="noopener">
+          <img [src]="foto.url" [alt]="foto.alt" width="900" height="675"
+               [loading]="i === 0 ? 'eager' : 'lazy'" decoding="async" />
+          @if (i === 4 && d.galeria.length > 5) {
+            <span class="galeria__mais">+{{ d.galeria.length - 5 }} fotos</span>
+          }
+        </a>
+      }
+    </div>
+  </div>
+
+  <section class="section section--tight">
+    <div class="wrap detalhe">
+      <article>
+        <div class="selos">
+          <span class="badge" [class.badge--brand]="im.categoria === 'URBANO'" [class.badge--rural]="im.categoria === 'RURAL'">
+            {{ im.categoriaRotulo }}
+          </span>
+          <span class="badge badge--outline">{{ im.finalidadeRotulo }}</span>
+          @for (selo of im.selos; track selo) {
+            <span class="badge badge--accent">{{ selo }}</span>
+          }
+        </div>
+
+        <h1 class="detalhe__titulo">{{ im.titulo }}</h1>
+        <p class="detalhe__local">{{ im.localizacao }} · código {{ im.codigo }}</p>
+        <p class="detalhe__preco">
+          {{ im.precoTexto }}
+          @if (im.precoSufixo) {
+            <small>{{ im.precoSufixo }}</small>
+          }
+        </p>
+
+        <div class="prose">
+          <h2>Sobre o imóvel</h2>
+          <p>{{ d.descricao }}</p>
+
+          <h2>Ficha técnica</h2>
+          <dl class="ficha">
+            @for (item of fichaTecnica(); track item[0]) {
+              <div>
+                <dt>{{ item[0] }}</dt>
+                <dd>{{ item[1] }}</dd>
+              </div>
+            }
+          </dl>
+
+          @if (d.caracteristicas.length) {
+            <h2>Características</h2>
+            <ul class="comodidades">
+              @for (c of d.caracteristicas; track c) {
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="m5 12 4.5 4.5L19 7" />
+                  </svg>
+                  <span>{{ c }}</span>
+                </li>
+              }
+            </ul>
+          }
+
+          @if (d.rural; as r) {
+            <h2>Informações rurais</h2>
+            <p class="declaratorio">
+              Dados declarados pelo proprietário@if (r.dataReferencia) {<span>, com referência de
+              {{ r.dataReferencia }}</span>}. A Terra Nexo armazena e apresenta as informações,
+              sem realizar validação jurídica ou fundiária.
+            </p>
+
+            <dl class="ficha">
+              <div><dt>Área total</dt><dd>{{ r.areaHectares | number: '1.0-1' }} ha</dd></div>
+              <div><dt>Área produtiva</dt><dd>{{ r.areaProdutivaHa | number: '1.0-1' }} ha</dd></div>
+              <div><dt>Pastagem</dt><dd>{{ r.areaPastagemHa | number: '1.0-1' }} ha</dd></div>
+              <div><dt>Área cultivada</dt><dd>{{ r.areaCultivadaHa | number: '1.0-1' }} ha</dd></div>
+              <div><dt>Mata</dt><dd>{{ r.areaMataHa | number: '1.0-1' }} ha</dd></div>
+              @if (r.areaIrrigadaHa) {
+                <div><dt>Irrigada</dt><dd>{{ r.areaIrrigadaHa | number: '1.0-1' }} ha</dd></div>
+              }
+              @if (r.soloPredominante) {
+                <div><dt>Solo</dt><dd>{{ r.soloPredominante }}</dd></div>
+              }
+              <div><dt>Terreno</dt><dd>{{ r.terreno.join(', ') }}</dd></div>
+              <div>
+                <dt>Acesso</dt>
+                <dd>{{ r.acesso.tipoAcesso }} · {{ r.acesso.distanciaAsfaltoKm | number: '1.0-1' }} km do asfalto</dd>
+              </div>
+              <div>
+                <dt>Cidade mais próxima</dt>
+                <dd>{{ r.acesso.municipioReferencia }} · {{ r.acesso.distanciaCidadeKm | number: '1.0-1' }} km</dd>
+              </div>
+            </dl>
+
+            @if (r.culturas.length) {
+              <h3>Culturas</h3>
+              <ul class="lista-rural">
+                @for (c of r.culturas; track c.nome) {
+                  <li>
+                    <strong>{{ c.nome }}</strong>
+                    <span>{{ c.categoria }} · {{ c.areaHa | number: '1.0-1' }} ha · {{ c.safra }} · {{ c.produtividade }}</span>
+                  </li>
+                }
+              </ul>
+            }
+
+            @if (r.pecuaria; as p) {
+              <h3>Pecuária</h3>
+              <ul class="lista-rural">
+                <li>
+                  <strong>{{ p.tipoCriacao }}</strong>
+                  <span>
+                    @if (p.capacidadeCabecas) {
+                      capacidade de {{ p.capacidadeCabecas | number }} cabeças ·
+                    }
+                    {{ p.divisoesPasto }} divisões de pasto · {{ p.estruturas.join(', ') }}
+                  </span>
+                </li>
+              </ul>
+            }
+
+            @if (r.benfeitorias.length) {
+              <h3>Benfeitorias</h3>
+              <ul class="lista-rural">
+                @for (b of r.benfeitorias; track b.tipo) {
+                  <li>
+                    <strong>{{ b.tipo }}</strong>
+                    <span>
+                      {{ b.quantidade }} unidade{{ b.quantidade > 1 ? 's' : '' }}
+                      @if (b.areaM2) {
+                        · {{ b.areaM2 | number }} m²
+                      }
+                      · conservação {{ b.conservacao.toLowerCase() }}
+                    </span>
+                  </li>
+                }
+              </ul>
+            }
+
+            <h3>Recursos hídricos e documentação</h3>
+            <ul class="comodidades">
+              @for (a of r.recursosHidricos; track a) {
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="m5 12 4.5 4.5L19 7" />
+                  </svg>
+                  <span>{{ a }}</span>
+                </li>
+              }
+              @for (doc of r.documentacaoInformada; track doc) {
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="m5 12 4.5 4.5L19 7" />
+                  </svg>
+                  <span>{{ doc }} informado</span>
+                </li>
+              }
+            </ul>
+          }
+        </div>
+      </article>
+
+      <aside>
+        <div class="consultor">
+          <p class="consultor__rotulo">Consultor responsável</p>
+          <strong>{{ im.corretor.nome }}</strong>
+          <p class="consultor__texto">
+            Fale diretamente com quem visitou o imóvel e conferiu a documentação.
+          </p>
+          <a class="btn btn--primary btn--block"
+             [href]="'https://wa.me/5561991467471?text=Ol%C3%A1%21%20Tenho%20interesse%20no%20im%C3%B3vel%20' + im.codigo"
+             rel="noopener">
+            Falar no WhatsApp
+          </a>
+          <a class="btn btn--ghost btn--block consultor__tel" href="tel:+5561991467471">(61) 99146-7471</a>
+          <a class="btn btn--ghost btn--block" href="/#contato">Enviar mensagem</a>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  @if (semelhantes().length) {
+    <section class="section section--alt">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">Talvez você goste</p>
+          <h2>Imóveis semelhantes</h2>
+        </div>
+        <div class="cards">
+          @for (s of semelhantes(); track s.id) {
+            <tn-property-card [imovel]="s" />
+          }
+        </div>
+      </div>
+    </section>
+  }
+} @else if (carregando()) {
+  <section class="section">
+    <div class="wrap"><p>Carregando imóvel…</p></div>
+  </section>
+}

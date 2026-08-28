@@ -1,0 +1,585 @@
+<!-- ============ 1. Banner e proposta de valor ============ -->
+<section class="hero">
+  <img
+    class="hero__bg"
+    src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1800&q=70"
+    alt=""
+    role="presentation"
+    width="1800"
+    height="1200"
+    fetchpriority="high"
+    decoding="async"
+  />
+
+  <div class="wrap">
+    <div class="hero__inner">
+      <p class="eyebrow">Imobiliária urbana e rural · desde 2009</p>
+      <h1>Do apartamento na cidade à <em>fazenda que produz</em></h1>
+      <p class="hero__lead">
+        Uma carteira só com imóveis que conhecemos: visitados, avaliados e com documentação
+        conferida antes de irem ao ar. Urbanos e rurais tratados com a mesma profundidade.
+      </p>
+      <div class="hero__cta">
+        <a class="btn btn--accent btn--lg" routerLink="/imoveis">Ver imóveis disponíveis</a>
+        <a class="btn btn--light btn--lg" href="#proprietarios">Quero anunciar meu imóvel</a>
+      </div>
+    </div>
+
+    <!-- ============ 2. Busca simplificada ============ -->
+    <search>
+      <form class="busca" [formGroup]="buscaForm" (ngSubmit)="buscar()" role="search" aria-label="Buscar imóveis">
+        <div class="busca__tabs" role="tablist" aria-label="Categoria do imóvel">
+          <button
+            type="button"
+            role="tab"
+            class="busca__tab"
+            [class.is-active]="abaBusca() === 'URBANO'"
+            [attr.aria-selected]="abaBusca() === 'URBANO'"
+            (click)="selecionarAba('URBANO')"
+          >
+            Urbano
+          </button>
+          <button
+            type="button"
+            role="tab"
+            class="busca__tab"
+            [class.is-active]="abaBusca() === 'RURAL'"
+            [attr.aria-selected]="abaBusca() === 'RURAL'"
+            (click)="selecionarAba('RURAL')"
+          >
+            Rural
+          </button>
+        </div>
+
+        <div class="busca__grid">
+          <div class="field">
+            <label for="b-local">Onde</label>
+            <input type="search" id="b-local" formControlName="q"
+                   [placeholder]="abaBusca() === 'RURAL' ? 'Município, região ou cultura' : 'Bairro, cidade ou referência'" />
+          </div>
+
+          <div class="field">
+            <label for="b-finalidade">Finalidade</label>
+            <select id="b-finalidade" formControlName="finalidade">
+              <option value="VENDA">Comprar</option>
+              <option value="LOCACAO">Alugar</option>
+              @if (abaBusca() === 'RURAL') {
+                <option value="ARRENDAMENTO">Arrendar</option>
+              }
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="b-tipo">Tipo</label>
+            <select id="b-tipo" formControlName="tipo">
+              <option value="">Todos os tipos</option>
+              @for (t of tiposDaAba(); track t) {
+                <option [value]="t">{{ t }}</option>
+              }
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="b-preco">Valor até</label>
+            <select id="b-preco" formControlName="precoMax">
+              <option value="">Sem limite</option>
+              @for (f of faixasDaAba(); track f.valor) {
+                <option [value]="f.valor">{{ f.rotulo }}</option>
+              }
+            </select>
+          </div>
+
+          <button class="btn btn--primary" type="submit">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+              <circle cx="11" cy="11" r="7" />
+              <path d="m20 20-3.5-3.5" />
+            </svg>
+            Buscar
+          </button>
+        </div>
+      </form>
+    </search>
+
+    <div class="hero__stats">
+      <div><strong>1.240</strong><span>imóveis intermediados</span></div>
+      <div><strong>16</strong><span>anos de mercado</span></div>
+      <div><strong>4,9</strong><span>avaliação média (312 clientes)</span></div>
+      <div><strong>38 dias</strong><span>tempo médio de venda</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 3. Imóveis em destaque ============ -->
+@if (destaques().length) {
+  <section class="section" aria-labelledby="tit-destaques">
+    <div class="wrap">
+      <div class="section-head section-head--split">
+        <div>
+          <p class="eyebrow">Seleção da semana</p>
+          <h2 id="tit-destaques">Imóveis em destaque</h2>
+          <p>Escolhidos pelos consultores por localização, projeto, produtividade e potencial de valorização.</p>
+        </div>
+        <a class="link-arrow" routerLink="/imoveis">
+          Ver todos os imóveis
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M5 12h14M13 6l6 6-6 6" />
+          </svg>
+        </a>
+      </div>
+
+      <div class="cards">
+        @for (imovel of destaques(); track imovel.id; let i = $index) {
+          <tn-property-card [imovel]="imovel" [prioritaria]="i < 3" />
+        }
+      </div>
+    </div>
+  </section>
+}
+
+<!-- ============ 4. Destaques urbanos e rurais ============ -->
+<section class="section section--alt" aria-labelledby="tit-duas-frentes">
+  <div class="wrap">
+    <div class="section-head section-head--center">
+      <p class="eyebrow">Duas frentes, um só padrão</p>
+      <h2 id="tit-duas-frentes">Urbano e rural com a mesma profundidade</h2>
+      <p>
+        Cada segmento exige um tipo de conhecimento. Mantemos equipes próprias para os dois,
+        com cadastro especializado e critérios de busca específicos.
+      </p>
+    </div>
+
+    <div class="frentes">
+      <article class="frente">
+        <header class="frente__head">
+          <div>
+            <span class="badge badge--brand">Urbano</span>
+            <h3>Apartamentos, casas e lajes</h3>
+            <p>Condomínio, andar, orientação solar, transporte próximo e infraestrutura do entorno.</p>
+          </div>
+          <a class="link-arrow" routerLink="/imoveis" [queryParams]="{ categoria: 'URBANO' }">
+            Ver urbanos
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M5 12h14M13 6l6 6-6 6" />
+            </svg>
+          </a>
+        </header>
+        <div class="frente__cards">
+          @for (imovel of destaquesUrbanos(); track imovel.id) {
+            <tn-property-card [imovel]="imovel" />
+          }
+        </div>
+      </article>
+
+      <article class="frente">
+        <header class="frente__head">
+          <div>
+            <span class="badge badge--rural">Rural</span>
+            <h3>Fazendas, sítios e áreas produtivas</h3>
+            <p>Terreno, solo, culturas, pecuária, água, benfeitorias, acesso e documentação declarada.</p>
+          </div>
+          <a class="link-arrow" routerLink="/imoveis" [queryParams]="{ categoria: 'RURAL' }">
+            Ver rurais
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M5 12h14M13 6l6 6-6 6" />
+            </svg>
+          </a>
+        </header>
+        <div class="frente__cards">
+          @for (imovel of destaquesRurais(); track imovel.id) {
+            <tn-property-card [imovel]="imovel" />
+          }
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 5. Imóveis recentes ============ -->
+@if (recentes().length) {
+  <section class="section" aria-labelledby="tit-recentes">
+    <div class="wrap">
+      <div class="section-head section-head--split">
+        <div>
+          <p class="eyebrow">Novidades</p>
+          <h2 id="tit-recentes">Publicados recentemente</h2>
+          <p>Os últimos imóveis que entraram na carteira, antes de circularem nos portais.</p>
+        </div>
+        <a class="link-arrow" routerLink="/imoveis" [queryParams]="{ ordenar: 'recentes' }">
+          Ver por data de publicação
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M5 12h14M13 6l6 6-6 6" />
+          </svg>
+        </a>
+      </div>
+
+      <div class="cards">
+        @for (imovel of recentes(); track imovel.id) {
+          <tn-property-card [imovel]="imovel" />
+        }
+      </div>
+    </div>
+  </section>
+}
+
+<!-- ============ 6. Apresentação da imobiliária ============ -->
+<section class="section section--alt" id="sobre" aria-labelledby="tit-sobre">
+  <div class="wrap split">
+    <figure class="split__media">
+      <img
+        src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=70"
+        alt="Consultora da Terra Nexo apresentando um imóvel a um casal"
+        width="900"
+        height="1125"
+        loading="lazy"
+        decoding="async"
+      />
+      <figcaption>
+        <strong>96%</strong>
+        <span>dos clientes indicam a Terra Nexo para amigos e familiares</span>
+      </figcaption>
+    </figure>
+
+    <div>
+      <p class="eyebrow">Sobre a Terra Nexo</p>
+      <h2 id="tit-sobre" class="display sobre__titulo">
+        O nexo entre quem tem terra e quem procura um lugar
+      </h2>
+      <p class="sobre__texto">
+        Nascemos em 2009 atendendo bairros da capital. Quando os primeiros clientes começaram a
+        pedir sítios e fazendas, montamos uma equipe rural própria em vez de improvisar — hoje as
+        duas carteiras têm o mesmo rigor de cadastro, avaliação e conferência documental.
+      </p>
+
+      <ul class="checklist">
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="9" /><path d="m8 12 3 3 5-6" />
+          </svg>
+          <span><strong>Consultor dedicado</strong> — a mesma pessoa do primeiro contato à entrega das chaves.</span>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="9" /><path d="m8 12 3 3 5-6" />
+          </svg>
+          <span><strong>Documentação conferida</strong> — matrícula, certidões, CAR, CCIR e georreferenciamento antes da proposta.</span>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="9" /><path d="m8 12 3 3 5-6" />
+          </svg>
+          <span><strong>Preço com base em dados</strong> — transações reais da região, não achismo de mercado.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 7. Regiões atendidas ============ -->
+@if (regioes().length) {
+  <section class="section" aria-labelledby="tit-regioes">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Onde atuamos</p>
+        <h2 id="tit-regioes">Regiões que conhecemos rua por rua — e estrada por estrada</h2>
+        <p>
+          Atuação concentrada: sabemos qual prédio tem obra prevista, qual rua alaga e qual gleba
+          tem problema de acesso na época das chuvas.
+        </p>
+      </div>
+
+      <h3 class="regioes__titulo">Urbanas</h3>
+      <div class="regioes">
+        @for (r of regioesUrbanas(); track r.slug) {
+          <a class="regiao" routerLink="/imoveis" [queryParams]="{ regiao: r.slug }">
+            <img [src]="r.imagem" [alt]="'Vista da região ' + r.nome" width="900" height="600" loading="lazy" decoding="async" />
+            <div class="regiao__conteudo">
+              <h4>{{ r.nome }}</h4>
+              <p>{{ r.descricao }}</p>
+              <span>{{ r.quantidade }} {{ r.quantidade === 1 ? 'imóvel' : 'imóveis' }}</span>
+            </div>
+          </a>
+        }
+      </div>
+
+      <h3 class="regioes__titulo">Rurais</h3>
+      <div class="regioes">
+        @for (r of regioesRurais(); track r.slug) {
+          <a class="regiao regiao--rural" routerLink="/imoveis" [queryParams]="{ regiao: r.slug }">
+            <img [src]="r.imagem" [alt]="'Vista da região ' + r.nome" width="900" height="600" loading="lazy" decoding="async" />
+            <div class="regiao__conteudo">
+              <h4>{{ r.nome }}</h4>
+              <p>{{ r.descricao }}</p>
+              <span>{{ r.quantidade }} {{ r.quantidade === 1 ? 'imóvel' : 'imóveis' }}</span>
+            </div>
+          </a>
+        }
+      </div>
+    </div>
+  </section>
+}
+
+<!-- ============ 8. Serviços ============ -->
+<section class="section section--alt" id="servicos" aria-labelledby="tit-servicos">
+  <div class="wrap">
+    <div class="section-head section-head--center">
+      <p class="eyebrow">Serviços</p>
+      <h2 id="tit-servicos">O ciclo completo, sob o mesmo teto</h2>
+      <p>Da avaliação inicial ao registro em cartório, sem terceirizar as etapas que decidem o negócio.</p>
+    </div>
+
+    <div class="servicos">
+      @for (s of servicos; track s.titulo) {
+        <article class="servico">
+          <div class="servico__icone">
+            @switch (s.icone) {
+              @case ('busca') {
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="11" cy="11" r="7" /><path d="m20 20-3.5-3.5" />
+                </svg>
+              }
+              @case ('chave') {
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="8" cy="15" r="4" /><path d="m11 12 9-9 2 2-2 2 2 2-3 3-2-2-2 2" />
+                </svg>
+              }
+              @case ('campo') {
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M3 20h18" /><path d="M4 20c1.5-5 4-7.5 8-7.5s6.5 2.5 8 7.5" /><path d="M12 12.5V4" /><path d="M12 6c2 0 3.5-1 4-2.5-2 0-3.5.8-4 2.5Z" />
+                </svg>
+              }
+              @case ('escudo') {
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M12 3 4 6v6c0 5 3.4 8.4 8 9 4.6-.6 8-4 8-9V6l-8-3Z" /><path d="m9 12 2 2 4-4" />
+                </svg>
+              }
+              @case ('grafico') {
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M3 17V9m5 8V5m5 12v-6m5 6V7" /><path d="M3 21h18" />
+                </svg>
+              }
+              @default {
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M3 10 12 4l9 6" /><path d="M5 10v9h14v-9" /><path d="M9 19v-5h6v5" />
+                </svg>
+              }
+            }
+          </div>
+          <h3>{{ s.titulo }}</h3>
+          <p>{{ s.texto }}</p>
+        </article>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ============ 9. Chamada para proprietários ============ -->
+<section class="section" id="proprietarios" aria-labelledby="tit-proprietarios">
+  <div class="wrap">
+    <div class="proprietarios">
+      <div class="proprietarios__texto">
+        <p class="eyebrow">Para proprietários</p>
+        <h2 id="tit-proprietarios" class="display">Quanto vale o seu imóvel hoje?</h2>
+        <p>
+          Avaliação gratuita em até 48 horas, com base em transações reais da região — para
+          apartamentos, casas, lajes, sítios e fazendas. Sem compromisso de exclusividade.
+        </p>
+        <ul class="proprietarios__lista">
+          <li>Laudo com comparativos da região e faixa de valor recomendada</li>
+          <li>Produção fotográfica profissional e tour virtual inclusos</li>
+          <li>Relatório quinzenal de visitas, propostas e desempenho do anúncio</li>
+        </ul>
+        <a class="btn btn--accent btn--lg" href="#contato">Solicitar avaliação gratuita</a>
+      </div>
+
+      <div class="proprietarios__numeros">
+        <div><strong>38</strong><span>dias, em média, até a proposta aceita</span></div>
+        <div><strong>R$ 3,8 bi</strong><span>em VGV intermediado desde 2009</span></div>
+        <div><strong>96%</strong><span>de clientes que indicam a Terra Nexo</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 10. Corretores ============ -->
+@if (corretores().length) {
+  <section class="section section--alt" aria-labelledby="tit-equipe">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Quem atende você</p>
+        <h2 id="tit-equipe">Consultores, não vendedores</h2>
+        <p>Todos com CRECI ativo, formação em avaliação de imóveis e no mínimo seis anos de mercado.</p>
+      </div>
+
+      <div class="equipe">
+        @for (c of corretores(); track c.slug) {
+          <article class="corretor">
+            <img [src]="c.foto" [alt]="c.nome + ', ' + c.cargo" width="110" height="110" loading="lazy" decoding="async" />
+            <h3>{{ c.nome }}</h3>
+            <p class="corretor__cargo">{{ c.cargo }} · {{ c.creci }}</p>
+            <p class="corretor__bio">{{ c.bio }}</p>
+            <ul class="corretor__tags">
+              @for (e of c.especialidades; track e) {
+                <li>{{ e }}</li>
+              }
+            </ul>
+            <a class="link-arrow" routerLink="/imoveis" [queryParams]="{ corretor: c.slug }">
+              {{ c.imoveis }} {{ c.imoveis === 1 ? 'imóvel' : 'imóveis' }}
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M5 12h14M13 6l6 6-6 6" />
+              </svg>
+            </a>
+          </article>
+        }
+      </div>
+    </div>
+  </section>
+}
+
+<!-- ============ 11. Depoimentos ============ -->
+<section class="section" aria-labelledby="tit-depoimentos">
+  <div class="wrap">
+    <div class="section-head section-head--center">
+      <p class="eyebrow">Depoimentos</p>
+      <h2 id="tit-depoimentos">Quem já assinou com a gente</h2>
+    </div>
+
+    <div class="depoimentos">
+      @for (d of depoimentos; track d.nome) {
+        <figure class="depoimento">
+          <div class="depoimento__estrelas" role="img" aria-label="5 de 5 estrelas">
+            @for (e of [1, 2, 3, 4, 5]; track e) {
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="m12 3 2.6 5.6 6.1.8-4.5 4.2 1.2 6L12 16.8 6.6 19.6l1.2-6L3.3 9.4l6.1-.8L12 3Z" />
+              </svg>
+            }
+          </div>
+          <blockquote>{{ d.texto }}</blockquote>
+          <figcaption>
+            <img [src]="d.foto" alt="" width="46" height="46" loading="lazy" decoding="async" />
+            <div>
+              <strong>{{ d.nome }}</strong>
+              <span>{{ d.contexto }}</span>
+            </div>
+          </figcaption>
+        </figure>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ============ 12. Contato ============ -->
+<section class="section section--alt" id="contato" aria-labelledby="tit-contato">
+  <div class="wrap contato">
+    <div class="contato__info">
+      <p class="eyebrow">Contato</p>
+      <h2 id="tit-contato" class="display">Vamos conversar</h2>
+      <p class="contato__intro">
+        Comprar, vender, alugar, arrendar ou só entender quanto vale o seu imóvel — escreva
+        abaixo e um consultor responde em até 2 horas úteis.
+      </p>
+
+      <div class="contato__itens">
+        <a class="contato__item" href="tel:+5561991467471">
+          <span class="contato__icone">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M4 5.5A1.5 1.5 0 0 1 5.5 4h2.2a1 1 0 0 1 1 .8l.8 3.3a1 1 0 0 1-.5 1.1l-1.7.9a13 13 0 0 0 6.6 6.6l.9-1.7a1 1 0 0 1 1.1-.5l3.3.8a1 1 0 0 1 .8 1v2.2A1.5 1.5 0 0 1 18.5 20 15 15 0 0 1 4 5.5Z" />
+            </svg>
+          </span>
+          <span><strong>(61) 99146-7471</strong><small>Seg. a sex. 9h–19h · Sáb. 10h–14h</small></span>
+        </a>
+
+        <a class="contato__item" href="https://wa.me/5561991467471" rel="noopener">
+          <span class="contato__icone">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2Zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3.1.8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2Z" />
+            </svg>
+          </span>
+          <span><strong>WhatsApp</strong><small>Resposta em até 2 horas úteis</small></span>
+        </a>
+
+        <a class="contato__item" href="mailto:contato@terranexo.com.br">
+          <span class="contato__icone">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="5" width="18" height="14" rx="2" /><path d="m3.5 7 8.5 6 8.5-6" />
+            </svg>
+          </span>
+          <span><strong>contato&#64;terranexo.com.br</strong><small>Para propostas e documentos</small></span>
+        </a>
+      </div>
+    </div>
+
+    <div class="contato__form">
+      @if (protocolo(); as p) {
+        <div class="sucesso" role="status">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="9" /><path d="m8 12 3 3 5-6" />
+          </svg>
+          <div>
+            <strong>Mensagem enviada!</strong>
+            <p>Protocolo <code>{{ p }}</code>. Um consultor responde em até 2 horas úteis.</p>
+          </div>
+        </div>
+      } @else {
+        <form [formGroup]="contatoForm" (ngSubmit)="enviarContato()" novalidate>
+          <div class="form-grid">
+            <div class="field" [class.is-invalid]="invalido('nome')">
+              <label for="c-nome">Nome completo *</label>
+              <input type="text" id="c-nome" formControlName="nome" autocomplete="name" placeholder="Como podemos chamar você?" />
+              <span class="field__error">{{ invalido('nome') ? 'Informe seu nome.' : '' }}</span>
+            </div>
+
+            <div class="field" [class.is-invalid]="invalido('email')">
+              <label for="c-email">E-mail *</label>
+              <input type="email" id="c-email" formControlName="email" autocomplete="email" placeholder="voce@email.com" />
+              <span class="field__error">{{ invalido('email') ? 'Informe um e-mail válido.' : '' }}</span>
+            </div>
+
+            <div class="field" [class.is-invalid]="invalido('telefone')">
+              <label for="c-tel">Telefone / WhatsApp *</label>
+              <input type="tel" id="c-tel" formControlName="telefone" autocomplete="tel" placeholder="(11) 99999-9999" />
+              <span class="field__error">{{ invalido('telefone') ? 'Informe um telefone com DDD.' : '' }}</span>
+            </div>
+
+            <div class="field">
+              <label for="c-assunto">Assunto</label>
+              <select id="c-assunto" formControlName="assunto">
+                <option>Quero comprar um imóvel</option>
+                <option>Quero alugar um imóvel</option>
+                <option>Quero arrendar uma área rural</option>
+                <option>Quero vender meu imóvel</option>
+                <option>Avaliação gratuita</option>
+                <option>Outro assunto</option>
+              </select>
+            </div>
+
+            <div class="field field--full">
+              <label for="c-msg">Mensagem</label>
+              <textarea id="c-msg" formControlName="mensagem"
+                        placeholder="Conte o que procura: região, faixa de valor, área, número de quartos ou tipo de produção…"></textarea>
+            </div>
+
+            <div class="field--full">
+              <label class="consent" [class.is-invalid]="invalido('consentimento')">
+                <input type="checkbox" formControlName="consentimento" />
+                <span>
+                  Autorizo a Terra Nexo a entrar em contato e tratar meus dados conforme a
+                  Política de Privacidade e a LGPD. *
+                </span>
+              </label>
+            </div>
+
+            @if (erroEnvio()) {
+              <p class="erro-envio field--full">{{ erroEnvio() }}</p>
+            }
+
+            <div class="field--full">
+              <button class="btn btn--primary btn--lg btn--block" type="submit" [disabled]="enviando()">
+                {{ enviando() ? 'Enviando…' : 'Enviar mensagem' }}
+              </button>
+            </div>
+          </div>
+        </form>
+      }
+    </div>
+  </div>
+</section>

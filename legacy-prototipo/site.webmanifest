@@ -1,0 +1,19 @@
+{
+  "name": "Terra Nexo — Imobiliária urbana e rural",
+  "short_name": "Terra Nexo",
+  "description": "Imóveis urbanos e rurais de alto padrão em São Paulo, interior e litoral.",
+  "lang": "pt-BR",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f7f4ef",
+  "theme_color": "#0f3b3f",
+  "icons": [
+    {
+      "src": "assets/img/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

@@ -1,0 +1,4222 @@
+[
+  {
+    "id": "prt-001",
+    "municipio": "Unaí",
+    "uf": "MG",
+    "setor": "AGROPECUARIA",
+    "nomeFantasia": "União Agropecuária e Transporte",
+    "razaoSocial": "União Agropecuária e Transporte LTDA",
+    "cnpj": "19.328.529/0001-67",
+    "situacaoCadastral": "ATIVA",
+    "endereco": {
+      "logradouro": "Rua Natal Justino da Costa",
+      "numero": "805",
+      "complemento": null,
+      "bairro": "Centro",
+      "cep": "38610-044"
+    },
+    "site": null,
+    "geolocalizacao": {
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rua%20Natal%20Justino%20da%20Costa%2C%20805%2C%20Centro%2C%20Una%C3%AD%20-%20MG/GO",
+      "latitude": null,
+      "longitude": null
+    },
+    "titulares": [
+      {
+        "nome": "Raimundo Sauer",
+        "cpfMascarado": "***.072.726-**",
+        "qualificacao": "Sócio-Administrador",
+        "principal": true
+      },
+      {
+        "nome": "Alice Lopes Souto Tomaz",
+        "cpfMascarado": "***.149.626-**",
+        "qualificacao": "Sócio",
+        "principal": false
+      }
+    ],
+    "contatos": [
+      {
+        "tipo": "TELEFONE_FIXO",
+        "valor": "(38) 3676-2689",
+        "principal": true
+      }
+    ],
+    "status": "PESQUISADO",
+    "fonteInformacao": "Receita Federal (CNPJ público via BrasilAPI) + Agrolink",
+    "dataColeta": "2026-08-26",
+    "observacoes": null,
+    "criadoEm": "2026-08-26T00:00:00-03:00",
+    "atualizadoEm": "2026-08-26T00:00:00-03:00",
+    "historicoStatus": [
+      {
+        "status": "PESQUISADO",
+        "data": "2026-08-26",
+        "responsavel": "pesquisa automatizada",
+        "observacao": "Registro inicial carregado na base."
+      }
+    ]
+  },
+  {
+    "id": "prt-002",
+    "municipio": "Unaí",
+    "uf": "MG",
+    "setor": "AGROPECUARIA",
+    "nomeFantasia": "FJA. Agronegócio Unaí",
+    "razaoSocial": "FJA. Agronegócio Unaí LTDA",
+    "cnpj": "48.510.635/0001-65",
+    "situacaoCadastral": "ATIVA",
+    "endereco": {
+      "logradouro": "Rodovia Frei Jorge",
+      "numero": "1310",
+      "complemento": "Sala 01",
+      "bairro": "De Lourdes",
+      "cep": "38616-470"
+    },
+    "site": null,
+    "geolocalizacao": {
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rodovia%20Frei%20Jorge%2C%201310%2C%20De%20Lourdes%2C%20Una%C3%AD%20-%20MG/GO",
+      "latitude": null,
+      "longitude": null
+    },
+    "titulares": [
+      {
+        "nome": "Adenivaldo Oliveira Xavier",
+        "cpfMascarado": "***.135.716-**",
+        "qualificacao": "Sócio-Administrador",
+        "principal": true
+      }
+    ],
+    "contatos": [
+      {
+        "tipo": "TELEFONE_FIXO",
+        "valor": "(38) 8832-2555",
+        "principal": true
+      }
+    ],
+    "status": "PESQUISADO",
+    "fonteInformacao": "Receita Federal (CNPJ público via BrasilAPI) + Agrolink",
+    "dataColeta": "2026-08-26",
+    "observacoes": "Comércio atacadista de máquinas e equipamentos agropecuários.",
+    "criadoEm": "2026-08-26T00:00:00-03:00",
+    "atualizadoEm": "2026-08-26T00:00:00-03:00",
+    "historicoStatus": [
+      {
+        "status": "PESQUISADO",
+        "data": "2026-08-26",
+        "responsavel": "pesquisa automatizada",
+        "observacao": "Registro inicial carregado na base."
+      }
+    ]
+  },
+  {
+    "id": "prt-003",
+    "municipio": "Unaí",
+    "uf": "MG",
+    "setor": "AGROPECUARIA",
+    "nomeFantasia": "Agrorural",
+    "razaoSocial": "Agrorural Comércio e Representação LTDA",
+    "cnpj": "49.573.204/0001-00",
+    "situacaoCadastral": "ATIVA",
+    "endereco": {
+      "logradouro": "Avenida Central",
+      "numero": "138",
+      "complemento": null,
+      "bairro": "Parque Explanada",
+      "cep": "38620-115"
+    },
+    "site": null,
+    "geolocalizacao": {
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Avenida%20Central%2C%20138%2C%20Parque%20Explanada%2C%20Una%C3%AD%20-%20MG/GO",
+      "latitude": null,
+      "longitude": null
+    },
+    "titulares": [
+      {
+        "nome": "Afranio Queiroz Neto",
+        "cpfMascarado": "***.969.846-**",
+        "qualificacao": "Administrador",
+        "principal": true
+      }
+    ],
+    "contatos": [
+      {
+        "tipo": "TELEFONE_CELULAR",
+        "valor": "(38) 9970-0717",
+        "principal": true
+      }
+    ],
+    "status": "PESQUISADO",
+    "fonteInformacao": "Receita Federal (CNPJ público via BrasilAPI) + Agrolink",
+    "dataColeta": "2026-08-26",
+    "observacoes": "Comércio atacadista de defensivos agrícolas, adubos e fertilizantes.",
+    "criadoEm": "2026-08-26T00:00:00-03:00",
+    "atualizadoEm": "2026-08-26T00:00:00-03:00",
+    "historicoStatus": [
+      {
+        "status": "PESQUISADO",
+        "data": "2026-08-26",
+        "responsavel": "pesquisa automatizada",
+        "observacao": "Registro inicial carregado na base."
+      }
+    ]
+  },
+  {
+    "id": "prt-004",
+    "municipio": "Unaí",
+    "uf": "MG",
+    "setor": "AGROPECUARIA",
+    "nomeFantasia": "Mundo Agropecuário",
+    "razaoSocial": null,
+    "cnpj": null,
+    "situacaoCadastral": null,
+    "endereco": {
+      "logradouro": "Avenida Governador Valadares",
+      "numero": "116",
+      "complemento": null,
+      "bairro": null,
+      "cep": null
+    },
+    "site": null,
+    "geolocalizacao": {
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Avenida%20Governador%20Valadares%2C%20116%2C%20Una%C3%AD%20-%20MG/GO",
+      "latitude": null,
+      "longitude": null
+    },
+    "titulares": [],
+    "contatos": [
+      {
+        "tipo": "TELEFONE_FIXO",
+        "valor": "(38) 3677-4331",
+        "principal": true
+      },
+      {
+        "tipo": "WHATSAPP",
+        "valor": "(38) 99970-6030",
+        "principal": true
+      }
+    ],
+    "status": "PESQUISADO",
+    "fonteInformacao": "Guia Unaí (guiaunai.com.br)",
+    "dataColeta": "2026-08-26",
+    "observacoes": "CNPJ e titular não localizados nas fontes públicas consultadas — confirmar em contato direto.",
+    "criadoEm": "2026-08-26T00:00:00-03:00",
+    "atualizadoEm": "2026-08-26T00:00:00-03:00",
+    "historicoStatus": [
+      {
+        "status": "PESQUISADO",
+        "data": "2026-08-26",
+        "responsavel": "pesquisa automatizada",
+        "observacao": "Registro inicial carregado na base."
+      }
+    ]
+  },
+  {
+    "id": "prt-005",
+    "municipio": "Unaí",
+    "uf": "MG",
+    "setor": "IMOBILIARIA",
+    "nomeFantasia": "Alfa Nicolau Imóveis",
+    "razaoSocial": "Alfa Nicolau Imóveis LTDA",
+    "cnpj": "14.927.825/0001-60",
+    "situacaoCadastral": "ATIVA",
+    "endereco": {
+      "logradouro": "Rua Djalma Torres",
+      "numero": "351",
+      "complemento": "ponto comercial (fiscal: Av. Princesa Isabel, 531, Jardim)",
+      "bairro": "Centro",
+      "cep": "38610-036"
+    },
+    "site": "https://alfanicolau.com.br",
+    "geolocalizacao": {
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rua%20Djalma%20Torres%2C%20351%2C%20Centro%2C%20Una%C3%AD%20-%20MG/GO",
+      "latitude": null,
+      "longitude": null
+    },
+    "titulares": [
+      {
+        "nome": "Renato Nicolau Ribeiro",
+        "cpfMascarado": "***.195.336-**",
+        "qualificacao": "Sócio-Administrador",
+        "principal": true
+      }
+    ],
+    "contatos": [
+      {
+        "tipo": "TELEFONE_FIXO",
+        "valor": "(38) 3676-7636",
+        "principal": true
+      },
+      {
+        "tipo": "WHATSAPP",
+        "valor": "(38) 98849-2919",
+        "principal": true
+      }
+    ],
+    "status": "PESQUISADO",
+    "fonteInformacao": "Receita Federal (BrasilAPI) + site oficial",
+    "dataColeta": "2026-08-26",
+    "observacoes": "CRECI J 4188.",
+    "criadoEm": "2026-08-26T00:00:00-03:00",
+    "atualizadoEm": "2026-08-26T00:00:00-03:00",
+    "historicoStatus": [
+      {
+        "status": "PESQUISADO",
+        "data": "2026-08-26",
+        "responsavel": "pesquisa automatizada",
+        "observacao": "Registro inicial carregado na base."
+      }
+    ]
+  },
+  {
+    "id": "prt-006",
+    "municipio": "Unaí",
+    "uf": "MG",
+    "setor": "IMOBILIARIA",
+    "nomeFantasia": "Novo Lar Imobiliária",
+    "razaoSocial": "Novo Lar Imobiliária LTDA",
+    "cnpj": "33.625.816/0001-60",
+    "situacaoCadastral": "ATIVA",
+    "endereco": {
+      "logradouro": "Rua Buritis",
+      "numero": "314",
+      "complemento": "Loja 2",
+      "bairro": "Centro",
+      "cep": "38610-049"
+    },
+    "site": "https://novolarimobiliariaunai.com.br",
+    "geolocalizacao": {
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rua%20Buritis%2C%20314%2C%20Centro%2C%20Una%C3%AD%20-%20MG/GO",
+      "latitude": null,
+      "longitude": null
+    },
+    "titulares": [
+      {
+        "nome": "Alisson Morais Carvalho",
+        "cpfMascarado": "***.758.986-**",
+        "qualificacao": "Sócio-Administrador",
+        "principal": true
+      }
+    ],
+    "contatos": [
+      {
+        "tipo": "TELEFONE_FIXO",
+        "valor": "(38) 3676-3243",
+        "principal": true
+      },
+      {
+        "tipo": "WHATSAPP",
+        "valor": "(38) 99879-9441",
+        "principal": true
+      },
+      {
+        "tipo": "EMAIL",
+        "valor": "novolarunai@gmail.com",
+        "principal": true
+      }
+    ],
+    "status": "PESQUISADO",
+    "fonteInformacao": "Receita Federal (BrasilAPI) + site oficial",
+    "dataColeta": "2026-08-26",
+    "observacoes": "CRECI MGJ0006148. Site lista WhatsApp separados por setor (vendas/locação/financeiro).",
+    "criadoEm": "2026-08-26T00:00:00-03:00",
+    "atualizadoEm": "2026-08-26T00:00:00-03:00",
+    "historicoStatus": [
+      {
+        "status": "PESQUISADO",
+        "data": "2026-08-26",
+        "responsavel": "pesquisa automatizada",
+        "observacao": "Registro inicial carregado na base."
+      }
+    ]
+  },
+  {
+    "id": "prt-007",
+    "municipio": "Unaí",
+    "uf": "MG",
+    "setor": "IMOBILIARIA",
+    "nomeFantasia": "Prime Imóveis Unaí",
+    "razaoSocial": "Prime Imóveis Unaí LTDA",
+    "cnpj": "14.460.843/0001-85",
+    "situacaoCadastral": "ATIVA",
+    "endereco": {
+      "logradouro": "Rua Celina Lisboa Frederico",
+      "numero": "69",
+      "complemento": "Sala 01",
+      "bairro": "Centro",
+      "cep": "38610-041"
+    },
+    "site": "https://primeimoveisunai.com.br",
+    "geolocalizacao": {
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rua%20Celina%20Lisboa%20Frederico%2C%2069%2C%20Centro%2C%20Una%C3%AD%20-%20MG/GO",
+      "latitude": null,
+      "longitude": null
+    },
+    "titulares": [
+      {
+        "nome": "José Lindomar Coelho",
+        "cpfMascarado": "***.605.706-**",
+        "qualificacao": "Sócio-Administrador",
+        "principal": true
+      },
+      {
+        "nome": "Ronie José de Carvalho",
+        "cpfMascarado": "***.207.816-**",
+        "qualificacao": "Sócio-Administrador",
+        "principal": false
+      }
+    ],
+    "contatos": [
+      {
+        "tipo": "TELEFONE_FIXO",
+        "valor": "(38) 3677-6070",
+        "principal": true
+      },
+      {
+        "tipo": "WHATSAPP",
+        "valor": "(38) 99970-6070",
+        "principal": true
+      },
+      {
+        "tipo": "EMAIL",
+        "valor": "primeimoveisunai@gmail.com",
+        "principal": true
+      }
+    ],
+    "status": "PESQUISADO",
+    "fonteInformacao": "Receita Federal (BrasilAPI) + site oficial",
+    "dataColeta": "2026-08-26",
+    "observacoes": "CRECI MGJ0006090. 4 sócios no QSA; listados os dois sócios-administradores.",
+    "criadoEm": "2026-08-26T00:00:00-03:00",
+    "atualizadoEm": "2026-08-26T00:00:00-03:00",
+    "historicoStatus": [
+      {
+        "status": "PESQUISADO",
+        "data": "2026-08-26",
+        "responsavel": "pesquisa automatizada",
+        "observacao": "Registro inicial carregado na base."
+      }
+    ]
+  },
+  {
+    "id": "prt-008",
+    "municipio": "Unaí",
+    "uf": "MG",
+    "setor": "IMOBILIARIA",
+    "nomeFantasia": "Companhia Imobiliária",
+    "razaoSocial": "CIB Companhia de Infraestrutura Brasileira LTDA",
+    "cnpj": "36.770.097/0001-69",
+    "situacaoCadastral": "ATIVA",
+    "endereco": {
+      "logradouro": "Rua Djalma Torres",
+      "numero": "557",
+      "complemento": null,
+      "bairro": "Centro",
+      "cep": "38610-036"
+    },
+    "site": null,
+    "geolocalizacao": {
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rua%20Djalma%20Torres%2C%20557%2C%20Centro%2C%20Una%C3%AD%20-%20MG/GO",
+      "latitude": null,
+      "longitude": null
+    },
+    "titulares": [
+      {
+        "nome": "Gualter Moura Filho",
+        "cpfMascarado": "***.381.461-**",
+        "qualificacao": "Sócio-Administrador",
+        "principal": true
+      }
+    ],
+    "contatos": [
+      {
+        "tipo": "TELEFONE_FIXO",
+        "valor": "(38) 3676-6772",
+        "principal": true
+      },
+      {
+        "tipo": "EMAIL",
+        "valor": "cia.imobiliaria@hotmail.com",
+        "principal": true
+      }
+    ],
+    "status": "PESQUISADO",
+    "fonteInformacao": "Receita Federal (BrasilAPI) + busca web",
+    "dataColeta": "2026-08-26",
+    "observacoes": "E-mail encontrado em diretório de terceiros, não confirmado no site oficial.",
+    "criadoEm": "2026-08-26T00:00:00-03:00",
+    "atualizadoEm": "2026-08-26T00:00:00-03:00",
+    "historicoStatus": [
+      {
+        "status": "PESQUISADO",
+        "data": "2026-08-26",
+        "responsavel": "pesquisa automatizada",
+        "observacao": "Registro inicial carregado na base."
+      }
+    ]
+  },
+  {
+    "id": "prt-009",
+    "municipio": "Unaí",
+    "uf": "MG",
+    "setor": "IRRIGACAO",
+    "nomeFantasia": "Irricampo Unaí – Sistemas de Irrigação",
+    "razaoSocial": null,
+    "cnpj": null,
+    "situacaoCadastral": null,
+    "endereco": {
+      "logradouro": "Avenida Governador Valadares",
+      "numero": "100",
+      "complemento": null,
+      "bairro": null,
+      "cep": null
+    },
+    "site": "https://www.irricampocristalina.com.br",
+    "geolocalizacao": {
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Avenida%20Governador%20Valadares%2C%20100%2C%20Una%C3%AD%20-%20MG/GO",
+      "latitude": null,
+      "longitude": null
+    },
+    "titulares": [],
+    "contatos": [
+      {
+        "tipo": "TELEFONE_FIXO",
+        "valor": "(38) 3677-6200",
+        "principal": true
+      },
+      {
+        "tipo": "WHATSAPP",
+        "valor": "(38) 99913-6200",
+        "principal": true
+      }
+    ],
+    "status": "PESQUISADO",
+    "fonteInformacao": "Guia Unaí (guiaunai.com.br)",
+    "dataColeta": "2026-08-26",
+    "observacoes": "Site institucional aponta para domínio de Cristalina — confirmar se é filial/mesma rede.",
+    "criadoEm": "2026-08-26T00:00:00-03:00",
+    "atualizadoEm": "2026-08-26T00:00:00-03:00",
+    "historicoStatus": [
+      {
+        "status": "PESQUISADO",
+        "data": "2026-08-26",
+        "responsavel": "pesquisa automatizada",
+        "observacao": "Registro inicial carregado na base."
+      }
+    ]
+  },
+  {
+    "id": "prt-010",
+    "municipio": "Unaí",
+    "uf": "MG",
+    "setor": "IRRIGACAO",
+    "nomeFantasia": "Pivot Equipamentos Agrícolas e Irrigação (filial Unaí)",
+    "razaoSocial": "Pivot Equipamentos Agrícolas e Irrigação S.A.",
+    "cnpj": "33.302.019/0013-85",
+    "situacaoCadastral": "ATIVA",
+    "endereco": {
+      "logradouro": "Rua Porangatu",
+      "numero": "314",
+      "complemento": null,
+      "bairro": "Kamayurá",
+      "cep": "38616-222"
+    },
+    "site": null,
+    "geolocalizacao": {
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rua%20Porangatu%2C%20314%2C%20Kamayur%C3%A1%2C%20Una%C3%AD%20-%20MG/GO",
+      "latitude": null,
+      "longitude": null
+    },
+    "titulares": [
+      {
+        "nome": "Jorge Luiz de Almeida Campos",
+        "cpfMascarado": "***.916.321-**",
+        "qualificacao": "Presidente",
+        "principal": true
+      },
+      {
+        "nome": "Fabio Euclides Borgonhone",
+        "cpfMascarado": "***.895.119-**",
+        "qualificacao": "Diretor",
+        "principal": false
+      },
+      {
+        "nome": "João Carlos Obici",
+        "cpfMascarado": "***.146.449-**",
+        "qualificacao": "Diretor",
+        "principal": false
+      },
+      {
+        "nome": "Marcos Antonio Trintinalha",
+        "cpfMascarado": "***.251.209-**",
+        "qualificacao": "Diretor",
+        "principal": false
+      }
+    ],
+    "contatos": [
+      {
+        "tipo": "TELEFONE_FIXO",
+        "valor": "(62) 3293-0496",
+        "principal": true
+      }
+    ],
+    "status": "PESQUISADO",
+    "fonteInformacao": "Receita Federal (BrasilAPI) + Econodata",
+    "dataColeta": "2026-08-26",
+    "observacoes": "Filial; matriz fora de MG. Telefone da Receita tem DDD 62 (central da matriz).",
+    "criadoEm": "2026-08-26T00:00:00-03:00",
+    "atualizadoEm": "2026-08-26T00:00:00-03:00",
+    "historicoStatus": [
+      {
+        "status": "PESQUISADO",
+        "data": "2026-08-26",
+        "responsavel": "pesquisa automatizada",
+        "observacao": "Registro inicial carregado na base."
+      }
+    ]
+  },
+  {
+    "id": "prt-011",
+    "municipio": "Unaí",
+    "uf": "MG",
+    "setor": "IRRIGACAO",
+    "nomeFantasia": "Ideal Irrigação",
+    "razaoSocial": null,
+    "cnpj": null,
+    "situacaoCadastral": null,
+    "endereco": {
+      "logradouro": null,
+      "numero": null,
+      "complemento": "Endereço físico não disponível publicamente",
+      "bairro": null,
+      "cep": null
+    },
+    "site": "https://www.projetospremium.com.br/idealirrigacao",
+    "geolocalizacao": {
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Una%C3%AD%20-%20MG/GO",
+      "latitude": null,
+      "longitude": null
+    },
+    "titulares": [],
+    "contatos": [
+      {
+        "tipo": "TELEFONE_FIXO",
+        "valor": "(38) 3677-5900",
+        "principal": true
+      },
+      {
+        "tipo": "EMAIL",
+        "valor": "ideal@idealirrigacao.com.br",
+        "principal": true
+      }
+    ],
+    "status": "PESQUISADO",
+    "fonteInformacao": "Site oficial",
+    "dataColeta": "2026-08-26",
+    "observacoes": "Atua também em Lagamar, Buritizeiro, Pirapora e Várzea da Palma-MG.",
+    "criadoEm": "2026-08-26T00:00:00-03:00",
+    "atualizadoEm": "2026-08-26T00:00:00-03:00",
+    "historicoStatus": [
+      {
+        "status": "PESQUISADO",
+        "data": "2026-08-26",
+        "responsavel": "pesquisa automatizada",
+        "observacao": "Registro inicial carregado na base."
+      }
+    ]
+  },
+  {
+    "id": "prt-012",
+    "municipio": "Unaí",
+    "uf": "MG",
+    "setor": "SILOS_ARMAZENS",
+    "nomeFantasia": "Corretora e Comércio de Grãos Unaí",
+    "razaoSocial": "Corretora e Comércio de Grãos Unaí LTDA",
+    "cnpj": "43.737.346/0001-80",
+    "situacaoCadastral": "ATIVA",
+    "endereco": {
+      "logradouro": "Rua Juvêncio Correio",
+      "numero": "469",
+      "complemento": null,
+      "bairro": "Capim Branco",
+      "cep": "38610-104"
+    },
+    "site": null,
+    "geolocalizacao": {
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rua%20Juv%C3%AAncio%20Correio%2C%20469%2C%20Capim%20Branco%2C%20Una%C3%AD%20-%20MG/GO",
+      "latitude": null,
+      "longitude": null
+    },
+    "titulares": [
+      {
+        "nome": "Walter da Silva Campos",
+        "cpfMascarado": "***.002.966-**",
+        "qualificacao": "Sócio-Administrador",
+        "principal": true
+      }
+    ],
+    "contatos": [
+      {
+        "tipo": "TELEFONE_CELULAR",
+        "valor": "(38) 9961-3829",
+        "principal": true
+      }
+    ],
+    "status": "PESQUISADO",
+    "fonteInformacao": "Receita Federal (BrasilAPI) + busca web",
+    "dataColeta": "2026-08-26",
+    "observacoes": "CNAE oficial na Receita é 'Cultivo de soja' — opera como corretora/comercializadora de grãos; confirmar em contato direto se possui silo próprio. Segmento com poucas empresas confirmadas publicamente em Unaí: CASEMG (armazém estadual) e Coanor (cooperativa) estão com registro BAIXADA/em liquidação na Receita — não incluídas. Fonte oficial recomendada para completar este setor: sistema de armazenagem da CONAB (dados abertos).",
+    "criadoEm": "2026-08-26T00:00:00-03:00",
+    "atualizadoEm": "2026-08-26T00:00:00-03:00",
+    "historicoStatus": [
+      {
+        "status": "PESQUISADO",
+        "data": "2026-08-26",
+        "responsavel": "pesquisa automatizada",
+        "observacao": "Registro inicial carregado na base."
+      }
+    ]
+  },
+  {
+    "id": "prt-013",
+    "municipio": "Unaí",
+    "uf": "MG",
+    "setor": "LEILAO_ANIMAIS",
+    "nomeFantasia": "Unaí Leilões",
+    "razaoSocial": "Unaí Leilões LTDA",
+    "cnpj": "45.702.181/0002-17",
+    "situacaoCadastral": "ATIVA",
+    "endereco": {
+      "logradouro": "Rodovia Frei Jorge",
+      "numero": "4289",
+      "complemento": "parque de leilões (escritório: Av. Belo Horizonte, 335)",
+      "bairro": "Capim Branco II",
+      "cep": "38623-899"
+    },
+    "site": null,
+    "geolocalizacao": {
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rodovia%20Frei%20Jorge%2C%204289%2C%20Capim%20Branco%20II%2C%20Una%C3%AD%20-%20MG/GO",
+      "latitude": null,
+      "longitude": null
+    },
+    "titulares": [
+      {
+        "nome": "Leonardo Campos Dias",
+        "cpfMascarado": "***.932.816-**",
+        "qualificacao": "Sócio-Administrador",
+        "principal": true
+      },
+      {
+        "nome": "Magna Oliveira Campos",
+        "cpfMascarado": "***.927.706-**",
+        "qualificacao": "Sócio-Administrador",
+        "principal": false
+      },
+      {
+        "nome": "Paulo Sergio Campos Dias",
+        "cpfMascarado": "***.944.666-**",
+        "qualificacao": "Sócio-Administrador",
+        "principal": false
+      }
+    ],
+    "contatos": [
+      {
+        "tipo": "TELEFONE_FIXO",
+        "valor": "(61) 3364-4694",
+        "principal": true
+      },
+      {
+        "tipo": "WHATSAPP",
+        "valor": "(38) 99911-2043",
+        "principal": true
+      },
+      {
+        "tipo": "EMAIL",
+        "valor": "unaileiloes@hotmail.com",
+        "principal": true
+      }
+    ],
+    "status": "PESQUISADO",
+    "fonteInformacao": "Receita Federal (BrasilAPI) + site oficial",
+    "dataColeta": "2026-08-26",
+    "observacoes": "Parque com capacidade para ~4.000 animais e 300 pessoas; tradicional desde 1993 (entidade predecessora com o mesmo grupo familiar está BAIXADA na Receita).",
+    "criadoEm": "2026-08-26T00:00:00-03:00",
+    "atualizadoEm": "2026-08-26T00:00:00-03:00",
+    "historicoStatus": [
+      {
+        "status": "PESQUISADO",
+        "data": "2026-08-26",
+        "responsavel": "pesquisa automatizada",
+        "observacao": "Registro inicial carregado na base."
+      }
+    ]
+  },
+  {
+    "id": "prt-014",
+    "municipio": "Unaí",
+    "uf": "MG",
+    "setor": "LATICINIOS",
+    "nomeFantasia": "Capul – Cooperativa Agropecuária Unaí",
+    "razaoSocial": "Cooperativa Agropecuária Unaí LTDA",
+    "cnpj": "25.834.847/0001-00",
+    "situacaoCadastral": "ATIVA",
+    "endereco": {
+      "logradouro": "Rua Prefeito João Costa",
+      "numero": "1455",
+      "complemento": "Sede administrativa",
+      "bairro": "Parque Industrial",
+      "cep": "38610-000"
+    },
+    "site": "https://capul.coop.br",
+    "geolocalizacao": {
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rua%20Prefeito%20Jo%C3%A3o%20Costa%2C%201455%2C%20Parque%20Industrial%2C%20Una%C3%AD%20-%20MG/GO",
+      "latitude": null,
+      "longitude": null
+    },
+    "titulares": [
+      {
+        "nome": "Adailson Alves de Almeida",
+        "cpfMascarado": null,
+        "qualificacao": "Administrador",
+        "principal": true
+      },
+      {
+        "nome": "Adair Lemes de Mendonça",
+        "cpfMascarado": null,
+        "qualificacao": "Diretor",
+        "principal": false
+      },
+      {
+        "nome": "Cleuton Domingos da Silva",
+        "cpfMascarado": null,
+        "qualificacao": "Administrador",
+        "principal": false
+      }
+    ],
+    "contatos": [
+      {
+        "tipo": "TELEFONE_FIXO",
+        "valor": "(38) 2102-5100",
+        "principal": true
+      },
+      {
+        "tipo": "EMAIL",
+        "valor": "comunicacao@capul.coop.br",
+        "principal": true
+      }
+    ],
+    "status": "PESQUISADO",
+    "fonteInformacao": "Receita Federal (BrasilAPI) + site oficial",
+    "dataColeta": "2026-08-26",
+    "observacoes": "Cooperativa com +3.000 associados e 34 filiais (várias atividades: leite, ração, insumos, veterinária). Unidade industrial dedicada 'Laticínios Unaí' fica na Rua Prefeito João Costa, 1375, Bairro Planalto, CNPJ da unidade 25.834.847/0003-64, tel. (38) 2102-5100 / SAC (38) 2102-5179.",
+    "criadoEm": "2026-08-26T00:00:00-03:00",
+    "atualizadoEm": "2026-08-26T00:00:00-03:00",
+    "historicoStatus": [
+      {
+        "status": "PESQUISADO",
+        "data": "2026-08-26",
+        "responsavel": "pesquisa automatizada",
+        "observacao": "Registro inicial carregado na base."
+      }
+    ]
+  },
+  {
+    "id": "prt-015",
+    "municipio": "Unaí",
+    "uf": "MG",
+    "setor": "AGROPECUARIA",
+    "nomeFantasia": "Agropaulista",
+    "razaoSocial": "Agropaulista Com e Representação Prod. Agrop. Unaí LTDA",
+    "cnpj": "01.103.004/0001-68",
+    "situacaoCadastral": "ATIVA",
+    "endereco": {
+      "logradouro": "Rua Doutor Joaquim Brochado",
+      "numero": "91",
+      "complemento": null,
+      "bairro": "Capim Branco",
+      "cep": "38610-108"
+    },
+    "site": null,
+    "geolocalizacao": {
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rua%20Doutor%20Joaquim%20Brochado%2C%2091%2C%20Capim%20Branco%2C%20Una%C3%AD",
+      "latitude": null,
+      "longitude": null
+    },
+    "titulares": [
+      {
+        "nome": "Neivaldo Cappellesso",
+        "cpfMascarado": "***.028.920-**",
+        "qualificacao": "Sócio-Administrador",
+        "principal": true
+      },
+      {
+        "nome": "Jackeline Cappellesso Viana",
+        "cpfMascarado": "***.036.566-**",
+        "qualificacao": "Sócio",
+        "principal": false
+      },
+      {
+        "nome": "Luiz Felipe Viana Cappellesso",
+        "cpfMascarado": "***.013.076-**",
+        "qualificacao": "Sócio",
+        "principal": false
+      }
+    ],
+    "contatos": [
+      {
+        "tipo": "TELEFONE_FIXO",
+        "valor": "(38) 3676-6063",
+        "principal": true
+      },
+      {
+        "tipo": "EMAIL",
+        "valor": "agropaulista@agropaulistaunai.com.br",
+        "principal": true
+      }
+    ],
+    "status": "PESQUISADO",
+    "fonteInformacao": "Receita Federal (CNPJ público via BrasilAPI) + busca web",
+    "dataColeta": "2026-08-26",
+    "observacoes": "Comércio atacadista de defensivos agrícolas, adubos, fertilizantes e corretivos do solo.",
+    "criadoEm": "2026-08-26T00:00:00-03:00",
+    "atualizadoEm": "2026-08-26T00:00:00-03:00",
+    "historicoStatus": [
+      {
+        "status": "PESQUISADO",
+        "data": "2026-08-26",
+        "responsavel": "pesquisa automatizada",
+        "observacao": "Registro inicial carregado na base."
+      }
+    ]
+  },
+  {
+    "id": "prt-016",
+    "municipio": "Unaí",
+    "uf": "MG",
+    "setor": "AGROPECUARIA",
+    "nomeFantasia": "Sementes Mineirão",
+    "razaoSocial": "Sementes Mineirão LTDA",
+    "cnpj": "23.369.801/0003-96",
+    "situacaoCadastral": "ATIVA",
+    "endereco": {
+      "logradouro": "Rua Sabará",
+      "numero": "153",
+      "complemento": null,
+      "bairro": "Cruzeiro",
+      "cep": "38616-018"
+    },
+    "site": "https://www.sementesmineirao.com.br",
+    "geolocalizacao": {
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rua%20Sabar%C3%A1%2C%20153%2C%20Cruzeiro%2C%20Una%C3%AD",
+      "latitude": null,
+      "longitude": null
+    },
+    "titulares": [
+      {
+        "nome": "Orlando Carlos Martins",
+        "cpfMascarado": "***.519.099-**",
+        "qualificacao": "Sócio-Administrador",
+        "principal": true
+      },
+      {
+        "nome": "Orlando Pulici Martins",
+        "cpfMascarado": "***.970.979-**",
+        "qualificacao": "Sócio",
+        "principal": false
+      }
+    ],
+    "contatos": [
+      {
+        "tipo": "TELEFONE_FIXO",
+        "valor": "(38) 3676-0101",
+        "principal": true
+      }
+    ],
+    "status": "PESQUISADO",
+    "fonteInformacao": "Receita Federal (BrasilAPI) + busca web",
+    "dataColeta": "2026-08-26",
+    "observacoes": "Maior área de produção de sementes de forrageiras tropicais do mundo (~18.000 ha); parceria histórica com a Embrapa Cerrados.",
+    "criadoEm": "2026-08-26T00:00:00-03:00",
+    "atualizadoEm": "2026-08-26T00:00:00-03:00",
+    "historicoStatus": [
+      {
+        "status": "PESQUISADO",
+        "data": "2026-08-26",
+        "responsavel": "pesquisa automatizada",
+        "observacao": "Registro inicial carregado na base."
+      }
+    ]
+  },
+  {
+    "id": "prt-017",
+    "municipio": "Unaí",
+    "uf": "MG",
+    "setor": "SILOS_ARMAZENS",
+    "nomeFantasia": "Coagril",
+    "razaoSocial": "Cooperativa Agrícola de Unaí LTDA",
+    "cnpj": "20.499.489/0001-03",
+    "situacaoCadastral": "ATIVA",
+    "endereco": {
+      "logradouro": "Rodovia Frei Jorge",
+      "numero": "8000",
+      "complemento": null,
+      "bairro": "Tamboril",
+      "cep": "38620-900"
+    },
+    "site": "https://www.coagril.coop.br",
+    "geolocalizacao": {
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rodovia%20Frei%20Jorge%2C%208000%2C%20Tamboril%2C%20Una%C3%AD",
+      "latitude": null,
+      "longitude": null
+    },
+    "titulares": [
+      {
+        "nome": "Danilo Julio Gatto",
+        "cpfMascarado": "***.513.276-**",
+        "qualificacao": "Presidente",
+        "principal": true
+      },
+      {
+        "nome": "Bruno Brunner Santos",
+        "cpfMascarado": "***.160.916-**",
+        "qualificacao": "Diretor",
+        "principal": false
+      },
+      {
+        "nome": "Egon Otto Rehn Junior",
+        "cpfMascarado": "***.121.206-**",
+        "qualificacao": "Diretor",
+        "principal": false
+      }
+    ],
+    "contatos": [
+      {
+        "tipo": "TELEFONE_FIXO",
+        "valor": "(38) 2102-2249",
+        "principal": true
+      },
+      {
+        "tipo": "WHATSAPP",
+        "valor": "(38) 99970-6030",
+        "principal": true
+      }
+    ],
+    "status": "PESQUISADO",
+    "fonteInformacao": "Receita Federal (BrasilAPI) + site oficial",
+    "dataColeta": "2026-08-26",
+    "observacoes": "Cooperativa fundada em 1985 por 54 produtores para viabilizar armazenagem e comercialização de grãos na região de Unaí — uma das maiores cooperativas agrícolas de MG.",
+    "criadoEm": "2026-08-26T00:00:00-03:00",
+    "atualizadoEm": "2026-08-26T00:00:00-03:00",
+    "historicoStatus": [
+      {
+        "status": "PESQUISADO",
+        "data": "2026-08-26",
+        "responsavel": "pesquisa automatizada",
+        "observacao": "Registro inicial carregado na base."
+      }
+    ]
+  },
+  {
+    "id": "prt-018",
+    "municipio": "Unaí",
+    "uf": "MG",
+    "setor": "AGROPECUARIA",
+    "nomeFantasia": "Charrua (Taruma Agrocomercial)",
+    "razaoSocial": "Taruma Agrocomercial LTDA",
+    "cnpj": "03.734.155/0001-40",
+    "situacaoCadastral": "ATIVA",
+    "endereco": {
+      "logradouro": "Rua José do Patrocínio",
+      "numero": "211",
+      "complemento": null,
+      "bairro": "Centro",
+      "cep": "38610-081"
+    },
+    "site": null,
+    "geolocalizacao": {
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rua%20Jos%C3%A9%20do%20Patroc%C3%ADnio%2C%20211%2C%20Centro%2C%20Una%C3%AD",
+      "latitude": null,
+      "longitude": null
+    },
+    "titulares": [
+      {
+        "nome": "Guilherme Telles Piva",
+        "cpfMascarado": "***.603.388-**",
+        "qualificacao": "Sócio-Administrador",
+        "principal": true
+      },
+      {
+        "nome": "Joel Andre Pes",
+        "cpfMascarado": "***.348.000-**",
+        "qualificacao": "Sócio-Administrador",
+        "principal": false
+      },
+      {
+        "nome": "Sergio Edilberto Zimmermann",
+        "cpfMascarado": "***.652.820-**",
+        "qualificacao": "Sócio-Administrador",
+        "principal": false
+      }
+    ],
+    "contatos": [
+      {
+        "tipo": "TELEFONE_FIXO",
+        "valor": "(61) 3631-3814",
+        "principal": true
+      }
+    ],
+    "status": "PESQUISADO",
+    "fonteInformacao": "Receita Federal (BrasilAPI) + busca web",
+    "dataColeta": "2026-08-26",
+    "observacoes": "Comércio atacadista de defensivos agrícolas, adubos e fertilizantes; possui filial em Formosa-GO (mesmo grupo, útil para prospecção cruzada).",
+    "criadoEm": "2026-08-26T00:00:00-03:00",
+    "atualizadoEm": "2026-08-26T00:00:00-03:00",
+    "historicoStatus": [
+      {
+        "status": "PESQUISADO",
+        "data": "2026-08-26",
+        "responsavel": "pesquisa automatizada",
+        "observacao": "Registro inicial carregado na base."
+      }
+    ]
+  },
+  {
+    "id": "prt-019",
+    "municipio": "Unaí",
+    "uf": "MG",
+    "setor": "AGROPECUARIA",
+    "nomeFantasia": "Vilas Boas Agropecuária (Grupo Vilas Boas)",
+    "razaoSocial": "Vilas Boas Agropecuária LTDA",
+    "cnpj": "58.323.840/0001-75",
+    "situacaoCadastral": "ATIVA",
+    "endereco": {
+      "logradouro": "Rua Afonso Pena",
+      "numero": "500",
+      "complemento": null,
+      "bairro": "Centro",
+      "cep": "38610-074"
+    },
+    "site": null,
+    "geolocalizacao": {
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rua%20Afonso%20Pena%2C%20500%2C%20Centro%2C%20Una%C3%AD",
+      "latitude": null,
+      "longitude": null
+    },
+    "titulares": [
+      {
+        "nome": "Carlos Eduardo Vilas Boas",
+        "cpfMascarado": "***.472.628-**",
+        "qualificacao": "Sócio-Administrador",
+        "principal": true
+      }
+    ],
+    "contatos": [
+      {
+        "tipo": "TELEFONE_FIXO",
+        "valor": "(38) 3677-1011",
+        "principal": true
+      },
+      {
+        "tipo": "EMAIL",
+        "valor": "financeiro@grupovilasboas.com.br",
+        "principal": true
+      }
+    ],
+    "status": "PESQUISADO",
+    "fonteInformacao": "Receita Federal (BrasilAPI) + busca web",
+    "dataColeta": "2026-08-26",
+    "observacoes": "CNAE oficial na Receita é 'Aluguel de imóveis próprios' (entidade patrimonial do grupo) — o grupo opera como agronegócio (Agro Vilas Boas, cultivo de café) sob outro CNPJ do mesmo grupo; confirmar em contato direto qual CNPJ fatura os insumos/serviços agropecuários.",
+    "criadoEm": "2026-08-26T00:00:00-03:00",
+    "atualizadoEm": "2026-08-26T00:00:00-03:00",
+    "historicoStatus": [
+      {
+        "status": "PESQUISADO",
+        "data": "2026-08-26",
+        "responsavel": "pesquisa automatizada",
+        "observacao": "Registro inicial carregado na base."
+      }
+    ]
+  },
+  {
+    "id": "prt-020",
+    "municipio": "Unaí",
+    "uf": "MG",
+    "setor": "IMOBILIARIA",
+    "nomeFantasia": "ST5A Imobiliária",
+    "razaoSocial": "ST5A Imobiliária LTDA",
+    "cnpj": "44.859.570/0001-07",
+    "situacaoCadastral": "ATIVA",
+    "endereco": {
+      "logradouro": "Rua Afonso Pena",
+      "numero": "500",
+      "complemento": null,
+      "bairro": "Centro",
+      "cep": "38610-074"
+    },
+    "site": null,
+    "geolocalizacao": {
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rua%20Afonso%20Pena%2C%20500%2C%20Centro%2C%20Una%C3%AD",
+      "latitude": null,
+      "longitude": null
+    },
+    "titulares": [
+      {
+        "nome": "Adriana Terezinha Gonçalves Matos",
+        "cpfMascarado": "***.478.941-**",
+        "qualificacao": "Sócio",
+        "principal": true
+      },
+      {
+        "nome": "Alecia Maria Gonçalves Matos",
+        "cpfMascarado": "***.505.561-**",
+        "qualificacao": "Sócio",
+        "principal": false
+      },
+      {
+        "nome": "Aline Gonçalves Matos Nunes Maciel",
+        "cpfMascarado": "***.508.671-**",
+        "qualificacao": "Sócio",
+        "principal": false
+      }
+    ],
+    "contatos": [
+      {
+        "tipo": "TELEFONE_FIXO",
+        "valor": "(38) 3676-3956",
+        "principal": true
+      }
+    ],
+    "status": "PESQUISADO",
+    "fonteInformacao": "Receita Federal (BrasilAPI) + busca web",
+    "dataColeta": "2026-08-26",
+    "observacoes": "CNAE oficial: loteamento de imóveis próprios. Mesmo endereço fiscal da Vilas Boas Agropecuária (500, Rua Afonso Pena) — indícios de ligação entre os dois grupos econômicos.",
+    "criadoEm": "2026-08-26T00:00:00-03:00",
+    "atualizadoEm": "2026-08-26T00:00:00-03:00",
+    "historicoStatus": [
+      {
+        "status": "PESQUISADO",
+        "data": "2026-08-26",
+        "responsavel": "pesquisa automatizada",
+        "observacao": "Registro inicial carregado na base."
+      }
+    ]
+  },
+  {
+    "id": "prt-021",
+    "municipio": "Unaí",
+    "uf": "MG",
+    "setor": "LEILAO_ANIMAIS",
+    "nomeFantasia": "Noroeste Leilões",
+    "razaoSocial": "Noroeste Leilões LTDA",
+    "cnpj": "42.854.976/0001-71",
+    "situacaoCadastral": "ATIVA",
+    "endereco": {
+      "logradouro": "Rodovia Frei Jorge",
+      "numero": "4230",
+      "complemento": null,
+      "bairro": "Vale do Amanhecer",
+      "cep": "38618-001"
+    },
+    "site": null,
+    "geolocalizacao": {
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rodovia%20Frei%20Jorge%2C%204230%2C%20Vale%20do%20Amanhecer%2C%20Una%C3%AD",
+      "latitude": null,
+      "longitude": null
+    },
+    "titulares": [
+      {
+        "nome": "Jose Deodato de Andrade",
+        "cpfMascarado": "***.952.366-**",
+        "qualificacao": "Sócio-Administrador",
+        "principal": true
+      },
+      {
+        "nome": "Rosimari Rocha Aguiar Andrade",
+        "cpfMascarado": "***.612.746-**",
+        "qualificacao": "Sócio",
+        "principal": false
+      }
+    ],
+    "contatos": [
+      {
+        "tipo": "TELEFONE_FIXO",
+        "valor": "(38) 3676-3500",
+        "principal": true
+      }
+    ],
+    "status": "PESQUISADO",
+    "fonteInformacao": "Receita Federal (BrasilAPI) + busca web",
+    "dataColeta": "2026-08-26",
+    "observacoes": "CNAE oficial: produção de espetáculos de rodeio/vaquejada — atua comercialmente também como leiloeira de gado de corte na região (canal tradicional de leilões em Unaí).",
+    "criadoEm": "2026-08-26T00:00:00-03:00",
+    "atualizadoEm": "2026-08-26T00:00:00-03:00",
+    "historicoStatus": [
+      {
+        "status": "PESQUISADO",
+        "data": "2026-08-26",
+        "responsavel": "pesquisa automatizada",
+        "observacao": "Registro inicial carregado na base."
+      }
+    ]
+  },
+  {
+    "id": "prt-022",
+    "municipio": "Unaí",
+    "uf": "MG",
+    "setor": "IRRIGACAO",
+    "nomeFantasia": "Só Pivô",
+    "razaoSocial": "Kadox Irrigação LTDA",
+    "cnpj": "49.273.692/0001-30",
+    "situacaoCadastral": "ATIVA",
+    "endereco": {
+      "logradouro": "Rua Ezinho Martins",
+      "numero": "673",
+      "complemento": null,
+      "bairro": "Sagrada Família",
+      "cep": "38616-782"
+    },
+    "site": null,
+    "geolocalizacao": {
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rua%20Ezinho%20Martins%2C%20673%2C%20Sagrada%20Fam%C3%ADlia%2C%20Una%C3%AD",
+      "latitude": null,
+      "longitude": null
+    },
+    "titulares": [
+      {
+        "nome": "Valenir Antonio de Lima",
+        "cpfMascarado": "***.353.236-**",
+        "qualificacao": "Sócio-Administrador",
+        "principal": true
+      }
+    ],
+    "contatos": [
+      {
+        "tipo": "TELEFONE_FIXO",
+        "valor": "(38) 9904-3610",
+        "principal": true
+      }
+    ],
+    "status": "PESQUISADO",
+    "fonteInformacao": "Receita Federal (BrasilAPI) + busca web",
+    "dataColeta": "2026-08-26",
+    "observacoes": "CNAE oficial: promoção de vendas — empresa recente (2023), atua no mercado de irrigação por pivô local (nome fantasia 'Só Pivô').",
+    "criadoEm": "2026-08-26T00:00:00-03:00",
+    "atualizadoEm": "2026-08-26T00:00:00-03:00",
+    "historicoStatus": [
+      {
+        "status": "PESQUISADO",
+        "data": "2026-08-26",
+        "responsavel": "pesquisa automatizada",
+        "observacao": "Registro inicial carregado na base."
+      }
+    ]
+  },
+  {
+    "id": "prt-023",
+    "municipio": "Paracatu",
+    "uf": "MG",
+    "setor": "AGROPECUARIA",
+    "nomeFantasia": "Agripar",
+    "razaoSocial": "Agripar Comercial LTDA",
+    "cnpj": "06.003.006/0001-07",
+    "situacaoCadastral": "ATIVA",
+    "endereco": {
+      "logradouro": "Rodovia MG 188, Km 158",
+      "numero": "S/N",
+      "complemento": "Distrito Industrial",
+      "bairro": "Unaí (trecho rural)",
+      "cep": "38609-899"
+    },
+    "site": null,
+    "geolocalizacao": {
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rodovia%20MG%20188%2C%20Km%20158%2C%20S/N%2C%20Una%C3%AD%20%28trecho%20rural%29%2C%20Paracatu",
+      "latitude": null,
+      "longitude": null
+    },
+    "titulares": [
+      {
+        "nome": "Jose Carlos Lana Pereira",
+        "cpfMascarado": "***.821.356-**",
+        "qualificacao": "Administrador",
+        "principal": true
+      }
+    ],
+    "contatos": [
+      {
+        "tipo": "TELEFONE_FIXO",
+        "valor": "(38) 3672-1458",
+        "principal": true
+      }
+    ],
+    "status": "PESQUISADO",
+    "fonteInformacao": "Receita Federal (BrasilAPI) + busca web",
+    "dataColeta": "2026-08-26",
+    "observacoes": "CNAE oficial: moagem/fabricação de produtos de origem vegetal; opera como comércio atacadista de alimentos/insumos na praça.",
+    "criadoEm": "2026-08-26T00:00:00-03:00",
+    "atualizadoEm": "2026-08-26T00:00:00-03:00",
+    "historicoStatus": [
+      {
+        "status": "PESQUISADO",
+        "data": "2026-08-26",
+        "responsavel": "pesquisa automatizada",
+        "observacao": "Registro inicial carregado na base."
+      }
+    ]
+  },
+  {
+    "id": "prt-024",
+    "municipio": "Paracatu",
+    "uf": "MG",
+    "setor": "AGROPECUARIA",
+    "nomeFantasia": "Agro-Paracatu Comércio e Representação",
+    "razaoSocial": "Agro-Paracatu Comércio e Representação LTDA",
+    "cnpj": "25.224.925/0001-47",
+    "situacaoCadastral": "ATIVA",
+    "endereco": {
+      "logradouro": "Rodovia Presidente Juscelino Kubitschek",
+      "numero": "1400",
+      "complemento": null,
+      "bairro": "Jardim Serrano",
+      "cep": "38606-180"
+    },
+    "site": null,
+    "geolocalizacao": {
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rodovia%20Presidente%20Juscelino%20Kubitschek%2C%201400%2C%20Jardim%20Serrano%2C%20Paracatu",
+      "latitude": null,
+      "longitude": null
+    },
+    "titulares": [
+      {
+        "nome": "Galba Vieira Cordeiro Junior",
+        "cpfMascarado": "***.582.786-**",
+        "qualificacao": "Sócio",
+        "principal": true
+      },
+      {
+        "nome": "Crystina Novais Cordeiro",
+        "cpfMascarado": "***.112.026-**",
+        "qualificacao": "Sócio",
+        "principal": false
+      },
+      {
+        "nome": "Rafael Augusto Neiva e Lemos",
+        "cpfMascarado": "***.509.846-**",
+        "qualificacao": "Sócio",
+        "principal": false
+      }
+    ],
+    "contatos": [
+      {
+        "tipo": "TELEFONE_FIXO",
+        "valor": "(38) 3671-1620",
+        "principal": true
+      }
+    ],
+    "status": "PESQUISADO",
+    "fonteInformacao": "Receita Federal (BrasilAPI) + busca web",
+    "dataColeta": "2026-08-26",
+    "observacoes": "Comércio atacadista de defensivos agrícolas, adubos e fertilizantes. Razão social inclui 'em recuperação judicial' — situação cadastral está ATIVA, mas é sinal de risco de crédito a avaliar antes de negociar prazos. Possui filial mais recente (2023) na Rua Alirio Herval, 32, mesmo bairro.",
+    "criadoEm": "2026-08-26T00:00:00-03:00",
+    "atualizadoEm": "2026-08-26T00:00:00-03:00",
+    "historicoStatus": [
+      {
+        "status": "PESQUISADO",
+        "data": "2026-08-26",
+        "responsavel": "pesquisa automatizada",
+        "observacao": "Registro inicial carregado na base."
+      }
+    ]
+  },
+  {
+    "id": "prt-025",
+    "municipio": "Paracatu",
+    "uf": "MG",
+    "setor": "IMOBILIARIA",
+    "nomeFantasia": "Morado Imóveis",
+    "razaoSocial": "Morado e Borges Imóveis LTDA",
+    "cnpj": "48.697.018/0001-10",
+    "situacaoCadastral": "ATIVA",
+    "endereco": {
+      "logradouro": "Avenida São João Paulo II",
+      "numero": "1985",
+      "complemento": null,
+      "bairro": "Paracatuzinho",
+      "cep": "38603-401"
+    },
+    "site": "https://moradoimoveis.com.br",
+    "geolocalizacao": {
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Avenida%20S%C3%A3o%20Jo%C3%A3o%20Paulo%20II%2C%201985%2C%20Paracatuzinho%2C%20Paracatu",
+      "latitude": null,
+      "longitude": null
+    },
+    "titulares": [
+      {
+        "nome": "Jose Humberto Borges",
+        "cpfMascarado": "***.270.716-**",
+        "qualificacao": "Sócio-Administrador",
+        "principal": true
+      },
+      {
+        "nome": "Daniel Bontempo Albino",
+        "cpfMascarado": "***.492.526-**",
+        "qualificacao": "Administrador",
+        "principal": false
+      }
+    ],
+    "contatos": [
+      {
+        "tipo": "TELEFONE_FIXO",
+        "valor": "(38) 3672-3068",
+        "principal": true
+      },
+      {
+        "tipo": "TELEFONE_CELULAR",
+        "valor": "(34) 99140-4665",
+        "principal": true
+      },
+      {
+        "tipo": "EMAIL",
+        "valor": "moradoimoveis@gmail.com",
+        "principal": true
+      }
+    ],
+    "status": "PESQUISADO",
+    "fonteInformacao": "Receita Federal (BrasilAPI) + busca web",
+    "dataColeta": "2026-08-26",
+    "observacoes": "CRECI 7842-J.",
+    "criadoEm": "2026-08-26T00:00:00-03:00",
+    "atualizadoEm": "2026-08-26T00:00:00-03:00",
+    "historicoStatus": [
+      {
+        "status": "PESQUISADO",
+        "data": "2026-08-26",
+        "responsavel": "pesquisa automatizada",
+        "observacao": "Registro inicial carregado na base."
+      }
+    ]
+  },
+  {
+    "id": "prt-026",
+    "municipio": "Paracatu",
+    "uf": "MG",
+    "setor": "IMOBILIARIA",
+    "nomeFantasia": "Lene Imobiliária",
+    "razaoSocial": "Lene Empreendimentos Imobiliários LTDA",
+    "cnpj": "65.384.422/0001-53",
+    "situacaoCadastral": "ATIVA",
+    "endereco": {
+      "logradouro": "Rua Goiás",
+      "numero": "394",
+      "complemento": "Sala 01",
+      "bairro": "Centro",
+      "cep": "38600-001"
+    },
+    "site": "https://leneimobiliaria.com.br",
+    "geolocalizacao": {
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rua%20Goi%C3%A1s%2C%20394%2C%20Centro%2C%20Paracatu",
+      "latitude": null,
+      "longitude": null
+    },
+    "titulares": [
+      {
+        "nome": "Humberto Euler da Silva Neiva",
+        "cpfMascarado": "***.010.011-**",
+        "qualificacao": "Sócio-Administrador",
+        "principal": true
+      },
+      {
+        "nome": "Lucas Lelis Neiva",
+        "cpfMascarado": "***.116.556-**",
+        "qualificacao": "Sócio",
+        "principal": false
+      },
+      {
+        "nome": "Susane Aparecida Sabino Neiva",
+        "cpfMascarado": "***.405.806-**",
+        "qualificacao": "Sócio",
+        "principal": false
+      }
+    ],
+    "contatos": [
+      {
+        "tipo": "TELEFONE_FIXO",
+        "valor": "(38) 3671-5050",
+        "principal": true
+      },
+      {
+        "tipo": "EMAIL",
+        "valor": "imobiliaria@lene.com.br",
+        "principal": true
+      }
+    ],
+    "status": "PESQUISADO",
+    "fonteInformacao": "Receita Federal (BrasilAPI) + busca web",
+    "dataColeta": "2026-08-26",
+    "observacoes": "CRECI PJ 2305. Empresa fundada em 1991, uma das mais antigas da praça.",
+    "criadoEm": "2026-08-26T00:00:00-03:00",
+    "atualizadoEm": "2026-08-26T00:00:00-03:00",
+    "historicoStatus": [
+      {
+        "status": "PESQUISADO",
+        "data": "2026-08-26",
+        "responsavel": "pesquisa automatizada",
+        "observacao": "Registro inicial carregado na base."
+      }
+    ]
+  },
+  {
+    "id": "prt-027",
+    "municipio": "Paracatu",
+    "uf": "MG",
+    "setor": "IMOBILIARIA",
+    "nomeFantasia": "AssIMOB",
+    "razaoSocial": "Imobiliária AssIMOB LTDA",
+    "cnpj": "10.866.123/0001-63",
+    "situacaoCadastral": "ATIVA",
+    "endereco": {
+      "logradouro": "Rua Deputado Paulo Camilo Pena",
+      "numero": "109",
+      "complemento": null,
+      "bairro": "Centro",
+      "cep": "38600-220"
+    },
+    "site": "https://www.assimob.com",
+    "geolocalizacao": {
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rua%20Deputado%20Paulo%20Camilo%20Pena%2C%20109%2C%20Centro%2C%20Paracatu",
+      "latitude": null,
+      "longitude": null
+    },
+    "titulares": [],
+    "contatos": [
+      {
+        "tipo": "TELEFONE_FIXO",
+        "valor": "(38) 3671-3900",
+        "principal": true
+      },
+      {
+        "tipo": "EMAIL",
+        "valor": "assimobptu@gmail.com",
+        "principal": true
+      }
+    ],
+    "status": "PESQUISADO",
+    "fonteInformacao": "Receita Federal (BrasilAPI) + busca web",
+    "dataColeta": "2026-08-26",
+    "observacoes": "CRECI 3725 PJ.",
+    "criadoEm": "2026-08-26T00:00:00-03:00",
+    "atualizadoEm": "2026-08-26T00:00:00-03:00",
+    "historicoStatus": [
+      {
+        "status": "PESQUISADO",
+        "data": "2026-08-26",
+        "responsavel": "pesquisa automatizada",
+        "observacao": "Registro inicial carregado na base."
+      }
+    ]
+  },
+  {
+    "id": "prt-028",
+    "municipio": "Paracatu",
+    "uf": "MG",
+    "setor": "IMOBILIARIA",
+    "nomeFantasia": "Área 38 Imobiliária",
+    "razaoSocial": "Área 38 Imobiliária LTDA",
+    "cnpj": "22.072.353/0001-30",
+    "situacaoCadastral": "ATIVA",
+    "endereco": {
+      "logradouro": "Rua Doutor Sergio Ulhoa",
+      "numero": "39",
+      "complemento": null,
+      "bairro": "Centro",
+      "cep": "38600-108"
+    },
+    "site": "https://area38.com.br",
+    "geolocalizacao": {
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rua%20Doutor%20Sergio%20Ulhoa%2C%2039%2C%20Centro%2C%20Paracatu",
+      "latitude": null,
+      "longitude": null
+    },
+    "titulares": [
+      {
+        "nome": "Felipe Lepesqueur Lamas",
+        "cpfMascarado": "***.277.976-**",
+        "qualificacao": "Sócio-Administrador",
+        "principal": true
+      }
+    ],
+    "contatos": [
+      {
+        "tipo": "TELEFONE_FIXO",
+        "valor": "(38) 3671-0038",
+        "principal": true
+      },
+      {
+        "tipo": "EMAIL",
+        "valor": "contato@area38.com.br",
+        "principal": true
+      }
+    ],
+    "status": "PESQUISADO",
+    "fonteInformacao": "Receita Federal (BrasilAPI) + site oficial",
+    "dataColeta": "2026-08-26",
+    "observacoes": "Atua também com imóveis rurais e lançamentos, além de locação/venda urbana.",
+    "criadoEm": "2026-08-26T00:00:00-03:00",
+    "atualizadoEm": "2026-08-26T00:00:00-03:00",
+    "historicoStatus": [
+      {
+        "status": "PESQUISADO",
+        "data": "2026-08-26",
+        "responsavel": "pesquisa automatizada",
+        "observacao": "Registro inicial carregado na base."
+      }
+    ]
+  },
+  {
+    "id": "prt-029",
+    "municipio": "Paracatu",
+    "uf": "MG",
+    "setor": "IMOBILIARIA",
+    "nomeFantasia": "MM Imobiliária",
+    "razaoSocial": null,
+    "cnpj": null,
+    "situacaoCadastral": null,
+    "endereco": {
+      "logradouro": "Rua Augusto Ferreira Albernaz",
+      "numero": "56",
+      "complemento": "Sala 64",
+      "bairro": null,
+      "cep": "38600-000"
+    },
+    "site": null,
+    "geolocalizacao": {
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rua%20Augusto%20Ferreira%20Albernaz%2C%2056%2C%20Paracatu",
+      "latitude": null,
+      "longitude": null
+    },
+    "titulares": [],
+    "contatos": [],
+    "status": "PESQUISADO",
+    "fonteInformacao": "Busca web (GuiaImobiliarias)",
+    "dataColeta": "2026-08-26",
+    "observacoes": "CNPJ e titular não localizados nas fontes públicas consultadas — confirmar em contato direto.",
+    "criadoEm": "2026-08-26T00:00:00-03:00",
+    "atualizadoEm": "2026-08-26T00:00:00-03:00",
+    "historicoStatus": [
+      {
+        "status": "PESQUISADO",
+        "data": "2026-08-26",
+        "responsavel": "pesquisa automatizada",
+        "observacao": "Registro inicial carregado na base."
+      }
+    ]
+  },
+  {
+    "id": "prt-030",
+    "municipio": "Paracatu",
+    "uf": "MG",
+    "setor": "IRRIGACAO",
+    "nomeFantasia": "Pivot Equipamentos Agrícolas e Irrigação (Paracatu)",
+    "razaoSocial": "Pivot Equipamentos Agrícolas e Irrigação S.A.",
+    "cnpj": "33.302.019/0004-94",
+    "situacaoCadastral": "ATIVA",
+    "endereco": {
+      "logradouro": "BR-040",
+      "numero": "1497",
+      "complemento": "Km 43,5",
+      "bairro": "Nossa Senhora de Fátima",
+      "cep": "38600-001"
+    },
+    "site": null,
+    "geolocalizacao": {
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=BR-040%2C%201497%2C%20Nossa%20Senhora%20de%20F%C3%A1tima%2C%20Paracatu",
+      "latitude": null,
+      "longitude": null
+    },
+    "titulares": [
+      {
+        "nome": "Jorge Luiz de Almeida Campos",
+        "cpfMascarado": "***.916.321-**",
+        "qualificacao": "Presidente",
+        "principal": true
+      },
+      {
+        "nome": "Fabio Euclides Borgonhone",
+        "cpfMascarado": "***.895.119-**",
+        "qualificacao": "Diretor",
+        "principal": false
+      },
+      {
+        "nome": "João Carlos Obici",
+        "cpfMascarado": "***.146.449-**",
+        "qualificacao": "Diretor",
+        "principal": false
+      }
+    ],
+    "contatos": [
+      {
+        "tipo": "TELEFONE_FIXO",
+        "valor": "(38) 3671-3155",
+        "principal": true
+      }
+    ],
+    "status": "PESQUISADO",
+    "fonteInformacao": "Receita Federal (BrasilAPI) + busca web",
+    "dataColeta": "2026-08-26",
+    "observacoes": "Estabelecimento fundado em 1996 — mais antigo que a filial de Unaí (2001); mesma diretoria (grupo Pivot).",
+    "criadoEm": "2026-08-26T00:00:00-03:00",
+    "atualizadoEm": "2026-08-26T00:00:00-03:00",
+    "historicoStatus": [
+      {
+        "status": "PESQUISADO",
+        "data": "2026-08-26",
+        "responsavel": "pesquisa automatizada",
+        "observacao": "Registro inicial carregado na base."
+      }
+    ]
+  },
+  {
+    "id": "prt-031",
+    "municipio": "Paracatu",
+    "uf": "MG",
+    "setor": "IRRIGACAO",
+    "nomeFantasia": "Irrivale Tecnologia de Irrigação",
+    "razaoSocial": "Irrivale Irrigação LTDA",
+    "cnpj": "33.510.127/0001-00",
+    "situacaoCadastral": "ATIVA",
+    "endereco": {
+      "logradouro": "Rua Marginal",
+      "numero": "940",
+      "complemento": null,
+      "bairro": "Primavera",
+      "cep": "38606-261"
+    },
+    "site": null,
+    "geolocalizacao": {
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rua%20Marginal%2C%20940%2C%20Primavera%2C%20Paracatu",
+      "latitude": null,
+      "longitude": null
+    },
+    "titulares": [
+      {
+        "nome": "Hermes Bomfim Neto",
+        "cpfMascarado": "***.060.335-**",
+        "qualificacao": "Sócio-Administrador",
+        "principal": true
+      },
+      {
+        "nome": "Sergio Prates Zaggo",
+        "cpfMascarado": "***.480.427-**",
+        "qualificacao": "Sócio",
+        "principal": false
+      }
+    ],
+    "contatos": [
+      {
+        "tipo": "TELEFONE_FIXO",
+        "valor": "(34) 3821-4831",
+        "principal": true
+      }
+    ],
+    "status": "PESQUISADO",
+    "fonteInformacao": "Receita Federal (BrasilAPI) + busca web",
+    "dataColeta": "2026-08-26",
+    "observacoes": null,
+    "criadoEm": "2026-08-26T00:00:00-03:00",
+    "atualizadoEm": "2026-08-26T00:00:00-03:00",
+    "historicoStatus": [
+      {
+        "status": "PESQUISADO",
+        "data": "2026-08-26",
+        "responsavel": "pesquisa automatizada",
+        "observacao": "Registro inicial carregado na base."
+      }
+    ]
+  },
+  {
+    "id": "prt-032",
+    "municipio": "Paracatu",
+    "uf": "MG",
+    "setor": "IRRIGACAO",
+    "nomeFantasia": "Meribá Irrigação, Comércio e Representações",
+    "razaoSocial": "Meribá Irrigação & Comércio LTDA",
+    "cnpj": "05.520.717/0001-88",
+    "situacaoCadastral": "ATIVA",
+    "endereco": {
+      "logradouro": "Rua Luiz Gouveia Damasceno",
+      "numero": "133",
+      "complemento": null,
+      "bairro": "Nossa Senhora de Fátima",
+      "cep": "38600-001"
+    },
+    "site": "https://meribairrigacao.com.br",
+    "geolocalizacao": {
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rua%20Luiz%20Gouveia%20Damasceno%2C%20133%2C%20Nossa%20Senhora%20de%20F%C3%A1tima%2C%20Paracatu",
+      "latitude": null,
+      "longitude": null
+    },
+    "titulares": [
+      {
+        "nome": "Bianca Tereza Pires",
+        "cpfMascarado": "***.620.998-**",
+        "qualificacao": "Sócio-Administrador",
+        "principal": true
+      }
+    ],
+    "contatos": [
+      {
+        "tipo": "TELEFONE_FIXO",
+        "valor": "(38) 3671-2848",
+        "principal": true
+      }
+    ],
+    "status": "PESQUISADO",
+    "fonteInformacao": "Receita Federal (BrasilAPI) + site oficial",
+    "dataColeta": "2026-08-26",
+    "observacoes": "CNAE oficial é comércio varejista genérico — negócio se apresenta comercialmente como especialista em irrigação.",
+    "criadoEm": "2026-08-26T00:00:00-03:00",
+    "atualizadoEm": "2026-08-26T00:00:00-03:00",
+    "historicoStatus": [
+      {
+        "status": "PESQUISADO",
+        "data": "2026-08-26",
+        "responsavel": "pesquisa automatizada",
+        "observacao": "Registro inicial carregado na base."
+      }
+    ]
+  },
+  {
+    "id": "prt-033",
+    "municipio": "Paracatu",
+    "uf": "MG",
+    "setor": "LEILAO_ANIMAIS",
+    "nomeFantasia": "Paracatu Leilões",
+    "razaoSocial": "Paracatu Leilões LTDA",
+    "cnpj": "10.741.807/0001-39",
+    "situacaoCadastral": "ATIVA",
+    "endereco": {
+      "logradouro": "Rodovia BR 040, Km 45,5",
+      "numero": "S/N",
+      "complemento": null,
+      "bairro": "Santana",
+      "cep": "38600-001"
+    },
+    "site": null,
+    "geolocalizacao": {
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rodovia%20BR%20040%2C%20Km%2045%2C5%2C%20S/N%2C%20Santana%2C%20Paracatu",
+      "latitude": null,
+      "longitude": null
+    },
+    "titulares": [],
+    "contatos": [],
+    "status": "PESQUISADO",
+    "fonteInformacao": "Receita Federal (BrasilAPI) + busca web",
+    "dataColeta": "2026-08-26",
+    "observacoes": "CNAE oficial: organização de feiras/eventos — atua comercialmente como leiloeira tradicional de gado de corte na região.",
+    "criadoEm": "2026-08-26T00:00:00-03:00",
+    "atualizadoEm": "2026-08-26T00:00:00-03:00",
+    "historicoStatus": [
+      {
+        "status": "PESQUISADO",
+        "data": "2026-08-26",
+        "responsavel": "pesquisa automatizada",
+        "observacao": "Registro inicial carregado na base."
+      }
+    ]
+  },
+  {
+    "id": "prt-034",
+    "municipio": "Paracatu",
+    "uf": "MG",
+    "setor": "LATICINIOS",
+    "nomeFantasia": "Coopervap",
+    "razaoSocial": "Cooperativa Agro Pecuária do Vale do Paracatu LTDA",
+    "cnpj": "23.153.943/0009-07",
+    "situacaoCadastral": "ATIVA",
+    "endereco": {
+      "logradouro": "Rua Alirio Rocha",
+      "numero": "700",
+      "complemento": null,
+      "bairro": "Vila Alvorada",
+      "cep": "38606-454"
+    },
+    "site": null,
+    "geolocalizacao": {
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rua%20Alirio%20Rocha%2C%20700%2C%20Vila%20Alvorada%2C%20Paracatu",
+      "latitude": null,
+      "longitude": null
+    },
+    "titulares": [
+      {
+        "nome": "Icaro Brochado Botelho",
+        "cpfMascarado": "***.054.646-**",
+        "qualificacao": "Diretor",
+        "principal": true
+      },
+      {
+        "nome": "Carlos Eduardo Borges da Silva",
+        "cpfMascarado": "***.212.596-**",
+        "qualificacao": "Diretor",
+        "principal": false
+      },
+      {
+        "nome": "Henrique Ulhoa Pimentel",
+        "cpfMascarado": "***.660.606-**",
+        "qualificacao": "Diretor",
+        "principal": false
+      }
+    ],
+    "contatos": [
+      {
+        "tipo": "TELEFONE_FIXO",
+        "valor": "(38) 3679-8912",
+        "principal": true
+      }
+    ],
+    "status": "PESQUISADO",
+    "fonteInformacao": "Receita Federal (BrasilAPI) + busca web",
+    "dataColeta": "2026-08-26",
+    "observacoes": "CNAE: fabricação de laticínios. Cooperativa mais antiga do setor em Paracatu (atividade original de 1984).",
+    "criadoEm": "2026-08-26T00:00:00-03:00",
+    "atualizadoEm": "2026-08-26T00:00:00-03:00",
+    "historicoStatus": [
+      {
+        "status": "PESQUISADO",
+        "data": "2026-08-26",
+        "responsavel": "pesquisa automatizada",
+        "observacao": "Registro inicial carregado na base."
+      }
+    ]
+  },
+  {
+    "id": "prt-035",
+    "municipio": "Paracatu",
+    "uf": "MG",
+    "setor": "LATICINIOS",
+    "nomeFantasia": "Coopernossa",
+    "razaoSocial": "Cooperativa de Produtores Rurais de Paracatu LTDA",
+    "cnpj": "22.769.008/0001-50",
+    "situacaoCadastral": "ATIVA",
+    "endereco": {
+      "logradouro": "Rua Gastão Lepesqueur",
+      "numero": "2",
+      "complemento": null,
+      "bairro": "Alto do Córrego",
+      "cep": "38606-004"
+    },
+    "site": null,
+    "geolocalizacao": {
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rua%20Gast%C3%A3o%20Lepesqueur%2C%202%2C%20Alto%20do%20C%C3%B3rrego%2C%20Paracatu",
+      "latitude": null,
+      "longitude": null
+    },
+    "titulares": [
+      {
+        "nome": "Jose Maria Andrade Porto",
+        "cpfMascarado": "***.863.746-**",
+        "qualificacao": "Presidente",
+        "principal": true
+      },
+      {
+        "nome": "Donizeti Luiz Moreira",
+        "cpfMascarado": "***.576.766-**",
+        "qualificacao": "Administrador",
+        "principal": false
+      },
+      {
+        "nome": "Jose Joaquim Antunes dos Reis",
+        "cpfMascarado": "***.987.016-**",
+        "qualificacao": "Administrador",
+        "principal": false
+      }
+    ],
+    "contatos": [
+      {
+        "tipo": "TELEFONE_FIXO",
+        "valor": "(38) 9908-4433",
+        "principal": true
+      }
+    ],
+    "status": "PESQUISADO",
+    "fonteInformacao": "Receita Federal (BrasilAPI) + busca web",
+    "dataColeta": "2026-08-26",
+    "observacoes": "CNAE: comércio atacadista de leite e laticínios.",
+    "criadoEm": "2026-08-26T00:00:00-03:00",
+    "atualizadoEm": "2026-08-26T00:00:00-03:00",
+    "historicoStatus": [
+      {
+        "status": "PESQUISADO",
+        "data": "2026-08-26",
+        "responsavel": "pesquisa automatizada",
+        "observacao": "Registro inicial carregado na base."
+      }
+    ]
+  },
+  {
+    "id": "prt-036",
+    "municipio": "Formosa",
+    "uf": "GO",
+    "setor": "AGROPECUARIA",
+    "nomeFantasia": "Cultivar Formosa",
+    "razaoSocial": "Cultivar Comercial Agrícola Formosa LTDA.",
+    "cnpj": "04.350.312/0001-86",
+    "situacaoCadastral": "ATIVA",
+    "endereco": {
+      "logradouro": "Avenida Brasília",
+      "numero": "1710",
+      "complemento": null,
+      "bairro": "Formosinha",
+      "cep": "73813-010"
+    },
+    "site": null,
+    "geolocalizacao": {
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Avenida%20Bras%C3%ADlia%2C%201710%2C%20Formosinha%2C%20Formosa",
+      "latitude": null,
+      "longitude": null
+    },
+    "titulares": [
+      {
+        "nome": "Alvaro Luiz de Martini",
+        "cpfMascarado": "***.436.589-**",
+        "qualificacao": "Sócio-Administrador",
+        "principal": true
+      },
+      {
+        "nome": "Marcelo Pereira Franco",
+        "cpfMascarado": "***.548.926-**",
+        "qualificacao": "Sócio-Administrador",
+        "principal": false
+      }
+    ],
+    "contatos": [
+      {
+        "tipo": "TELEFONE_FIXO",
+        "valor": "(61) 3642-1777",
+        "principal": true
+      }
+    ],
+    "status": "PESQUISADO",
+    "fonteInformacao": "Receita Federal (BrasilAPI) + busca web",
+    "dataColeta": "2026-08-26",
+    "observacoes": "Rede com 4 filiais (Planaltina-DF, Uruaçu-GO e outras).",
+    "criadoEm": "2026-08-26T00:00:00-03:00",
+    "atualizadoEm": "2026-08-26T00:00:00-03:00",
+    "historicoStatus": [
+      {
+        "status": "PESQUISADO",
+        "data": "2026-08-26",
+        "responsavel": "pesquisa automatizada",
+        "observacao": "Registro inicial carregado na base."
+      }
+    ]
+  },
+  {
+    "id": "prt-037",
+    "municipio": "Formosa",
+    "uf": "GO",
+    "setor": "AGROPECUARIA",
+    "nomeFantasia": "Nativa Agrícola",
+    "razaoSocial": "Nativa Agrícola LTDA",
+    "cnpj": "07.634.396/0001-78",
+    "situacaoCadastral": "ATIVA",
+    "endereco": {
+      "logradouro": "Avenida Contorno",
+      "numero": "6",
+      "complemento": "Quadra 114, Lote 6",
+      "bairro": "Parque Laguna II",
+      "cep": "73814-001"
+    },
+    "site": "https://nativaagricola.com.br",
+    "geolocalizacao": {
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Avenida%20Contorno%2C%206%2C%20Parque%20Laguna%20II%2C%20Formosa",
+      "latitude": null,
+      "longitude": null
+    },
+    "titulares": [
+      {
+        "nome": "Jonatan Amorim da Silva",
+        "cpfMascarado": "***.549.821-**",
+        "qualificacao": "Sócio-Administrador",
+        "principal": true
+      },
+      {
+        "nome": "Jose Emidio Martins Junior",
+        "cpfMascarado": "***.602.669-**",
+        "qualificacao": "Sócio-Administrador",
+        "principal": false
+      }
+    ],
+    "contatos": [
+      {
+        "tipo": "TELEFONE_FIXO",
+        "valor": "(61) 3642-1206",
+        "principal": true
+      }
+    ],
+    "status": "PESQUISADO",
+    "fonteInformacao": "Receita Federal (BrasilAPI) + busca web",
+    "dataColeta": "2026-08-26",
+    "observacoes": "12 filiais; mais de 20 anos de atuação.",
+    "criadoEm": "2026-08-26T00:00:00-03:00",
+    "atualizadoEm": "2026-08-26T00:00:00-03:00",
+    "historicoStatus": [
+      {
+        "status": "PESQUISADO",
+        "data": "2026-08-26",
+        "responsavel": "pesquisa automatizada",
+        "observacao": "Registro inicial carregado na base."
+      }
+    ]
+  },
+  {
+    "id": "prt-038",
+    "municipio": "Formosa",
+    "uf": "GO",
+    "setor": "AGROPECUARIA",
+    "nomeFantasia": "Agroquima Formosa",
+    "razaoSocial": "Agroquima Produtos Agropecuários LTDA (filial Formosa)",
+    "cnpj": "01.626.951/0030-78",
+    "situacaoCadastral": "ATIVA",
+    "endereco": {
+      "logradouro": "Avenida Maestro João Luiz do Espírito Santo",
+      "numero": "6",
+      "complemento": null,
+      "bairro": "Parque Laguna II",
+      "cep": "73814-005"
+    },
+    "site": "https://www.agroquima.com.br/lojas/formosa-go/",
+    "geolocalizacao": {
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Avenida%20Maestro%20Jo%C3%A3o%20Luiz%20do%20Esp%C3%ADrito%20Santo%2C%206%2C%20Parque%20Laguna%20II%2C%20Formosa",
+      "latitude": null,
+      "longitude": null
+    },
+    "titulares": [],
+    "contatos": [
+      {
+        "tipo": "TELEFONE_FIXO",
+        "valor": "(61) 3642-1141",
+        "principal": true
+      }
+    ],
+    "status": "PESQUISADO",
+    "fonteInformacao": "Receita Federal (BrasilAPI) + site oficial",
+    "dataColeta": "2026-08-26",
+    "observacoes": "Rede regional de lojas agropecuárias; este é o CNPJ da filial em Formosa.",
+    "criadoEm": "2026-08-26T00:00:00-03:00",
+    "atualizadoEm": "2026-08-26T00:00:00-03:00",
+    "historicoStatus": [
+      {
+        "status": "PESQUISADO",
+        "data": "2026-08-26",
+        "responsavel": "pesquisa automatizada",
+        "observacao": "Registro inicial carregado na base."
+      }
+    ]
+  },
+  {
+    "id": "prt-039",
+    "municipio": "Formosa",
+    "uf": "GO",
+    "setor": "IMOBILIARIA",
+    "nomeFantasia": "Vitória Imóveis Formosa",
+    "razaoSocial": "Vitória Imóveis Formosa LTDA",
+    "cnpj": "23.477.949/0001-82",
+    "situacaoCadastral": "ATIVA",
+    "endereco": {
+      "logradouro": "Rua São Pedro",
+      "numero": "458",
+      "complemento": null,
+      "bairro": "Formosinha",
+      "cep": "73813-190"
+    },
+    "site": null,
+    "geolocalizacao": {
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rua%20S%C3%A3o%20Pedro%2C%20458%2C%20Formosinha%2C%20Formosa",
+      "latitude": null,
+      "longitude": null
+    },
+    "titulares": [
+      {
+        "nome": "Pablhiny de Faria Lamonier",
+        "cpfMascarado": "***.378.201-**",
+        "qualificacao": "Sócio-Administrador",
+        "principal": true
+      },
+      {
+        "nome": "Felipe Ribeiro de Oliveira Emerenciano",
+        "cpfMascarado": "***.135.801-**",
+        "qualificacao": "Sócio",
+        "principal": false
+      }
+    ],
+    "contatos": [
+      {
+        "tipo": "TELEFONE_CELULAR",
+        "valor": "(61) 9931-4515",
+        "principal": true
+      }
+    ],
+    "status": "PESQUISADO",
+    "fonteInformacao": "Receita Federal (BrasilAPI) + busca web",
+    "dataColeta": "2026-08-26",
+    "observacoes": null,
+    "criadoEm": "2026-08-26T00:00:00-03:00",
+    "atualizadoEm": "2026-08-26T00:00:00-03:00",
+    "historicoStatus": [
+      {
+        "status": "PESQUISADO",
+        "data": "2026-08-26",
+        "responsavel": "pesquisa automatizada",
+        "observacao": "Registro inicial carregado na base."
+      }
+    ]
+  },
+  {
+    "id": "prt-040",
+    "municipio": "Formosa",
+    "uf": "GO",
+    "setor": "IMOBILIARIA",
+    "nomeFantasia": "Mara Imobiliária",
+    "razaoSocial": "Mara Imobiliária LTDA",
+    "cnpj": "28.781.560/0001-40",
+    "situacaoCadastral": "ATIVA",
+    "endereco": {
+      "logradouro": "Rua Ângelo Chaves",
+      "numero": "44",
+      "complemento": null,
+      "bairro": "Centro",
+      "cep": "73801-290"
+    },
+    "site": null,
+    "geolocalizacao": {
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rua%20%C3%82ngelo%20Chaves%2C%2044%2C%20Centro%2C%20Formosa",
+      "latitude": null,
+      "longitude": null
+    },
+    "titulares": [
+      {
+        "nome": "Edimaria Rodrigues Araújo",
+        "cpfMascarado": "***.734.891-**",
+        "qualificacao": "Sócio-Administrador",
+        "principal": true
+      }
+    ],
+    "contatos": [
+      {
+        "tipo": "TELEFONE_FIXO",
+        "valor": "(61) 3631-0005",
+        "principal": true
+      }
+    ],
+    "status": "PESQUISADO",
+    "fonteInformacao": "Receita Federal (BrasilAPI) + busca web",
+    "dataColeta": "2026-08-26",
+    "observacoes": null,
+    "criadoEm": "2026-08-26T00:00:00-03:00",
+    "atualizadoEm": "2026-08-26T00:00:00-03:00",
+    "historicoStatus": [
+      {
+        "status": "PESQUISADO",
+        "data": "2026-08-26",
+        "responsavel": "pesquisa automatizada",
+        "observacao": "Registro inicial carregado na base."
+      }
+    ]
+  },
+  {
+    "id": "prt-041",
+    "municipio": "Formosa",
+    "uf": "GO",
+    "setor": "IMOBILIARIA",
+    "nomeFantasia": "Trato Imóveis",
+    "razaoSocial": null,
+    "cnpj": null,
+    "situacaoCadastral": null,
+    "endereco": {
+      "logradouro": "Avenida Lagoa Feia",
+      "numero": "377",
+      "complemento": "Salas 01/03",
+      "bairro": "Formosinha",
+      "cep": "73813-370"
+    },
+    "site": "https://www.tratoimoveis.com.br",
+    "geolocalizacao": {
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Avenida%20Lagoa%20Feia%2C%20377%2C%20Formosinha%2C%20Formosa",
+      "latitude": null,
+      "longitude": null
+    },
+    "titulares": [],
+    "contatos": [
+      {
+        "tipo": "TELEFONE_FIXO",
+        "valor": "(61) 3642-1632",
+        "principal": true
+      },
+      {
+        "tipo": "WHATSAPP",
+        "valor": "(61) 99642-1632",
+        "principal": true
+      },
+      {
+        "tipo": "EMAIL",
+        "valor": "atendimento@tratoimoveis.com.br",
+        "principal": true
+      }
+    ],
+    "status": "PESQUISADO",
+    "fonteInformacao": "Site oficial + busca web",
+    "dataColeta": "2026-08-26",
+    "observacoes": "CRECI-J 28433. CNPJ não localizado nas fontes públicas consultadas — confirmar em contato direto.",
+    "criadoEm": "2026-08-26T00:00:00-03:00",
+    "atualizadoEm": "2026-08-26T00:00:00-03:00",
+    "historicoStatus": [
+      {
+        "status": "PESQUISADO",
+        "data": "2026-08-26",
+        "responsavel": "pesquisa automatizada",
+        "observacao": "Registro inicial carregado na base."
+      }
+    ]
+  },
+  {
+    "id": "prt-042",
+    "municipio": "Formosa",
+    "uf": "GO",
+    "setor": "IRRIGACAO",
+    "nomeFantasia": "IrrigaMais Solução em Irrigação",
+    "razaoSocial": "Irrigamais Solução em Irrigação e Serviços LTDA",
+    "cnpj": "29.364.052/0001-29",
+    "situacaoCadastral": "ATIVA",
+    "endereco": {
+      "logradouro": "Avenida Lagoa Feia",
+      "numero": "485",
+      "complemento": null,
+      "bairro": "Formosinha",
+      "cep": "73813-370"
+    },
+    "site": null,
+    "geolocalizacao": {
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Avenida%20Lagoa%20Feia%2C%20485%2C%20Formosinha%2C%20Formosa",
+      "latitude": null,
+      "longitude": null
+    },
+    "titulares": [
+      {
+        "nome": "Alderico Alves Ribeiro",
+        "cpfMascarado": "***.275.126-**",
+        "qualificacao": "Sócio-Administrador",
+        "principal": true
+      }
+    ],
+    "contatos": [
+      {
+        "tipo": "TELEFONE_CELULAR",
+        "valor": "(61) 99862-9426",
+        "principal": true
+      },
+      {
+        "tipo": "EMAIL",
+        "valor": "irrigamaisformosa@gmail.com",
+        "principal": true
+      }
+    ],
+    "status": "PESQUISADO",
+    "fonteInformacao": "Receita Federal (BrasilAPI) + busca web",
+    "dataColeta": "2026-08-26",
+    "observacoes": "CNAE oficial é manutenção de máquinas agrícolas; atua também com projetos de irrigação. Há uma segunda empresa do mesmo sócio (ME mais nova, CNPJ 53.328.709/0001-87) no mesmo grupo.",
+    "criadoEm": "2026-08-26T00:00:00-03:00",
+    "atualizadoEm": "2026-08-26T00:00:00-03:00",
+    "historicoStatus": [
+      {
+        "status": "PESQUISADO",
+        "data": "2026-08-26",
+        "responsavel": "pesquisa automatizada",
+        "observacao": "Registro inicial carregado na base."
+      }
+    ]
+  },
+  {
+    "id": "prt-043",
+    "municipio": "Formosa",
+    "uf": "GO",
+    "setor": "IRRIGACAO",
+    "nomeFantasia": "Pivot Equipamentos Agrícolas e Irrigação (filial Formosa)",
+    "razaoSocial": "Pivot Equipamentos Agrícolas e Irrigação S.A.",
+    "cnpj": "33.302.019/0015-47",
+    "situacaoCadastral": "ATIVA",
+    "endereco": {
+      "logradouro": "Avenida Brasília",
+      "numero": "2449",
+      "complemento": null,
+      "bairro": "Setor Industrial",
+      "cep": "73813-550"
+    },
+    "site": null,
+    "geolocalizacao": {
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Avenida%20Bras%C3%ADlia%2C%202449%2C%20Setor%20Industrial%2C%20Formosa",
+      "latitude": null,
+      "longitude": null
+    },
+    "titulares": [
+      {
+        "nome": "Jorge Luiz de Almeida Campos",
+        "cpfMascarado": "***.916.321-**",
+        "qualificacao": "Presidente",
+        "principal": true
+      }
+    ],
+    "contatos": [
+      {
+        "tipo": "TELEFONE_FIXO",
+        "valor": "(62) 3018-3060",
+        "principal": true
+      }
+    ],
+    "status": "PESQUISADO",
+    "fonteInformacao": "Receita Federal (BrasilAPI) + busca web",
+    "dataColeta": "2026-08-26",
+    "observacoes": "Filial; matriz fora de GO (mesmo grupo já cadastrado em Unaí).",
+    "criadoEm": "2026-08-26T00:00:00-03:00",
+    "atualizadoEm": "2026-08-26T00:00:00-03:00",
+    "historicoStatus": [
+      {
+        "status": "PESQUISADO",
+        "data": "2026-08-26",
+        "responsavel": "pesquisa automatizada",
+        "observacao": "Registro inicial carregado na base."
+      }
+    ]
+  },
+  {
+    "id": "prt-044",
+    "municipio": "Formosa",
+    "uf": "GO",
+    "setor": "SILOS_ARMAZENS",
+    "nomeFantasia": "COOPA-DF",
+    "razaoSocial": "Cooperativa Agropecuária da Região do Distrito Federal LTDA",
+    "cnpj": "00.518.969/0002-30",
+    "situacaoCadastral": "ATIVA",
+    "endereco": {
+      "logradouro": "Avenida Circular",
+      "numero": "220",
+      "complemento": "Quadra 1",
+      "bairro": "Setor Industrial",
+      "cep": "73808-850"
+    },
+    "site": null,
+    "geolocalizacao": {
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Avenida%20Circular%2C%20220%2C%20Setor%20Industrial%2C%20Formosa",
+      "latitude": null,
+      "longitude": null
+    },
+    "titulares": [
+      {
+        "nome": "Jose Guilherme Brenner",
+        "cpfMascarado": "***.850.001-**",
+        "qualificacao": "Presidente",
+        "principal": true
+      },
+      {
+        "nome": "Leandro Luis Maldaner",
+        "cpfMascarado": "***.655.541-**",
+        "qualificacao": "Diretor",
+        "principal": false
+      }
+    ],
+    "contatos": [],
+    "status": "PESQUISADO",
+    "fonteInformacao": "Receita Federal (BrasilAPI) + busca web",
+    "dataColeta": "2026-08-26",
+    "observacoes": "CNAE oficial: 'Armazéns gerais - emissão de warrant' — atividade de armazenamento/silos de grãos, câmaras frigoríficas por conta de terceiros. Bom fit para o segmento.",
+    "criadoEm": "2026-08-26T00:00:00-03:00",
+    "atualizadoEm": "2026-08-26T00:00:00-03:00",
+    "historicoStatus": [
+      {
+        "status": "PESQUISADO",
+        "data": "2026-08-26",
+        "responsavel": "pesquisa automatizada",
+        "observacao": "Registro inicial carregado na base."
+      }
+    ]
+  },
+  {
+    "id": "prt-045",
+    "municipio": "Formosa",
+    "uf": "GO",
+    "setor": "LATICINIOS",
+    "nomeFantasia": "Queijaria Pé do Morro",
+    "razaoSocial": null,
+    "cnpj": null,
+    "situacaoCadastral": null,
+    "endereco": {
+      "logradouro": null,
+      "numero": null,
+      "complemento": "Produtor direto da fazenda, venda apenas on-line",
+      "bairro": null,
+      "cep": null
+    },
+    "site": null,
+    "geolocalizacao": {
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Formosa",
+      "latitude": null,
+      "longitude": null
+    },
+    "titulares": [],
+    "contatos": [
+      {
+        "tipo": "WHATSAPP",
+        "valor": "(61) 99999-0205",
+        "principal": true
+      }
+    ],
+    "status": "PESQUISADO",
+    "fonteInformacao": "Instagram/redes sociais (@queijariapedomorro)",
+    "dataColeta": "2026-08-26",
+    "observacoes": "Pequeno produtor artesanal, sem CNPJ localizado — confirmar formalização em contato direto. Nenhuma indústria/cooperativa de laticínios de porte foi confirmada com sede em Formosa-GO (a 'Laticínios Formosa' de mesmo nome tem sede em Itauçu-GO/Lagoa Formosa-MG, coincidência de nome, não incluída aqui).",
+    "criadoEm": "2026-08-26T00:00:00-03:00",
+    "atualizadoEm": "2026-08-26T00:00:00-03:00",
+    "historicoStatus": [
+      {
+        "status": "PESQUISADO",
+        "data": "2026-08-26",
+        "responsavel": "pesquisa automatizada",
+        "observacao": "Registro inicial carregado na base."
+      }
+    ]
+  },
+  {
+    "id": "prt-046",
+    "municipio": "Luziânia",
+    "uf": "GO",
+    "setor": "AGROPECUARIA",
+    "nomeFantasia": "Sertaneja Agropecuária",
+    "razaoSocial": "L.R & J.E Produtos Agropecuários LTDA",
+    "cnpj": "10.925.057/0001-55",
+    "situacaoCadastral": "ATIVA",
+    "endereco": {
+      "logradouro": "Avenida Santa Maria",
+      "numero": "S/N",
+      "complemento": null,
+      "bairro": "Setor Aeroporto",
+      "cep": "72801-020"
+    },
+    "site": null,
+    "geolocalizacao": {
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Avenida%20Santa%20Maria%2C%20S/N%2C%20Setor%20Aeroporto%2C%20Luzi%C3%A2nia",
+      "latitude": null,
+      "longitude": null
+    },
+    "titulares": [
+      {
+        "nome": "Aluisio Matias Pereira",
+        "cpfMascarado": "***.115.341-**",
+        "qualificacao": "Sócio-Administrador",
+        "principal": true
+      },
+      {
+        "nome": "Jose Edimilson Cristovao Pinto",
+        "cpfMascarado": "***.654.141-**",
+        "qualificacao": "Sócio",
+        "principal": false
+      }
+    ],
+    "contatos": [
+      {
+        "tipo": "TELEFONE_FIXO",
+        "valor": "(61) 3621-2519",
+        "principal": true
+      }
+    ],
+    "status": "PESQUISADO",
+    "fonteInformacao": "Receita Federal (BrasilAPI) + busca web",
+    "dataColeta": "2026-08-26",
+    "observacoes": null,
+    "criadoEm": "2026-08-26T00:00:00-03:00",
+    "atualizadoEm": "2026-08-26T00:00:00-03:00",
+    "historicoStatus": [
+      {
+        "status": "PESQUISADO",
+        "data": "2026-08-26",
+        "responsavel": "pesquisa automatizada",
+        "observacao": "Registro inicial carregado na base."
+      }
+    ]
+  },
+  {
+    "id": "prt-047",
+    "municipio": "Luziânia",
+    "uf": "GO",
+    "setor": "AGROPECUARIA",
+    "nomeFantasia": "Agroluz Agropecuária",
+    "razaoSocial": "Agroluz Agropecuária Luziânia LTDA",
+    "cnpj": "18.532.645/0001-30",
+    "situacaoCadastral": "ATIVA",
+    "endereco": {
+      "logradouro": "Rua Plácido de Paiva",
+      "numero": "S/N",
+      "complemento": "Quadra 133, Lote 12, Loja 01",
+      "bairro": "Setor Fumal",
+      "cep": "72801-670"
+    },
+    "site": null,
+    "geolocalizacao": {
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rua%20Pl%C3%A1cido%20de%20Paiva%2C%20S/N%2C%20Setor%20Fumal%2C%20Luzi%C3%A2nia",
+      "latitude": null,
+      "longitude": null
+    },
+    "titulares": [
+      {
+        "nome": "Miriam Rizia Pereira",
+        "cpfMascarado": "***.605.151-**",
+        "qualificacao": "Sócio-Administrador",
+        "principal": true
+      }
+    ],
+    "contatos": [
+      {
+        "tipo": "TELEFONE_FIXO",
+        "valor": "(61) 3622-2970",
+        "principal": true
+      }
+    ],
+    "status": "PESQUISADO",
+    "fonteInformacao": "Receita Federal (BrasilAPI) + busca web",
+    "dataColeta": "2026-08-26",
+    "observacoes": "CNAE oficial é comércio de animais vivos/pet — loja agropecuária de linha mais ampla segundo diretórios locais; confirmar mix de produtos em contato direto.",
+    "criadoEm": "2026-08-26T00:00:00-03:00",
+    "atualizadoEm": "2026-08-26T00:00:00-03:00",
+    "historicoStatus": [
+      {
+        "status": "PESQUISADO",
+        "data": "2026-08-26",
+        "responsavel": "pesquisa automatizada",
+        "observacao": "Registro inicial carregado na base."
+      }
+    ]
+  },
+  {
+    "id": "prt-048",
+    "municipio": "Luziânia",
+    "uf": "GO",
+    "setor": "IMOBILIARIA",
+    "nomeFantasia": "Braz Imóveis",
+    "razaoSocial": "Braz Imóveis LTDA",
+    "cnpj": "12.440.175/0001-07",
+    "situacaoCadastral": "ATIVA",
+    "endereco": {
+      "logradouro": "Rua José Franco Pimentel",
+      "numero": null,
+      "complemento": null,
+      "bairro": "Centro",
+      "cep": "72800-500"
+    },
+    "site": "https://www.brazimoveisluziania.com",
+    "geolocalizacao": {
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rua%20Jos%C3%A9%20Franco%20Pimentel%2C%20Centro%2C%20Luzi%C3%A2nia",
+      "latitude": null,
+      "longitude": null
+    },
+    "titulares": [],
+    "contatos": [
+      {
+        "tipo": "TELEFONE_FIXO",
+        "valor": "(61) 3622-3656",
+        "principal": true
+      }
+    ],
+    "status": "PESQUISADO",
+    "fonteInformacao": "Receita Federal (BrasilAPI) + busca web",
+    "dataColeta": "2026-08-26",
+    "observacoes": "CNAE oficial é construção de edifícios; opera publicamente como imobiliária (consultoria/venda/locação) segundo site próprio.",
+    "criadoEm": "2026-08-26T00:00:00-03:00",
+    "atualizadoEm": "2026-08-26T00:00:00-03:00",
+    "historicoStatus": [
+      {
+        "status": "PESQUISADO",
+        "data": "2026-08-26",
+        "responsavel": "pesquisa automatizada",
+        "observacao": "Registro inicial carregado na base."
+      }
+    ]
+  },
+  {
+    "id": "prt-049",
+    "municipio": "Luziânia",
+    "uf": "GO",
+    "setor": "IMOBILIARIA",
+    "nomeFantasia": "JL Imobiliária",
+    "razaoSocial": "JL Empreendimentos Imobiliários LTDA",
+    "cnpj": "19.512.769/0001-17",
+    "situacaoCadastral": "ATIVA",
+    "endereco": {
+      "logradouro": "Rua Benedito José de Morais",
+      "numero": "70/74",
+      "complemento": null,
+      "bairro": "Diogo Machado de Araújo",
+      "cep": "72810-010"
+    },
+    "site": null,
+    "geolocalizacao": {
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rua%20Benedito%20Jos%C3%A9%20de%20Morais%2C%2070/74%2C%20Diogo%20Machado%20de%20Ara%C3%BAjo%2C%20Luzi%C3%A2nia",
+      "latitude": null,
+      "longitude": null
+    },
+    "titulares": [
+      {
+        "nome": "Ana da Aparecida Roriz Carneiro",
+        "cpfMascarado": "***.349.391-**",
+        "qualificacao": "Sócio-Administrador",
+        "principal": true
+      },
+      {
+        "nome": "Cleonea Guimarães Roriz",
+        "cpfMascarado": "***.292.681-**",
+        "qualificacao": "Sócio-Administrador",
+        "principal": false
+      }
+    ],
+    "contatos": [
+      {
+        "tipo": "TELEFONE_FIXO",
+        "valor": "(61) 3601-1350",
+        "principal": true
+      }
+    ],
+    "status": "PESQUISADO",
+    "fonteInformacao": "Receita Federal (BrasilAPI) + busca web",
+    "dataColeta": "2026-08-26",
+    "observacoes": null,
+    "criadoEm": "2026-08-26T00:00:00-03:00",
+    "atualizadoEm": "2026-08-26T00:00:00-03:00",
+    "historicoStatus": [
+      {
+        "status": "PESQUISADO",
+        "data": "2026-08-26",
+        "responsavel": "pesquisa automatizada",
+        "observacao": "Registro inicial carregado na base."
+      }
+    ]
+  },
+  {
+    "id": "prt-050",
+    "municipio": "Luziânia",
+    "uf": "GO",
+    "setor": "IMOBILIARIA",
+    "nomeFantasia": "Guimarães Imóveis",
+    "razaoSocial": null,
+    "cnpj": null,
+    "situacaoCadastral": null,
+    "endereco": {
+      "logradouro": "Rua Dr. João Teixeira",
+      "numero": "1",
+      "complemento": null,
+      "bairro": "Centro",
+      "cep": "72800-440"
+    },
+    "site": null,
+    "geolocalizacao": {
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rua%20Dr.%20Jo%C3%A3o%20Teixeira%2C%201%2C%20Centro%2C%20Luzi%C3%A2nia",
+      "latitude": null,
+      "longitude": null
+    },
+    "titulares": [],
+    "contatos": [],
+    "status": "PESQUISADO",
+    "fonteInformacao": "Diretório local (guiaimobiliarias.com)",
+    "dataColeta": "2026-08-26",
+    "observacoes": "CNPJ não localizado nas fontes públicas consultadas — confirmar em contato direto.",
+    "criadoEm": "2026-08-26T00:00:00-03:00",
+    "atualizadoEm": "2026-08-26T00:00:00-03:00",
+    "historicoStatus": [
+      {
+        "status": "PESQUISADO",
+        "data": "2026-08-26",
+        "responsavel": "pesquisa automatizada",
+        "observacao": "Registro inicial carregado na base."
+      }
+    ]
+  },
+  {
+    "id": "prt-051",
+    "municipio": "Luziânia",
+    "uf": "GO",
+    "setor": "LEILAO_ANIMAIS",
+    "nomeFantasia": "M.A Braz - Leilões Rurais",
+    "razaoSocial": "M.A Braz - Leilões Rurais",
+    "cnpj": "34.057.072/0001-97",
+    "situacaoCadastral": "ATIVA",
+    "endereco": {
+      "logradouro": "Rodovia Braluz - Dical",
+      "numero": null,
+      "complemento": "Parque de Exposições de Luziânia",
+      "bairro": null,
+      "cep": "72801-360"
+    },
+    "site": null,
+    "geolocalizacao": {
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rodovia%20Braluz%20-%20Dical%2C%20Luzi%C3%A2nia",
+      "latitude": null,
+      "longitude": null
+    },
+    "titulares": [],
+    "contatos": [],
+    "status": "PESQUISADO",
+    "fonteInformacao": "Receita Federal (BrasilAPI) + busca web",
+    "dataColeta": "2026-08-26",
+    "observacoes": "Também conhecida como 'Santa Clara Leilões'. Outra leiloeira do mesmo endereço (Tropical Leilões LTDA, CNPJ 10.145.769/0001-51) está com situação INAPTA — não incluída.",
+    "criadoEm": "2026-08-26T00:00:00-03:00",
+    "atualizadoEm": "2026-08-26T00:00:00-03:00",
+    "historicoStatus": [
+      {
+        "status": "PESQUISADO",
+        "data": "2026-08-26",
+        "responsavel": "pesquisa automatizada",
+        "observacao": "Registro inicial carregado na base."
+      }
+    ]
+  },
+  {
+    "id": "prt-052",
+    "municipio": "Luziânia",
+    "uf": "GO",
+    "setor": "LATICINIOS",
+    "nomeFantasia": "Mourão Laticínios",
+    "razaoSocial": null,
+    "cnpj": null,
+    "situacaoCadastral": null,
+    "endereco": {
+      "logradouro": null,
+      "numero": null,
+      "complemento": "Loja de laticínios (queijos, coalhada, requeijão)",
+      "bairro": null,
+      "cep": null
+    },
+    "site": "https://mourao-laticinios.ueniweb.com",
+    "geolocalizacao": {
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Luzi%C3%A2nia",
+      "latitude": null,
+      "longitude": null
+    },
+    "titulares": [],
+    "contatos": [
+      {
+        "tipo": "TELEFONE_CELULAR",
+        "valor": "(61) 99665-9989",
+        "principal": true
+      }
+    ],
+    "status": "PESQUISADO",
+    "fonteInformacao": "Site oficial + busca web",
+    "dataColeta": "2026-08-26",
+    "observacoes": "CNPJ não localizado nas fontes públicas consultadas — parece ser loja/varejo, não indústria. Nenhuma indústria de laticínios de porte com sede em Luziânia foi confirmada.",
+    "criadoEm": "2026-08-26T00:00:00-03:00",
+    "atualizadoEm": "2026-08-26T00:00:00-03:00",
+    "historicoStatus": [
+      {
+        "status": "PESQUISADO",
+        "data": "2026-08-26",
+        "responsavel": "pesquisa automatizada",
+        "observacao": "Registro inicial carregado na base."
+      }
+    ]
+  },
+  {
+    "id": "prt-053",
+    "municipio": "Cristalina",
+    "uf": "GO",
+    "setor": "AGROPECUARIA",
+    "nomeFantasia": "Agropecuária Figueiredo",
+    "razaoSocial": "Agropecuária Figueiredo LTDA",
+    "cnpj": "18.075.720/0001-81",
+    "situacaoCadastral": "ATIVA",
+    "endereco": {
+      "logradouro": "Avenida José de Alencar",
+      "numero": "S/N",
+      "complemento": "Quadra 09, Lote 01-B, Sala 03",
+      "bairro": "Jardim Planalto",
+      "cep": "73850-000"
+    },
+    "site": null,
+    "geolocalizacao": {
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Avenida%20Jos%C3%A9%20de%20Alencar%2C%20S/N%2C%20Jardim%20Planalto%2C%20Cristalina",
+      "latitude": null,
+      "longitude": null
+    },
+    "titulares": [],
+    "contatos": [
+      {
+        "tipo": "TELEFONE_FIXO",
+        "valor": "(61) 3612-1480",
+        "principal": true
+      }
+    ],
+    "status": "PESQUISADO",
+    "fonteInformacao": "Receita Federal (BrasilAPI) + busca web",
+    "dataColeta": "2026-08-26",
+    "observacoes": "CNAE oficial é cultivo de soja (grupo com 7 estabelecimentos em 3 estados); aparece em diretórios locais como agropecuária — confirmar mix de negócio em contato.",
+    "criadoEm": "2026-08-26T00:00:00-03:00",
+    "atualizadoEm": "2026-08-26T00:00:00-03:00",
+    "historicoStatus": [
+      {
+        "status": "PESQUISADO",
+        "data": "2026-08-26",
+        "responsavel": "pesquisa automatizada",
+        "observacao": "Registro inicial carregado na base."
+      }
+    ]
+  },
+  {
+    "id": "prt-054",
+    "municipio": "Cristalina",
+    "uf": "GO",
+    "setor": "AGROPECUARIA",
+    "nomeFantasia": "Agroquima Cristalina",
+    "razaoSocial": null,
+    "cnpj": null,
+    "situacaoCadastral": null,
+    "endereco": {
+      "logradouro": "Rua da Saudade",
+      "numero": null,
+      "complemento": "Quadra 44, Lotes 07 a 12",
+      "bairro": "Setor Noroeste",
+      "cep": "73850-000"
+    },
+    "site": "https://www.agroquima.com.br/lojas/cristalina-go/",
+    "geolocalizacao": {
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rua%20da%20Saudade%2C%20Setor%20Noroeste%2C%20Cristalina",
+      "latitude": null,
+      "longitude": null
+    },
+    "titulares": [],
+    "contatos": [
+      {
+        "tipo": "TELEFONE_FIXO",
+        "valor": "(61) 3142-0096",
+        "principal": true
+      }
+    ],
+    "status": "PESQUISADO",
+    "fonteInformacao": "Site oficial + busca web",
+    "dataColeta": "2026-08-26",
+    "observacoes": "Filial da rede regional Agroquima (mesma rede já cadastrada em Formosa-GO); CNPJ específico da filial de Cristalina não localizado nas fontes públicas consultadas.",
+    "criadoEm": "2026-08-26T00:00:00-03:00",
+    "atualizadoEm": "2026-08-26T00:00:00-03:00",
+    "historicoStatus": [
+      {
+        "status": "PESQUISADO",
+        "data": "2026-08-26",
+        "responsavel": "pesquisa automatizada",
+        "observacao": "Registro inicial carregado na base."
+      }
+    ]
+  },
+  {
+    "id": "prt-055",
+    "municipio": "Cristalina",
+    "uf": "GO",
+    "setor": "IMOBILIARIA",
+    "nomeFantasia": "Essencial Imobiliária",
+    "razaoSocial": "Luciano Severino Botelho (Essencial Imobiliária)",
+    "cnpj": "09.392.658/0001-60",
+    "situacaoCadastral": "ATIVA",
+    "endereco": {
+      "logradouro": null,
+      "numero": null,
+      "complemento": null,
+      "bairro": "Cristalina Velha",
+      "cep": "73850-000"
+    },
+    "site": null,
+    "geolocalizacao": {
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Cristalina%20Velha%2C%20Cristalina",
+      "latitude": null,
+      "longitude": null
+    },
+    "titulares": [
+      {
+        "nome": "Luciano Severino Botelho",
+        "cpfMascarado": null,
+        "qualificacao": "Titular (Empresário Individual)",
+        "principal": true
+      }
+    ],
+    "contatos": [],
+    "status": "PESQUISADO",
+    "fonteInformacao": "Receita Federal (BrasilAPI) + busca web",
+    "dataColeta": "2026-08-26",
+    "observacoes": "Empresário individual (CNAE: corretagem no aluguel de imóveis).",
+    "criadoEm": "2026-08-26T00:00:00-03:00",
+    "atualizadoEm": "2026-08-26T00:00:00-03:00",
+    "historicoStatus": [
+      {
+        "status": "PESQUISADO",
+        "data": "2026-08-26",
+        "responsavel": "pesquisa automatizada",
+        "observacao": "Registro inicial carregado na base."
+      }
+    ]
+  },
+  {
+    "id": "prt-056",
+    "municipio": "Cristalina",
+    "uf": "GO",
+    "setor": "IMOBILIARIA",
+    "nomeFantasia": "Diego Gomes Imóveis",
+    "razaoSocial": null,
+    "cnpj": null,
+    "situacaoCadastral": null,
+    "endereco": {
+      "logradouro": "Rua João Aguiar",
+      "numero": "815",
+      "complemento": null,
+      "bairro": "Centro",
+      "cep": "73850-000"
+    },
+    "site": "https://www.diegogomesimoveis.com.br",
+    "geolocalizacao": {
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rua%20Jo%C3%A3o%20Aguiar%2C%20815%2C%20Centro%2C%20Cristalina",
+      "latitude": null,
+      "longitude": null
+    },
+    "titulares": [],
+    "contatos": [
+      {
+        "tipo": "TELEFONE_CELULAR",
+        "valor": "(61) 99183-0427",
+        "principal": true
+      }
+    ],
+    "status": "PESQUISADO",
+    "fonteInformacao": "Site oficial + busca web",
+    "dataColeta": "2026-08-26",
+    "observacoes": "CRECI 41.919. CNPJ não localizado nas fontes públicas consultadas.",
+    "criadoEm": "2026-08-26T00:00:00-03:00",
+    "atualizadoEm": "2026-08-26T00:00:00-03:00",
+    "historicoStatus": [
+      {
+        "status": "PESQUISADO",
+        "data": "2026-08-26",
+        "responsavel": "pesquisa automatizada",
+        "observacao": "Registro inicial carregado na base."
+      }
+    ]
+  },
+  {
+    "id": "prt-057",
+    "municipio": "Cristalina",
+    "uf": "GO",
+    "setor": "IRRIGACAO",
+    "nomeFantasia": "Irricampo Cristalina Sistemas de Irrigação",
+    "razaoSocial": "Irricampo Sistemas de Irrigação LTDA",
+    "cnpj": "13.933.332/0001-70",
+    "situacaoCadastral": "ATIVA",
+    "endereco": {
+      "logradouro": "Rua 3",
+      "numero": "S/N",
+      "complemento": "Quadra 3, Lote 12-B",
+      "bairro": "Setor Noroeste",
+      "cep": "73850-000"
+    },
+    "site": "https://www.irricampocristalina.com.br",
+    "geolocalizacao": {
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rua%203%2C%20S/N%2C%20Setor%20Noroeste%2C%20Cristalina",
+      "latitude": null,
+      "longitude": null
+    },
+    "titulares": [
+      {
+        "nome": "Carlos Alberto Garcia",
+        "cpfMascarado": "***.129.871-**",
+        "qualificacao": "Sócio-Administrador",
+        "principal": true
+      }
+    ],
+    "contatos": [
+      {
+        "tipo": "TELEFONE_FIXO",
+        "valor": "(61) 3612-7086",
+        "principal": true
+      }
+    ],
+    "status": "PESQUISADO",
+    "fonteInformacao": "Receita Federal (BrasilAPI) + site oficial",
+    "dataColeta": "2026-08-26",
+    "observacoes": "Esta é a sede/matriz da rede Irricampo (a unidade cadastrada em Unaí-MG aponta o site para este mesmo domínio — confirmado como a mesma empresa/grupo).",
+    "criadoEm": "2026-08-26T00:00:00-03:00",
+    "atualizadoEm": "2026-08-26T00:00:00-03:00",
+    "historicoStatus": [
+      {
+        "status": "PESQUISADO",
+        "data": "2026-08-26",
+        "responsavel": "pesquisa automatizada",
+        "observacao": "Registro inicial carregado na base."
+      }
+    ]
+  },
+  {
+    "id": "prt-058",
+    "municipio": "Cristalina",
+    "uf": "GO",
+    "setor": "IRRIGACAO",
+    "nomeFantasia": "Central Irrigação",
+    "razaoSocial": "Central Irrigação LTDA",
+    "cnpj": "04.784.935/0005-90",
+    "situacaoCadastral": "ATIVA",
+    "endereco": {
+      "logradouro": "Avenida José de Alencar",
+      "numero": "S/N",
+      "complemento": null,
+      "bairro": "Jardim Planalto",
+      "cep": "73850-000"
+    },
+    "site": "https://www.centralirrigacao.com.br",
+    "geolocalizacao": {
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Avenida%20Jos%C3%A9%20de%20Alencar%2C%20S/N%2C%20Jardim%20Planalto%2C%20Cristalina",
+      "latitude": null,
+      "longitude": null
+    },
+    "titulares": [
+      {
+        "nome": "Hugo Luiz Vocurca",
+        "cpfMascarado": "***.758.408-**",
+        "qualificacao": "Sócio-Administrador",
+        "principal": true
+      },
+      {
+        "nome": "Erik Neves Oliveira",
+        "cpfMascarado": "***.824.281-**",
+        "qualificacao": "Sócio",
+        "principal": false
+      }
+    ],
+    "contatos": [],
+    "status": "PESQUISADO",
+    "fonteInformacao": "Receita Federal (BrasilAPI) + site oficial",
+    "dataColeta": "2026-08-26",
+    "observacoes": "Atua em GO, MG e TO; esta é a filial de Cristalina.",
+    "criadoEm": "2026-08-26T00:00:00-03:00",
+    "atualizadoEm": "2026-08-26T00:00:00-03:00",
+    "historicoStatus": [
+      {
+        "status": "PESQUISADO",
+        "data": "2026-08-26",
+        "responsavel": "pesquisa automatizada",
+        "observacao": "Registro inicial carregado na base."
+      }
+    ]
+  },
+  {
+    "id": "prt-059",
+    "municipio": "Cristalina",
+    "uf": "GO",
+    "setor": "IRRIGACAO",
+    "nomeFantasia": "PC Pivô Irrigação",
+    "razaoSocial": "Paulo Cesar Silveira Pessoa - PC Pivô Irrigação",
+    "cnpj": "08.906.692/0001-43",
+    "situacaoCadastral": "ATIVA",
+    "endereco": {
+      "logradouro": "Rua Araguaia",
+      "numero": null,
+      "complemento": null,
+      "bairro": "Setor Noroeste",
+      "cep": "73850-000"
+    },
+    "site": null,
+    "geolocalizacao": {
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rua%20Araguaia%2C%20Setor%20Noroeste%2C%20Cristalina",
+      "latitude": null,
+      "longitude": null
+    },
+    "titulares": [
+      {
+        "nome": "Paulo Cesar Silveira Pessoa",
+        "cpfMascarado": null,
+        "qualificacao": "Titular (Empresário Individual)",
+        "principal": true
+      }
+    ],
+    "contatos": [],
+    "status": "PESQUISADO",
+    "fonteInformacao": "Receita Federal (BrasilAPI) + busca web",
+    "dataColeta": "2026-08-26",
+    "observacoes": "Empresário individual.",
+    "criadoEm": "2026-08-26T00:00:00-03:00",
+    "atualizadoEm": "2026-08-26T00:00:00-03:00",
+    "historicoStatus": [
+      {
+        "status": "PESQUISADO",
+        "data": "2026-08-26",
+        "responsavel": "pesquisa automatizada",
+        "observacao": "Registro inicial carregado na base."
+      }
+    ]
+  },
+  {
+    "id": "prt-060",
+    "municipio": "Cristalina",
+    "uf": "GO",
+    "setor": "SILOS_ARMAZENS",
+    "nomeFantasia": "COOPA-DF (unidade Cristalina)",
+    "razaoSocial": "Cooperativa Agropecuária da Região do Distrito Federal LTDA",
+    "cnpj": "00.518.969/0005-82",
+    "situacaoCadastral": "ATIVA",
+    "endereco": {
+      "logradouro": "Rua 21 de Abril",
+      "numero": "361",
+      "complemento": null,
+      "bairro": "Centro",
+      "cep": "73850-000"
+    },
+    "site": null,
+    "geolocalizacao": {
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rua%2021%20de%20Abril%2C%20361%2C%20Centro%2C%20Cristalina",
+      "latitude": null,
+      "longitude": null
+    },
+    "titulares": [
+      {
+        "nome": "Jose Guilherme Brenner",
+        "cpfMascarado": "***.850.001-**",
+        "qualificacao": "Presidente",
+        "principal": true
+      },
+      {
+        "nome": "Leandro Luis Maldaner",
+        "cpfMascarado": "***.655.541-**",
+        "qualificacao": "Diretor",
+        "principal": false
+      }
+    ],
+    "contatos": [],
+    "status": "PESQUISADO",
+    "fonteInformacao": "Receita Federal (BrasilAPI) + busca web",
+    "dataColeta": "2026-08-26",
+    "observacoes": "Mesma cooperativa já cadastrada em Formosa-GO (matriz em Paranoá-DF); CNAE oficial 'Armazéns gerais - emissão de warrant'.",
+    "criadoEm": "2026-08-26T00:00:00-03:00",
+    "atualizadoEm": "2026-08-26T00:00:00-03:00",
+    "historicoStatus": [
+      {
+        "status": "PESQUISADO",
+        "data": "2026-08-26",
+        "responsavel": "pesquisa automatizada",
+        "observacao": "Registro inicial carregado na base."
+      }
+    ]
+  },
+  {
+    "id": "prt-061",
+    "municipio": "Catalão",
+    "uf": "GO",
+    "setor": "AGROPECUARIA",
+    "nomeFantasia": "Agropecuária Rampelotti",
+    "razaoSocial": null,
+    "cnpj": null,
+    "situacaoCadastral": null,
+    "endereco": {
+      "logradouro": "Avenida 20 de Agosto",
+      "numero": "2095",
+      "complemento": null,
+      "bairro": "Setor Central",
+      "cep": "75701-010"
+    },
+    "site": null,
+    "geolocalizacao": {
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Avenida%2020%20de%20Agosto%2C%202095%2C%20Setor%20Central%2C%20Catal%C3%A3o",
+      "latitude": null,
+      "longitude": null
+    },
+    "titulares": [],
+    "contatos": [
+      {
+        "tipo": "TELEFONE_FIXO",
+        "valor": "(64) 3441-3353",
+        "principal": true
+      }
+    ],
+    "status": "PESQUISADO",
+    "fonteInformacao": "Diretório local + busca web",
+    "dataColeta": "2026-08-26",
+    "observacoes": "Ligada ao Grupo Rampelotti (produtor de soja/milho/feijão/trigo na região). CNPJ específico da loja agropecuária não confirmado — 'Silva & Rampelotti LTDA' (mesma família) é loja de vestuário, entidade diferente, não incluída aqui.",
+    "criadoEm": "2026-08-26T00:00:00-03:00",
+    "atualizadoEm": "2026-08-26T00:00:00-03:00",
+    "historicoStatus": [
+      {
+        "status": "PESQUISADO",
+        "data": "2026-08-26",
+        "responsavel": "pesquisa automatizada",
+        "observacao": "Registro inicial carregado na base."
+      }
+    ]
+  },
+  {
+    "id": "prt-062",
+    "municipio": "Catalão",
+    "uf": "GO",
+    "setor": "AGROPECUARIA",
+    "nomeFantasia": "Agrotelas Produtos Agropecuários",
+    "razaoSocial": null,
+    "cnpj": null,
+    "situacaoCadastral": null,
+    "endereco": {
+      "logradouro": "Avenida José Marcelino",
+      "numero": null,
+      "complemento": null,
+      "bairro": "Setor Central",
+      "cep": null
+    },
+    "site": null,
+    "geolocalizacao": {
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Avenida%20Jos%C3%A9%20Marcelino%2C%20Setor%20Central%2C%20Catal%C3%A3o",
+      "latitude": null,
+      "longitude": null
+    },
+    "titulares": [],
+    "contatos": [
+      {
+        "tipo": "TELEFONE_FIXO",
+        "valor": "(64) 3441-4279",
+        "principal": true
+      }
+    ],
+    "status": "PESQUISADO",
+    "fonteInformacao": "Diretório local + busca web",
+    "dataColeta": "2026-08-26",
+    "observacoes": "CNPJ não localizado nas fontes públicas consultadas — confirmar em contato direto.",
+    "criadoEm": "2026-08-26T00:00:00-03:00",
+    "atualizadoEm": "2026-08-26T00:00:00-03:00",
+    "historicoStatus": [
+      {
+        "status": "PESQUISADO",
+        "data": "2026-08-26",
+        "responsavel": "pesquisa automatizada",
+        "observacao": "Registro inicial carregado na base."
+      }
+    ]
+  },
+  {
+    "id": "prt-063",
+    "municipio": "Catalão",
+    "uf": "GO",
+    "setor": "IMOBILIARIA",
+    "nomeFantasia": "Parati Imóveis",
+    "razaoSocial": "Imobiliária Parati LTDA",
+    "cnpj": "01.047.147/0001-08",
+    "situacaoCadastral": "ATIVA",
+    "endereco": {
+      "logradouro": "Avenida José Marcelino",
+      "numero": "384",
+      "complemento": null,
+      "bairro": "Setor Central",
+      "cep": "75701-430"
+    },
+    "site": "https://www.paratiimoveis.com.br",
+    "geolocalizacao": {
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Avenida%20Jos%C3%A9%20Marcelino%2C%20384%2C%20Setor%20Central%2C%20Catal%C3%A3o",
+      "latitude": null,
+      "longitude": null
+    },
+    "titulares": [
+      {
+        "nome": "Genair Patrocinio da Silva",
+        "cpfMascarado": "***.773.601-**",
+        "qualificacao": "Sócio-Administrador",
+        "principal": true
+      },
+      {
+        "nome": "Simone Rosa de Oliveira",
+        "cpfMascarado": "***.935.771-**",
+        "qualificacao": "Sócio",
+        "principal": false
+      }
+    ],
+    "contatos": [
+      {
+        "tipo": "TELEFONE_FIXO",
+        "valor": "(64) 3441-3112",
+        "principal": true
+      },
+      {
+        "tipo": "EMAIL",
+        "valor": "paratiimoveis@hotmail.com",
+        "principal": true
+      }
+    ],
+    "status": "PESQUISADO",
+    "fonteInformacao": "Receita Federal (BrasilAPI) + site oficial",
+    "dataColeta": "2026-08-26",
+    "observacoes": "Mais de 3 décadas de atuação no mercado imobiliário de Catalão.",
+    "criadoEm": "2026-08-26T00:00:00-03:00",
+    "atualizadoEm": "2026-08-26T00:00:00-03:00",
+    "historicoStatus": [
+      {
+        "status": "PESQUISADO",
+        "data": "2026-08-26",
+        "responsavel": "pesquisa automatizada",
+        "observacao": "Registro inicial carregado na base."
+      }
+    ]
+  },
+  {
+    "id": "prt-064",
+    "municipio": "Catalão",
+    "uf": "GO",
+    "setor": "IMOBILIARIA",
+    "nomeFantasia": "Ribeiro e Bones Soluções Imobiliárias (Attitude Imóveis)",
+    "razaoSocial": null,
+    "cnpj": null,
+    "situacaoCadastral": null,
+    "endereco": {
+      "logradouro": "Rua Americano do Brasil",
+      "numero": "111",
+      "complemento": null,
+      "bairro": "Centro",
+      "cep": null
+    },
+    "site": "https://www.imoveisattitude.com.br",
+    "geolocalizacao": {
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rua%20Americano%20do%20Brasil%2C%20111%2C%20Centro%2C%20Catal%C3%A3o",
+      "latitude": null,
+      "longitude": null
+    },
+    "titulares": [],
+    "contatos": [
+      {
+        "tipo": "WHATSAPP",
+        "valor": "(64) 99609-6040",
+        "principal": true
+      },
+      {
+        "tipo": "TELEFONE_FIXO",
+        "valor": "(64) 3040-6040",
+        "principal": true
+      }
+    ],
+    "status": "PESQUISADO",
+    "fonteInformacao": "Diretório local + busca web",
+    "dataColeta": "2026-08-26",
+    "observacoes": "CRECI 38.330. Opera com a marca 'Attitude Imóveis'. CNPJ não localizado nas fontes públicas consultadas.",
+    "criadoEm": "2026-08-26T00:00:00-03:00",
+    "atualizadoEm": "2026-08-26T00:00:00-03:00",
+    "historicoStatus": [
+      {
+        "status": "PESQUISADO",
+        "data": "2026-08-26",
+        "responsavel": "pesquisa automatizada",
+        "observacao": "Registro inicial carregado na base."
+      }
+    ]
+  },
+  {
+    "id": "prt-065",
+    "municipio": "Catalão",
+    "uf": "GO",
+    "setor": "IRRIGACAO",
+    "nomeFantasia": "Pivot Equipamentos Agrícolas e Irrigação (filial Catalão)",
+    "razaoSocial": "Pivot Equipamentos Agrícolas e Irrigação S.A.",
+    "cnpj": "33.302.019/0025-19",
+    "situacaoCadastral": "ATIVA",
+    "endereco": {
+      "logradouro": "Avenida Doutor Lamartine Pinto de Avelar",
+      "numero": "3405",
+      "complemento": null,
+      "bairro": "Loteamento Copacabana",
+      "cep": "75705-291"
+    },
+    "site": null,
+    "geolocalizacao": {
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Avenida%20Doutor%20Lamartine%20Pinto%20de%20Avelar%2C%203405%2C%20Loteamento%20Copacabana%2C%20Catal%C3%A3o",
+      "latitude": null,
+      "longitude": null
+    },
+    "titulares": [
+      {
+        "nome": "Fabio Euclides Borgonhone",
+        "cpfMascarado": "***.895.119-**",
+        "qualificacao": "Diretor",
+        "principal": true
+      },
+      {
+        "nome": "João Carlos Obici",
+        "cpfMascarado": "***.146.449-**",
+        "qualificacao": "Diretor",
+        "principal": false
+      }
+    ],
+    "contatos": [
+      {
+        "tipo": "TELEFONE_FIXO",
+        "valor": "(62) 3018-3039",
+        "principal": true
+      }
+    ],
+    "status": "PESQUISADO",
+    "fonteInformacao": "Receita Federal (BrasilAPI) + busca web",
+    "dataColeta": "2026-08-26",
+    "observacoes": "Mesmo grupo já cadastrado em Unaí, Formosa e Cristalina; concessionária Case IH e sistemas Lindsay de irrigação.",
+    "criadoEm": "2026-08-26T00:00:00-03:00",
+    "atualizadoEm": "2026-08-26T00:00:00-03:00",
+    "historicoStatus": [
+      {
+        "status": "PESQUISADO",
+        "data": "2026-08-26",
+        "responsavel": "pesquisa automatizada",
+        "observacao": "Registro inicial carregado na base."
+      }
+    ]
+  },
+  {
+    "id": "prt-066",
+    "municipio": "Catalão",
+    "uf": "GO",
+    "setor": "LATICINIOS",
+    "nomeFantasia": "COACAL",
+    "razaoSocial": "Cooperativa Agropecuária de Catalão - COACAL",
+    "cnpj": "01.320.951/0001-00",
+    "situacaoCadastral": "ATIVA",
+    "endereco": {
+      "logradouro": "Rua Moisés Santana",
+      "numero": "394",
+      "complemento": null,
+      "bairro": "São João",
+      "cep": "75703-060"
+    },
+    "site": "http://www.coacal.com.br",
+    "geolocalizacao": {
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rua%20Mois%C3%A9s%20Santana%2C%20394%2C%20S%C3%A3o%20Jo%C3%A3o%2C%20Catal%C3%A3o",
+      "latitude": null,
+      "longitude": null
+    },
+    "titulares": [
+      {
+        "nome": "Wender Antonio Ferreira",
+        "cpfMascarado": "***.100.841-**",
+        "qualificacao": "Presidente",
+        "principal": true
+      }
+    ],
+    "contatos": [
+      {
+        "tipo": "TELEFONE_FIXO",
+        "valor": "(64) 3441-2288",
+        "principal": true
+      }
+    ],
+    "status": "PESQUISADO",
+    "fonteInformacao": "Receita Federal (BrasilAPI) + site oficial",
+    "dataColeta": "2026-08-26",
+    "observacoes": "Fundada em 1964 originalmente como 'Laticínios Vereda'. CNAE oficial 'Preparação do leite'. Produz leite pasteurizado, queijo, manteiga, iogurte e doce de leite. Também opera loja agropecuária e posto de combustível sob o mesmo grupo. A unidade de armazém/silo da cooperativa (CNPJ 01.320.951/0007-04) está com situação SUSPENSA — não incluída no segmento Silos/Armazéns.",
+    "criadoEm": "2026-08-26T00:00:00-03:00",
+    "atualizadoEm": "2026-08-26T00:00:00-03:00",
+    "historicoStatus": [
+      {
+        "status": "PESQUISADO",
+        "data": "2026-08-26",
+        "responsavel": "pesquisa automatizada",
+        "observacao": "Registro inicial carregado na base."
+      }
+    ]
+  },
+  {
+    "id": "prt-067",
+    "municipio": "João Pinheiro",
+    "uf": "MG",
+    "setor": "AGROPECUARIA",
+    "nomeFantasia": "Agrominas Agropecuária Minas",
+    "razaoSocial": "Agrominas Agropecuária Minas LTDA",
+    "cnpj": "71.492.664/0001-63",
+    "situacaoCadastral": "ATIVA",
+    "endereco": {
+      "logradouro": "Rua Aparício Saraiva",
+      "numero": "182",
+      "complemento": null,
+      "bairro": "Centro",
+      "cep": "38770-000"
+    },
+    "site": null,
+    "geolocalizacao": {
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rua%20Apar%C3%ADcio%20Saraiva%2C%20182%2C%20Centro%2C%20Jo%C3%A3o%20Pinheiro",
+      "latitude": null,
+      "longitude": null
+    },
+    "titulares": [
+      {
+        "nome": "Celuta Batista Horta",
+        "cpfMascarado": "***.371.366-**",
+        "qualificacao": "Sócio-Administrador",
+        "principal": true
+      },
+      {
+        "nome": "Pricila Batista Horta",
+        "cpfMascarado": "***.557.726-**",
+        "qualificacao": "Sócio-Administrador",
+        "principal": false
+      }
+    ],
+    "contatos": [
+      {
+        "tipo": "TELEFONE_FIXO",
+        "valor": "(38) 3561-1387",
+        "principal": true
+      }
+    ],
+    "status": "PESQUISADO",
+    "fonteInformacao": "Receita Federal (BrasilAPI) + busca web",
+    "dataColeta": "2026-08-26",
+    "observacoes": "CNAE oficial: comércio varejista de medicamentos veterinários (agropecuária/veterinária).",
+    "criadoEm": "2026-08-26T00:00:00-03:00",
+    "atualizadoEm": "2026-08-26T00:00:00-03:00",
+    "historicoStatus": [
+      {
+        "status": "PESQUISADO",
+        "data": "2026-08-26",
+        "responsavel": "pesquisa automatizada",
+        "observacao": "Registro inicial carregado na base."
+      }
+    ]
+  },
+  {
+    "id": "prt-068",
+    "municipio": "João Pinheiro",
+    "uf": "MG",
+    "setor": "AGROPECUARIA",
+    "nomeFantasia": "Coopatos - Loja Agropecuária João Pinheiro",
+    "razaoSocial": "Cooperativa Mista Agropecuária de Patos de Minas LTDA (filial João Pinheiro)",
+    "cnpj": "23.338.189/0004-75",
+    "situacaoCadastral": "ATIVA",
+    "endereco": {
+      "logradouro": "Rua Aparício Saraiva",
+      "numero": "119",
+      "complemento": null,
+      "bairro": "Centro",
+      "cep": "38770-000"
+    },
+    "site": null,
+    "geolocalizacao": {
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rua%20Apar%C3%ADcio%20Saraiva%2C%20119%2C%20Centro%2C%20Jo%C3%A3o%20Pinheiro",
+      "latitude": null,
+      "longitude": null
+    },
+    "titulares": [
+      {
+        "nome": "Celio Humberto Rodrigues",
+        "cpfMascarado": "***.799.746-**",
+        "qualificacao": "Presidente",
+        "principal": true
+      }
+    ],
+    "contatos": [
+      {
+        "tipo": "TELEFONE_FIXO",
+        "valor": "(34) 3818-8000",
+        "principal": true
+      }
+    ],
+    "status": "PESQUISADO",
+    "fonteInformacao": "Receita Federal (BrasilAPI) + busca web",
+    "dataColeta": "2026-08-26",
+    "observacoes": "Filial em João Pinheiro de cooperativa sediada em Patos de Minas-MG.",
+    "criadoEm": "2026-08-26T00:00:00-03:00",
+    "atualizadoEm": "2026-08-26T00:00:00-03:00",
+    "historicoStatus": [
+      {
+        "status": "PESQUISADO",
+        "data": "2026-08-26",
+        "responsavel": "pesquisa automatizada",
+        "observacao": "Registro inicial carregado na base."
+      }
+    ]
+  },
+  {
+    "id": "prt-069",
+    "municipio": "João Pinheiro",
+    "uf": "MG",
+    "setor": "IMOBILIARIA",
+    "nomeFantasia": "Imperial Imóveis",
+    "razaoSocial": "Imperial Imobiliária LTDA",
+    "cnpj": "08.228.676/0001-49",
+    "situacaoCadastral": "ATIVA",
+    "endereco": {
+      "logradouro": "Rua Antônio Carlos",
+      "numero": "383",
+      "complemento": null,
+      "bairro": "Centro",
+      "cep": "38770-000"
+    },
+    "site": null,
+    "geolocalizacao": {
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rua%20Ant%C3%B4nio%20Carlos%2C%20383%2C%20Centro%2C%20Jo%C3%A3o%20Pinheiro",
+      "latitude": null,
+      "longitude": null
+    },
+    "titulares": [
+      {
+        "nome": "Luiz Tomas Almeida",
+        "cpfMascarado": "***.222.076-**",
+        "qualificacao": "Sócio-Administrador",
+        "principal": true
+      },
+      {
+        "nome": "Valdemir Antonio da Silva",
+        "cpfMascarado": "***.250.394-**",
+        "qualificacao": "Sócio-Administrador",
+        "principal": false
+      }
+    ],
+    "contatos": [
+      {
+        "tipo": "TELEFONE_FIXO",
+        "valor": "(38) 3561-3866",
+        "principal": true
+      },
+      {
+        "tipo": "TELEFONE_CELULAR",
+        "valor": "(38) 99972-2262",
+        "principal": true
+      }
+    ],
+    "status": "PESQUISADO",
+    "fonteInformacao": "Receita Federal (BrasilAPI) + busca web",
+    "dataColeta": "2026-08-26",
+    "observacoes": "CRECI ME-PJMG0005662.",
+    "criadoEm": "2026-08-26T00:00:00-03:00",
+    "atualizadoEm": "2026-08-26T00:00:00-03:00",
+    "historicoStatus": [
+      {
+        "status": "PESQUISADO",
+        "data": "2026-08-26",
+        "responsavel": "pesquisa automatizada",
+        "observacao": "Registro inicial carregado na base."
+      }
+    ]
+  },
+  {
+    "id": "prt-070",
+    "municipio": "João Pinheiro",
+    "uf": "MG",
+    "setor": "IMOBILIARIA",
+    "nomeFantasia": "Caldeira Corretor de Imóveis",
+    "razaoSocial": null,
+    "cnpj": null,
+    "situacaoCadastral": null,
+    "endereco": {
+      "logradouro": "Rua Geraldo Rios",
+      "numero": "163",
+      "complemento": null,
+      "bairro": null,
+      "cep": "38770-000"
+    },
+    "site": null,
+    "geolocalizacao": {
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rua%20Geraldo%20Rios%2C%20163%2C%20Jo%C3%A3o%20Pinheiro",
+      "latitude": null,
+      "longitude": null
+    },
+    "titulares": [],
+    "contatos": [],
+    "status": "PESQUISADO",
+    "fonteInformacao": "Diretório local (guiaimobiliarias.com)",
+    "dataColeta": "2026-08-26",
+    "observacoes": "CNPJ não localizado nas fontes públicas consultadas — confirmar em contato direto.",
+    "criadoEm": "2026-08-26T00:00:00-03:00",
+    "atualizadoEm": "2026-08-26T00:00:00-03:00",
+    "historicoStatus": [
+      {
+        "status": "PESQUISADO",
+        "data": "2026-08-26",
+        "responsavel": "pesquisa automatizada",
+        "observacao": "Registro inicial carregado na base."
+      }
+    ]
+  },
+  {
+    "id": "prt-071",
+    "municipio": "João Pinheiro",
+    "uf": "MG",
+    "setor": "IMOBILIARIA",
+    "nomeFantasia": "Edson Araújo Corretor",
+    "razaoSocial": null,
+    "cnpj": null,
+    "situacaoCadastral": null,
+    "endereco": {
+      "logradouro": "Rua Adelmo Xavier",
+      "numero": "203",
+      "complemento": null,
+      "bairro": null,
+      "cep": null
+    },
+    "site": "https://www.edsonaraujocorretor.com.br",
+    "geolocalizacao": {
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rua%20Adelmo%20Xavier%2C%20203%2C%20Jo%C3%A3o%20Pinheiro",
+      "latitude": null,
+      "longitude": null
+    },
+    "titulares": [
+      {
+        "nome": "Edson Araújo",
+        "cpfMascarado": null,
+        "qualificacao": "Corretor (CRECI-MG 59138)",
+        "principal": true
+      }
+    ],
+    "contatos": [
+      {
+        "tipo": "TELEFONE_CELULAR",
+        "valor": "(38) 99755-1010",
+        "principal": true
+      }
+    ],
+    "status": "PESQUISADO",
+    "fonteInformacao": "Site oficial + busca web",
+    "dataColeta": "2026-08-26",
+    "observacoes": "CRECI-MG 59138 (corretor autônomo, não é sociedade com CNPJ próprio confirmado).",
+    "criadoEm": "2026-08-26T00:00:00-03:00",
+    "atualizadoEm": "2026-08-26T00:00:00-03:00",
+    "historicoStatus": [
+      {
+        "status": "PESQUISADO",
+        "data": "2026-08-26",
+        "responsavel": "pesquisa automatizada",
+        "observacao": "Registro inicial carregado na base."
+      }
+    ]
+  },
+  {
+    "id": "prt-072",
+    "municipio": "João Pinheiro",
+    "uf": "MG",
+    "setor": "IRRIGACAO",
+    "nomeFantasia": "Agrimaq - Equipamentos Irrigação",
+    "razaoSocial": null,
+    "cnpj": null,
+    "situacaoCadastral": null,
+    "endereco": {
+      "logradouro": "Avenida José Rabelo de Souza",
+      "numero": "688",
+      "complemento": null,
+      "bairro": null,
+      "cep": "38770-000"
+    },
+    "site": null,
+    "geolocalizacao": {
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Avenida%20Jos%C3%A9%20Rabelo%20de%20Souza%2C%20688%2C%20Jo%C3%A3o%20Pinheiro",
+      "latitude": null,
+      "longitude": null
+    },
+    "titulares": [],
+    "contatos": [
+      {
+        "tipo": "TELEFONE_FIXO",
+        "valor": "(38) 3561-1640",
+        "principal": true
+      }
+    ],
+    "status": "PESQUISADO",
+    "fonteInformacao": "Diretório local + busca web",
+    "dataColeta": "2026-08-26",
+    "observacoes": "CNPJ não localizado nas fontes públicas consultadas — confirmar em contato direto. Ideal Irrigação (já cadastrada em Unaí) mantém apenas ponto de atendimento em João Pinheiro, sem CNPJ próprio na cidade — não duplicado aqui.",
+    "criadoEm": "2026-08-26T00:00:00-03:00",
+    "atualizadoEm": "2026-08-26T00:00:00-03:00",
+    "historicoStatus": [
+      {
+        "status": "PESQUISADO",
+        "data": "2026-08-26",
+        "responsavel": "pesquisa automatizada",
+        "observacao": "Registro inicial carregado na base."
+      }
+    ]
+  },
+  {
+    "id": "prt-073",
+    "municipio": "João Pinheiro",
+    "uf": "MG",
+    "setor": "SILOS_ARMAZENS",
+    "nomeFantasia": "Progresso Armazenamento e Comércio de Cereais",
+    "razaoSocial": "Progresso Armazenamento e Comércio de Cereais LTDA",
+    "cnpj": "47.198.029/0001-93",
+    "situacaoCadastral": "ATIVA",
+    "endereco": {
+      "logradouro": "Rodovia MG-181, Km 172",
+      "numero": "S/N",
+      "complemento": "Fazenda Anjo da Nascente",
+      "bairro": "Zona Rural",
+      "cep": "38770-000"
+    },
+    "site": null,
+    "geolocalizacao": {
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rodovia%20MG-181%2C%20Km%20172%2C%20S/N%2C%20Zona%20Rural%2C%20Jo%C3%A3o%20Pinheiro",
+      "latitude": null,
+      "longitude": null
+    },
+    "titulares": [
+      {
+        "nome": "Rafael Furtado da Silveira",
+        "cpfMascarado": "***.961.476-**",
+        "qualificacao": "Sócio-Administrador",
+        "principal": true
+      },
+      {
+        "nome": "Francisco Glycerio de Freitas",
+        "cpfMascarado": "***.798.558-**",
+        "qualificacao": "Sócio-Administrador",
+        "principal": false
+      },
+      {
+        "nome": "Jaqueline Oliveira Lemos",
+        "cpfMascarado": "***.199.036-**",
+        "qualificacao": "Sócio-Administrador",
+        "principal": false
+      }
+    ],
+    "contatos": [
+      {
+        "tipo": "TELEFONE_CELULAR",
+        "valor": "(38) 9947-3058",
+        "principal": true
+      },
+      {
+        "tipo": "EMAIL",
+        "valor": "progressocereais@gmail.com",
+        "principal": true
+      }
+    ],
+    "status": "PESQUISADO",
+    "fonteInformacao": "Receita Federal (BrasilAPI) + busca web",
+    "dataColeta": "2026-08-26",
+    "observacoes": "Armazém de grãos de maior capacidade/tecnologia da região, inaugurado em 2022 por 3 produtores rurais. CNAE oficial: 'Armazéns gerais - emissão de warrant' — ótimo fit.",
+    "criadoEm": "2026-08-26T00:00:00-03:00",
+    "atualizadoEm": "2026-08-26T00:00:00-03:00",
+    "historicoStatus": [
+      {
+        "status": "PESQUISADO",
+        "data": "2026-08-26",
+        "responsavel": "pesquisa automatizada",
+        "observacao": "Registro inicial carregado na base."
+      }
+    ]
+  },
+  {
+    "id": "prt-074",
+    "municipio": "João Pinheiro",
+    "uf": "MG",
+    "setor": "LATICINIOS",
+    "nomeFantasia": "Laticínios Noroeste",
+    "razaoSocial": "Laticínios Noroeste LTDA",
+    "cnpj": "65.377.244/0001-33",
+    "situacaoCadastral": "ATIVA",
+    "endereco": {
+      "logradouro": "Rua Wilson de Oliveira",
+      "numero": "37-A",
+      "complemento": null,
+      "bairro": "Centro",
+      "cep": "38770-000"
+    },
+    "site": null,
+    "geolocalizacao": {
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rua%20Wilson%20de%20Oliveira%2C%2037-A%2C%20Centro%2C%20Jo%C3%A3o%20Pinheiro",
+      "latitude": null,
+      "longitude": null
+    },
+    "titulares": [
+      {
+        "nome": "Joao Carlos de Moura Couto",
+        "cpfMascarado": "***.829.996-**",
+        "qualificacao": "Sócio-Administrador",
+        "principal": true
+      },
+      {
+        "nome": "Joao Gabriel de Moura Couto",
+        "cpfMascarado": "***.232.386-**",
+        "qualificacao": "Sócio-Administrador",
+        "principal": false
+      }
+    ],
+    "contatos": [
+      {
+        "tipo": "TELEFONE_FIXO",
+        "valor": "(38) 3561-1224",
+        "principal": true
+      }
+    ],
+    "status": "PESQUISADO",
+    "fonteInformacao": "Receita Federal (BrasilAPI) + busca web",
+    "dataColeta": "2026-08-26",
+    "observacoes": "Fundada em 1991. CNAE oficial: fabricação de laticínios.",
+    "criadoEm": "2026-08-26T00:00:00-03:00",
+    "atualizadoEm": "2026-08-26T00:00:00-03:00",
+    "historicoStatus": [
+      {
+        "status": "PESQUISADO",
+        "data": "2026-08-26",
+        "responsavel": "pesquisa automatizada",
+        "observacao": "Registro inicial carregado na base."
+      }
+    ]
+  },
+  {
+    "id": "prt-075",
+    "municipio": "Cristalina",
+    "uf": "GO",
+    "setor": "LEILAO_ANIMAIS",
+    "nomeFantasia": "Mundial Leilões",
+    "razaoSocial": "Mundial Leilões LTDA",
+    "cnpj": "06.049.015/0002-01",
+    "situacaoCadastral": "ATIVA",
+    "endereco": {
+      "logradouro": "Rodovia BR 050",
+      "numero": "S/N",
+      "complemento": null,
+      "bairro": "Setor Sudoeste",
+      "cep": "73850-000"
+    },
+    "site": "https://www.mundialleiloes.com.br",
+    "geolocalizacao": {
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rodovia%20BR%20050%2C%20S/N%2C%20Setor%20Sudoeste%2C%20Cristalina",
+      "latitude": null,
+      "longitude": null
+    },
+    "titulares": [
+      {
+        "nome": "Rubens Divino Francisco de Almeida",
+        "cpfMascarado": "***.629.101-**",
+        "qualificacao": "Sócio-Administrador",
+        "principal": true
+      },
+      {
+        "nome": "Thais Veronica Ferreira de Almeida",
+        "cpfMascarado": "***.941.981-**",
+        "qualificacao": "Sócio-Administrador",
+        "principal": false
+      }
+    ],
+    "contatos": [
+      {
+        "tipo": "TELEFONE_FIXO",
+        "valor": "(64) 8107-0486",
+        "principal": true
+      }
+    ],
+    "status": "PESQUISADO",
+    "fonteInformacao": "Receita Federal (BrasilAPI) + busca web",
+    "dataColeta": "2026-08-26",
+    "observacoes": "Filial do mesmo grupo que opera em Catalão-GO (mesma matriz/sócios); atua com leilões de gado de corte na região.",
+    "criadoEm": "2026-08-26T00:00:00-03:00",
+    "atualizadoEm": "2026-08-26T00:00:00-03:00",
+    "historicoStatus": [
+      {
+        "status": "PESQUISADO",
+        "data": "2026-08-26",
+        "responsavel": "pesquisa automatizada",
+        "observacao": "Registro inicial carregado na base."
+      }
+    ]
+  },
+  {
+    "id": "prt-076",
+    "municipio": "Catalão",
+    "uf": "GO",
+    "setor": "LEILAO_ANIMAIS",
+    "nomeFantasia": "Mundial Leilões",
+    "razaoSocial": "Mundial Leilões LTDA",
+    "cnpj": "06.049.015/0001-20",
+    "situacaoCadastral": "ATIVA",
+    "endereco": {
+      "logradouro": "GO 506",
+      "numero": "S/N",
+      "complemento": null,
+      "bairro": "Zona Rural",
+      "cep": "75701-010"
+    },
+    "site": "https://www.mundialleiloes.com.br",
+    "geolocalizacao": {
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=GO%20506%2C%20S/N%2C%20Zona%20Rural%2C%20Catal%C3%A3o",
+      "latitude": null,
+      "longitude": null
+    },
+    "titulares": [
+      {
+        "nome": "Rubens Divino Francisco de Almeida",
+        "cpfMascarado": "***.629.101-**",
+        "qualificacao": "Sócio-Administrador",
+        "principal": true
+      },
+      {
+        "nome": "Thais Veronica Ferreira de Almeida",
+        "cpfMascarado": "***.941.981-**",
+        "qualificacao": "Sócio-Administrador",
+        "principal": false
+      }
+    ],
+    "contatos": [
+      {
+        "tipo": "TELEFONE_FIXO",
+        "valor": "(64) 8105-0521",
+        "principal": true
+      }
+    ],
+    "status": "PESQUISADO",
+    "fonteInformacao": "Receita Federal (BrasilAPI) + busca web",
+    "dataColeta": "2026-08-26",
+    "observacoes": "Matriz/unidade em Catalão do mesmo grupo que opera a filial de Cristalina-GO.",
+    "criadoEm": "2026-08-26T00:00:00-03:00",
+    "atualizadoEm": "2026-08-26T00:00:00-03:00",
+    "historicoStatus": [
+      {
+        "status": "PESQUISADO",
+        "data": "2026-08-26",
+        "responsavel": "pesquisa automatizada",
+        "observacao": "Registro inicial carregado na base."
+      }
+    ]
+  },
+  {
+    "id": "prt-077",
+    "municipio": "Luziânia",
+    "uf": "GO",
+    "setor": "AGROPECUARIA",
+    "nomeFantasia": "Armazém do Criador",
+    "razaoSocial": "A.C Comercial de Produtos Agropecuários LTDA",
+    "cnpj": "04.526.987/0001-33",
+    "situacaoCadastral": "ATIVA",
+    "endereco": {
+      "logradouro": "Rua Doutor Neylo Rolim",
+      "numero": "S/N",
+      "complemento": null,
+      "bairro": "Parque Alvorada I",
+      "cep": "72836-330"
+    },
+    "site": null,
+    "geolocalizacao": {
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rua%20Doutor%20Neylo%20Rolim%2C%20S/N%2C%20Parque%20Alvorada%20I%2C%20Luzi%C3%A2nia",
+      "latitude": null,
+      "longitude": null
+    },
+    "titulares": [
+      {
+        "nome": "Ana Carla Rodrigues de Sousa Lima",
+        "cpfMascarado": "***.893.281-**",
+        "qualificacao": "Sócio-Administrador",
+        "principal": true
+      }
+    ],
+    "contatos": [
+      {
+        "tipo": "TELEFONE_FIXO",
+        "valor": "(61) 3620-0767",
+        "principal": true
+      }
+    ],
+    "status": "PESQUISADO",
+    "fonteInformacao": "Receita Federal (BrasilAPI) + busca web",
+    "dataColeta": "2026-08-26",
+    "observacoes": "Apesar do nome 'Armazém', CNAE oficial é fabricação de alimentos para animais (ração) — classificado como Agropecuária, não Silos/Armazéns (que continua sem player ativo confirmado em Luziânia).",
+    "criadoEm": "2026-08-26T00:00:00-03:00",
+    "atualizadoEm": "2026-08-26T00:00:00-03:00",
+    "historicoStatus": [
+      {
+        "status": "PESQUISADO",
+        "data": "2026-08-26",
+        "responsavel": "pesquisa automatizada",
+        "observacao": "Registro inicial carregado na base."
+      }
+    ]
+  }
+]

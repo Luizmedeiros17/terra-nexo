@@ -1,0 +1,143 @@
+@if (salvo(); as b) {
+  <section class="sucesso" role="status">
+    <div class="sucesso__icone">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="9" /><path d="m8 12 3 3 5-6" />
+      </svg>
+    </div>
+    <div>
+      <h1>{{ modoEdicao() ? 'Corretor atualizado' : 'Corretor cadastrado' }}</h1>
+      <p>{{ b.nome }} @if (b.cargo) { — {{ b.cargo }} }</p>
+      <div class="sucesso__acoes">
+        <a class="btn btn--primary" [routerLink]="['/admin/corretores', b.id]">Ver corretor</a>
+        <a class="btn btn--ghost" routerLink="/admin/corretores">Voltar para a lista</a>
+      </div>
+    </div>
+  </section>
+} @else if (carregando()) {
+  <p class="estado">Carregando corretor…</p>
+} @else {
+  <header class="pagina__topo">
+    <div>
+      <nav aria-label="Você está aqui">
+        <ol class="trilha">
+          <li><a routerLink="/admin">Painel</a></li>
+          <li><a routerLink="/admin/corretores">Corretores</a></li>
+          <li><span aria-current="page">{{ modoEdicao() ? 'Editar' : 'Novo corretor' }}</span></li>
+        </ol>
+      </nav>
+      <h1>{{ modoEdicao() ? 'Editar corretor' : 'Cadastrar corretor' }}</h1>
+      <p>Membro da equipe exibido no portal público (se ativo) e disponível para atribuição de imóveis.</p>
+    </div>
+  </header>
+
+  <form class="formulario" [formGroup]="form" (ngSubmit)="salvar()" novalidate>
+    <section class="bloco">
+      <h2 class="bloco__titulo">Identificação</h2>
+
+      <div class="grade-3">
+        <div class="field" [class.is-invalid]="invalido('nome')">
+          <label for="f-nome">Nome *</label>
+          <input type="text" id="f-nome" formControlName="nome" placeholder="Nome completo" />
+          <span class="field__error">{{ invalido('nome') ? 'Informe o nome do corretor.' : '' }}</span>
+        </div>
+        <div class="field">
+          <label for="f-cargo">Cargo</label>
+          <input type="text" id="f-cargo" formControlName="cargo" placeholder="Consultor sênior" />
+        </div>
+        <div class="field">
+          <label for="f-creci">CRECI</label>
+          <input type="text" id="f-creci" formControlName="creci" placeholder="CRECI 00.000-F" />
+        </div>
+      </div>
+
+      <div class="grade-3">
+        <div class="field">
+          <label for="f-email">E-mail</label>
+          <input type="email" id="f-email" formControlName="email" />
+        </div>
+        <div class="field">
+          <label for="f-telefone">Telefone</label>
+          <input type="text" id="f-telefone" formControlName="telefone" placeholder="(00) 00000-0000" />
+        </div>
+        <div class="field">
+          <label for="f-foto">URL da foto</label>
+          <input type="text" id="f-foto" formControlName="foto" placeholder="https://…" />
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="f-bio">Bio</label>
+        <textarea id="f-bio" formControlName="bio" rows="3"></textarea>
+      </div>
+
+      <label class="marcador">
+        <input type="checkbox" formControlName="ativo" /><span>Ativo (visível no portal público)</span>
+      </label>
+    </section>
+
+    <section class="bloco">
+      <h2 class="bloco__titulo">
+        Especialidades
+        <button class="btn btn--ghost btn--sm" type="button" (click)="adicionarEspecialidade()">Adicionar</button>
+      </h2>
+
+      @if (especialidades.length === 0) {
+        <p class="vazio-lista">Nenhuma especialidade informada.</p>
+      }
+
+      <div formArrayName="especialidades" class="lista-dinamica">
+        @for (e of especialidades.controls; track $index; let i = $index) {
+          <div class="item-tag">
+            <input type="text" [formControlName]="i" placeholder="Ex.: Fazendas" />
+            <button class="remover" type="button" (click)="removerEspecialidade(i)" aria-label="Remover especialidade">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+                <path d="M6 6l12 12M18 6 6 18" />
+              </svg>
+            </button>
+          </div>
+        }
+      </div>
+    </section>
+
+    <section class="bloco">
+      <h2 class="bloco__titulo">
+        Regiões de atuação
+        <button class="btn btn--ghost btn--sm" type="button" (click)="adicionarRegiao()">Adicionar</button>
+      </h2>
+
+      @if (regioes.length === 0) {
+        <p class="vazio-lista">Nenhuma região informada.</p>
+      }
+
+      <div formArrayName="regioes" class="lista-dinamica">
+        @for (r of regioes.controls; track $index; let i = $index) {
+          <div class="item-tag">
+            <input type="text" [formControlName]="i" list="cidades-projeto-corretor" placeholder="Cidade" />
+            <datalist id="cidades-projeto-corretor">
+              @for (c of REGIOES; track c) {
+                <option [value]="c"></option>
+              }
+            </datalist>
+            <button class="remover" type="button" (click)="removerRegiao(i)" aria-label="Remover região">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+                <path d="M6 6l12 12M18 6 6 18" />
+              </svg>
+            </button>
+          </div>
+        }
+      </div>
+    </section>
+
+    @if (erro()) {
+      <p class="erro" role="alert">{{ erro() }}</p>
+    }
+
+    <footer class="acoes">
+      <a class="btn btn--ghost" routerLink="/admin/corretores">Cancelar</a>
+      <button class="btn btn--primary" type="submit" [disabled]="salvando()">
+        {{ salvando() ? 'Salvando…' : (modoEdicao() ? 'Salvar alterações' : 'Cadastrar corretor') }}
+      </button>
+    </footer>
+  </form>
+}

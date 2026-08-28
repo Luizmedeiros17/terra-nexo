@@ -1,0 +1,277 @@
+<form class="filters" (submit)="$event.preventDefault()" aria-label="Filtrar imóveis">
+  <div class="filters__head">
+    <h2>Filtros</h2>
+    <button type="button" class="filters__limpar" (click)="limpou.emit()">Limpar tudo</button>
+  </div>
+
+  <fieldset>
+    <legend>Palavra-chave</legend>
+    <div class="field">
+      <label class="sr-only" for="f-q">Bairro, cidade, cultura ou característica</label>
+      <input
+        type="search"
+        id="f-q"
+        name="q"
+        placeholder="Ex.: fazenda soja, Jardins, piscina"
+        [value]="filtros().q ?? ''"
+        (change)="definirTexto('q', $event)"
+      />
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Categoria</legend>
+    <div class="chips">
+      @for (c of categorias(); track c.valor) {
+        <label class="chip">
+          <input
+            type="radio"
+            name="categoria"
+            [checked]="temValor('categoria', c.valor)"
+            (click)="selecionarUnico('categoria', c.valor)"
+          />
+          <span>{{ c.rotulo }} <small>{{ c.quantidade }}</small></span>
+        </label>
+      }
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Finalidade</legend>
+    <div class="chips">
+      @for (f of finalidades(); track f.valor) {
+        <label class="chip">
+          <input
+            type="radio"
+            name="finalidade"
+            [checked]="temValor('finalidade', f.valor)"
+            (click)="selecionarUnico('finalidade', f.valor)"
+          />
+          <span>{{ f.rotulo }} <small>{{ f.quantidade }}</small></span>
+        </label>
+      }
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Tipo de imóvel</legend>
+    <div class="chips">
+      @for (t of tipos(); track t.valor) {
+        <label class="chip">
+          <input
+            type="checkbox"
+            [checked]="temValor('tipo', t.valor)"
+            (change)="alternarLista('tipo', t.valor)"
+          />
+          <span>{{ t.rotulo }} <small>{{ t.quantidade }}</small></span>
+        </label>
+      }
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Município</legend>
+    <div class="chips chips--scroll">
+      @for (m of municipios(); track m.valor) {
+        <label class="chip">
+          <input
+            type="radio"
+            name="municipio"
+            [checked]="temValor('municipio', m.valor)"
+            (click)="selecionarUnico('municipio', m.valor)"
+          />
+          <span>{{ m.rotulo }} <small>{{ m.quantidade }}</small></span>
+        </label>
+      }
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Faixa de preço (R$)</legend>
+    <div class="dupla">
+      <div class="field">
+        <label for="f-preco-min">Mínimo</label>
+        <input type="number" id="f-preco-min" min="0" step="10000" placeholder="0"
+               [value]="numero('precoMin') ?? ''" (change)="definirNumero('precoMin', $event)" />
+      </div>
+      <div class="field">
+        <label for="f-preco-max">Máximo</label>
+        <input type="number" id="f-preco-max" min="0" step="10000" placeholder="Sem limite"
+               [value]="numero('precoMax') ?? ''" (change)="definirNumero('precoMax', $event)" />
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Dormitórios (mínimo)</legend>
+    <div class="chips">
+      @for (n of QUANTIDADES; track n) {
+        <label class="chip">
+          <input type="radio" name="dormitorios" [checked]="numero('dormitorios') === n"
+                 (click)="definir('dormitorios', numero('dormitorios') === n ? null : n)" />
+          <span>{{ n }}+</span>
+        </label>
+      }
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Vagas (mínimo)</legend>
+    <div class="chips">
+      @for (n of QUANTIDADES; track n) {
+        <label class="chip">
+          <input type="radio" name="vagas" [checked]="numero('vagas') === n"
+                 (click)="definir('vagas', numero('vagas') === n ? null : n)" />
+          <span>{{ n }}+</span>
+        </label>
+      }
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Comodidades</legend>
+    <div class="chips">
+      @for (c of COMODIDADES; track c) {
+        <label class="chip">
+          <input type="checkbox" [checked]="temValor('caracteristica', c)"
+                 (change)="alternarLista('caracteristica', c)" />
+          <span>{{ c }}</span>
+        </label>
+      }
+    </div>
+  </fieldset>
+
+  <fieldset class="marcadores">
+    <legend>Negociação</legend>
+    <label class="marcador">
+      <input type="checkbox" [checked]="ativo('permuta')" (change)="definirBooleano('permuta', $event)" />
+      <span>Aceita permuta</span>
+    </label>
+    <label class="marcador">
+      <input type="checkbox" [checked]="ativo('financiamento')" (change)="definirBooleano('financiamento', $event)" />
+      <span>Aceita financiamento</span>
+    </label>
+  </fieldset>
+
+  <!-- ============ Filtros rurais (seção 13) ============ -->
+  <details class="rurais" [open]="mostrarRurais()">
+    <summary>
+      Filtros rurais
+      <small>área, terreno, produção, água e documentação</small>
+    </summary>
+
+    <fieldset>
+      <legend>Área total (hectares)</legend>
+      <div class="dupla">
+        <div class="field">
+          <label for="f-ha-min">Mínima</label>
+          <input type="number" id="f-ha-min" min="0" step="1" placeholder="0"
+                 [value]="numero('areaHaMin') ?? ''" (change)="definirNumero('areaHaMin', $event)" />
+        </div>
+        <div class="field">
+          <label for="f-ha-max">Máxima</label>
+          <input type="number" id="f-ha-max" min="0" step="1" placeholder="Sem limite"
+                 [value]="numero('areaHaMax') ?? ''" (change)="definirNumero('areaHaMax', $event)" />
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Tipo de terreno</legend>
+      <div class="chips">
+        @for (t of TERRENOS; track t) {
+          <label class="chip">
+            <input type="checkbox" [checked]="temValor('terreno', t)" (change)="alternarLista('terreno', t)" />
+            <span>{{ t }}</span>
+          </label>
+        }
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Atividade</legend>
+      <div class="chips">
+        @for (a of ATIVIDADES; track a) {
+          <label class="chip">
+            <input type="checkbox" [checked]="temValor('atividade', a)" (change)="alternarLista('atividade', a)" />
+            <span>{{ a }}</span>
+          </label>
+        }
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Cultura</legend>
+      <div class="chips">
+        @for (c of CULTURAS; track c) {
+          <label class="chip">
+            <input type="checkbox" [checked]="temValor('cultura', c)" (change)="alternarLista('cultura', c)" />
+            <span>{{ c }}</span>
+          </label>
+        }
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Recursos hídricos</legend>
+      <div class="chips">
+        @for (a of AGUAS; track a) {
+          <label class="chip">
+            <input type="checkbox" [checked]="temValor('agua', a)" (change)="alternarLista('agua', a)" />
+            <span>{{ a }}</span>
+          </label>
+        }
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Benfeitorias</legend>
+      <div class="chips">
+        @for (b of BENFEITORIAS; track b) {
+          <label class="chip">
+            <input type="checkbox" [checked]="temValor('benfeitoria', b)" (change)="alternarLista('benfeitoria', b)" />
+            <span>{{ b }}</span>
+          </label>
+        }
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Documentação informada</legend>
+      <div class="chips">
+        @for (d of DOCUMENTOS; track d) {
+          <label class="chip">
+            <input type="checkbox" [checked]="temValor('documentacao', d)" (change)="alternarLista('documentacao', d)" />
+            <span>{{ d }}</span>
+          </label>
+        }
+      </div>
+      <p class="nota">Informações declaradas pelo proprietário. A plataforma não realiza validação jurídica ou fundiária.</p>
+    </fieldset>
+
+    <fieldset>
+      <legend>Distância máxima do asfalto (km)</legend>
+      <div class="field">
+        <label class="sr-only" for="f-asfalto">Distância máxima do asfalto em quilômetros</label>
+        <input type="number" id="f-asfalto" min="0" step="1" placeholder="Sem limite"
+               [value]="numero('distanciaAsfaltoMax') ?? ''" (change)="definirNumero('distanciaAsfaltoMax', $event)" />
+      </div>
+    </fieldset>
+
+    <fieldset class="marcadores">
+      <legend>Infraestrutura</legend>
+      <label class="marcador">
+        <input type="checkbox" [checked]="ativo('pecuaria')" (change)="definirBooleano('pecuaria', $event)" />
+        <span>Estrutura de pecuária</span>
+      </label>
+      <label class="marcador">
+        <input type="checkbox" [checked]="ativo('irrigacao')" (change)="definirBooleano('irrigacao', $event)" />
+        <span>Área irrigada</span>
+      </label>
+      <label class="marcador">
+        <input type="checkbox" [checked]="ativo('energiaTrifasica')" (change)="definirBooleano('energiaTrifasica', $event)" />
+        <span>Energia trifásica</span>
+      </label>
+    </fieldset>
+  </details>
+</form>

@@ -1,0 +1,102 @@
+<header class="pagina__topo">
+  <div>
+    <h1>Parceiros e clientes</h1>
+    <p>{{ parceiros().length }} {{ parceiros().length === 1 ? 'registro' : 'registros' }} na listagem
+      @if (resumo(); as r) { · {{ r.total }} no total da base }.</p>
+  </div>
+  <a class="btn btn--primary btn--sm" routerLink="/admin/parceiros/novo">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+      <path d="M12 5v14M5 12h14" />
+    </svg>
+    Novo parceiro
+  </a>
+</header>
+
+@if (resumo(); as r) {
+  <section class="resumo" aria-label="Resumo por status">
+    @for (s of r.porStatus; track s.chave) {
+      @if (s.quantidade > 0) {
+        <span class="resumo__item">
+          <strong>{{ s.quantidade }}</strong>
+          {{ s.rotulo }}
+        </span>
+      }
+    }
+  </section>
+}
+
+<section class="filtros" aria-label="Filtros da base de prospecção">
+  <div class="field">
+    <label for="fp-q">Buscar</label>
+    <input type="search" id="fp-q" [value]="valorDe('q')" (change)="aoDigitar($event)"
+           placeholder="Empresa, razão social ou CNPJ" />
+  </div>
+
+  <div class="field">
+    <label for="fp-cidade">Cidade</label>
+    <select id="fp-cidade" [value]="valorDe('cidade')" (change)="aoSelecionar('cidade', $event)">
+      @for (c of CIDADES; track c.valor) {
+        <option [value]="c.valor">{{ c.rotulo }}</option>
+      }
+    </select>
+  </div>
+
+  <div class="field">
+    <label for="fp-setor">Setor</label>
+    <select id="fp-setor" [value]="valorDe('setor')" (change)="aoSelecionar('setor', $event)">
+      @for (s of SETORES; track s.valor) {
+        <option [value]="s.valor">{{ s.rotulo }}</option>
+      }
+    </select>
+  </div>
+
+  <div class="field">
+    <label for="fp-status">Status</label>
+    <select id="fp-status" [value]="valorDe('status')" (change)="aoSelecionar('status', $event)">
+      @for (s of STATUS; track s.valor) {
+        <option [value]="s.valor">{{ s.rotulo }}</option>
+      }
+    </select>
+  </div>
+
+  <button class="btn btn--ghost btn--sm" type="button" (click)="limpar()">Limpar</button>
+</section>
+
+@if (carregando()) {
+  <p class="estado">Carregando parceiros…</p>
+} @else if (parceiros().length === 0) {
+  <p class="estado">Nenhum registro encontrado com esses filtros.</p>
+} @else {
+  <div class="tabela-rolagem">
+    <table class="tabela">
+      <caption class="sr-only">Base de prospecção de clientes e parceiros</caption>
+      <thead>
+        <tr>
+          <th scope="col">Empresa</th>
+          <th scope="col">Setor</th>
+          <th scope="col">Cidade</th>
+          <th scope="col">Titular</th>
+          <th scope="col">Contato</th>
+          <th scope="col">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (p of parceiros(); track p.id) {
+          <tr>
+            <td>
+              <a [routerLink]="['/admin/parceiros', p.id]">{{ p.nomeFantasia }}</a>
+              @if (p.cnpj) { <small>{{ p.cnpj }}</small> }
+            </td>
+            <td><span class="pilula">{{ p.setorRotulo }}</span></td>
+            <td>{{ p.municipio }}-{{ p.uf }}</td>
+            <td>{{ p.titularPrincipal ?? '—' }}</td>
+            <td>{{ contatoPrincipal(p) }}</td>
+            <td>
+              <span class="status-parceiro" [attr.data-status]="p.status">{{ p.statusRotulo }}</span>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+}

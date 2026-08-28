@@ -1,0 +1,78 @@
+@if (lead(); as l) {
+  <a class="voltar" routerLink="/admin/leads">← Voltar para a listagem</a>
+
+  <header class="pagina__topo">
+    <div>
+      <h1>{{ l.nome }}</h1>
+      <p>
+        <span class="pilula">{{ l.origemRotulo }}</span>
+        Protocolo {{ l.protocolo }}
+        · recebido em {{ l.criadoEm | date: 'dd/MM/yyyy HH:mm' }}
+      </p>
+    </div>
+    <div class="cabecalho__acoes">
+      <span class="status-lead status-lead--lg" [attr.data-etapa]="l.etapa">{{ l.etapaRotulo }}</span>
+      <a class="btn btn--ghost btn--sm" [routerLink]="['/admin/leads', l.id, 'editar']">Editar</a>
+      <button class="btn btn--ghost btn--sm btn--perigo" type="button" (click)="excluir()" [disabled]="excluindo()">
+        {{ excluindo() ? 'Excluindo…' : 'Excluir' }}
+      </button>
+    </div>
+  </header>
+
+  <div class="grade">
+    <section class="painel">
+      <h2>Dados de contato</h2>
+      <dl class="ficha">
+        <div><dt>E-mail</dt><dd>{{ l.email }}</dd></div>
+        <div><dt>Telefone</dt><dd>{{ l.telefone }}</dd></div>
+        <div><dt>Melhor horário</dt><dd>{{ l.melhorHorario ?? '—' }}</dd></div>
+        <div><dt>Imóvel de interesse</dt><dd>{{ l.imovelCodigo ?? '—' }}</dd></div>
+        <div><dt>Responsável</dt><dd>{{ l.responsavel ?? 'não atribuído' }}</dd></div>
+        <div><dt>Consentimento (LGPD)</dt><dd>{{ l.consentimento ? 'Aceito' : 'Não registrado' }}</dd></div>
+      </dl>
+
+      @if (l.mensagem) {
+        <h3>Mensagem</h3>
+        <p class="observacoes">{{ l.mensagem }}</p>
+      }
+
+      @if (l.paginaOrigem || l.utmSource) {
+        <h3>Rastreamento</h3>
+        <dl class="ficha">
+          <div><dt>Página de origem</dt><dd>{{ l.paginaOrigem ?? '—' }}</dd></div>
+          <div><dt>UTM Source</dt><dd>{{ l.utmSource ?? '—' }}</dd></div>
+          <div><dt>UTM Medium</dt><dd>{{ l.utmMedium ?? '—' }}</dd></div>
+          <div><dt>UTM Campaign</dt><dd>{{ l.utmCampaign ?? '—' }}</dd></div>
+        </dl>
+      }
+    </section>
+
+    <section class="painel">
+      <h2>Atualizar etapa do funil</h2>
+      <form [formGroup]="form" (ngSubmit)="atualizar()" class="form-status">
+        <div class="field" [class.is-invalid]="invalido('etapa')">
+          <label for="ld-etapa">Nova etapa *</label>
+          <select id="ld-etapa" formControlName="etapa">
+            <option value="" disabled>Selecione…</option>
+            @for (e of ETAPAS; track e.valor) {
+              <option [value]="e.valor">{{ e.rotulo }}</option>
+            }
+          </select>
+          <span class="field__error">{{ invalido('etapa') ? 'Selecione a nova etapa.' : '' }}</span>
+        </div>
+        <div class="field">
+          <label for="ld-responsavel">Responsável</label>
+          <input type="text" id="ld-responsavel" formControlName="responsavel" placeholder="Nome do corretor" />
+        </div>
+        @if (erroSalvar()) {
+          <p class="erro">{{ erroSalvar() }}</p>
+        }
+        <button class="btn btn--primary btn--sm" type="submit" [disabled]="salvando()">
+          {{ salvando() ? 'Salvando…' : 'Atualizar' }}
+        </button>
+      </form>
+    </section>
+  </div>
+} @else {
+  <p class="estado">Carregando lead…</p>
+}

@@ -1,0 +1,12 @@
+services:
+  site:
+    build: .
+    image: terranexo-site:latest
+    container_name: terranexo-site
+    ports:
+      - "8088:80"
+    restart: unless-stopped
+    # Durante o desenvolvimento, monte os arquivos para ver as alterações sem rebuild:
+    # volumes:
+    #   - ./:/usr/share/nginx/html:ro
+    #   - ./nginx.conf:/etc/nginx/conf.d/terranexo.conf:ro

@@ -1,0 +1,40 @@
+# Dependências
+node_modules/
+.pnp
+.pnp.js
+
+# Build
+dist/
+build/
+target/
+.angular/
+*.jar
+*.war
+
+# Ambiente
+.env
+.env.local
+.env.*.local
+
+# IDE
+.idea/
+*.iml
+.vscode/*
+!.vscode/extensions.json
+.claude/
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+yarn-error.log*
+
+# Testes e cobertura
+coverage/
+.nyc_output/
+
+# Temporários
+*.tmp
+*.swp
+~$*

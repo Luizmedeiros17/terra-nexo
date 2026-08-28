@@ -1,0 +1,49 @@
+# Plataforma Terra Nexo — MVP
+# Frontend (Angular SSR) e backend (Spring Boot) em containers separados,
+# conforme a seção 29 da especificação.
+
+services:
+  backend:
+    build: ./backend
+    image: terranexo-api:latest
+    container_name: terranexo-backend
+    environment:
+      # Origens autorizadas a chamar a API diretamente (seção 21)
+      TERRANEXO_CORS_ALLOWED_ORIGINS: http://localhost:4000,http://localhost:4200
+      JAVA_OPTS: -XX:MaxRAMPercentage=70 -XX:+UseSerialGC
+    ports:
+      # Exposto apenas para inspeção e OpenAPI em desenvolvimento (http://localhost:18080/docs).
+      # O portal não usa esta porta: fala com o backend pela rede interna.
+      - "18080:8080"
+    networks:
+      - terranexo
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-fs", "http://localhost:8080/actuator/health"]
+      interval: 15s
+      timeout: 3s
+      retries: 10
+      start_period: 40s
+
+  frontend:
+    build: ./frontend
+    image: terranexo-web:latest
+    container_name: terranexo-frontend
+    environment:
+      # O SSR e o proxy /api usam a rede interna: o navegador nunca vê esta URL
+      API_URL: http://backend:8080
+      PORT: "4000"
+      # Libera o cabeçalho Host para acesso via IP da rede local (validação SSRF do @angular/ssr)
+      NG_ALLOWED_HOSTS: "localhost,10.1.0.160"
+    ports:
+      - "4000:4000"
+    depends_on:
+      backend:
+        condition: service_healthy
+    networks:
+      - terranexo
+    restart: unless-stopped
+
+networks:
+  terranexo:
+    driver: bridge

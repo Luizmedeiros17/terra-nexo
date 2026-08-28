@@ -1,0 +1,47 @@
+spring:
+  application:
+    name: terranexo-api
+  jackson:
+    default-property-inclusion: non_null
+    serialization:
+      write-dates-as-timestamps: false
+  servlet:
+    multipart:
+      max-file-size: 90MB
+      max-request-size: 90MB
+
+server:
+  port: 8080
+  compression:
+    enabled: true
+    mime-types: application/json,text/plain
+  shutdown: graceful
+
+terranexo:
+  cors:
+    # Origens do portal — sobrescrever por ambiente (TERRANEXO_CORS_ALLOWED_ORIGINS)
+    allowed-origins: http://localhost:4000,http://localhost:4200,http://localhost:8088
+  midias:
+    # Onde as fotos/vídeos enviados pelo painel ficam gravados — efêmero, como o
+    # restante da persistência do protótipo (some ao recriar o container).
+    diretorio: ${TERRANEXO_MIDIAS_DIR:/tmp/terranexo-midias}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      probes:
+        enabled: true
+
+springdoc:
+  swagger-ui:
+    path: /docs
+  api-docs:
+    path: /api-docs
+
+logging:
+  level:
+    br.com.terranexo: INFO

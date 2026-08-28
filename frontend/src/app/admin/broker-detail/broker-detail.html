@@ -1,0 +1,66 @@
+@if (corretor(); as c) {
+  <a class="voltar" routerLink="/admin/corretores">← Voltar para a listagem</a>
+
+  <header class="pagina__topo">
+    <div class="cabecalho__identidade">
+      @if (c.foto) {
+        <img [src]="c.foto" [alt]="c.nome" class="avatar" />
+      } @else {
+        <span class="avatar avatar--vazio" aria-hidden="true">{{ c.nome.charAt(0) }}</span>
+      }
+      <div>
+        <h1>{{ c.nome }}</h1>
+        <p>
+          {{ c.cargo ?? 'Corretor' }}
+          @if (c.creci) { · {{ c.creci }} }
+        </p>
+      </div>
+    </div>
+    <div class="cabecalho__acoes">
+      <span class="status-corretor status-corretor--lg" [attr.data-ativo]="c.ativo">{{ c.ativo ? 'Ativo' : 'Inativo' }}</span>
+      <a class="btn btn--ghost btn--sm" [routerLink]="['/admin/corretores', c.id, 'editar']">Editar</a>
+      <button class="btn btn--ghost btn--sm btn--perigo" type="button" (click)="excluir()" [disabled]="excluindo()">
+        {{ excluindo() ? 'Excluindo…' : 'Excluir' }}
+      </button>
+    </div>
+  </header>
+
+  <div class="grade">
+    <section class="painel">
+      <h2>Dados cadastrais</h2>
+      <dl class="ficha">
+        <div><dt>E-mail</dt><dd>{{ c.email ?? '—' }}</dd></div>
+        <div><dt>Telefone</dt><dd>{{ c.telefone ?? '—' }}</dd></div>
+        <div><dt>Imóveis sob responsabilidade</dt><dd>{{ c.imoveis }}</dd></div>
+        <div><dt>Cadastrado em</dt><dd>{{ c.criadoEm | date: 'dd/MM/yyyy' }}</dd></div>
+      </dl>
+
+      @if (c.bio) {
+        <h3>Bio</h3>
+        <p class="observacoes">{{ c.bio }}</p>
+      }
+    </section>
+
+    <section class="painel">
+      <h2>Especialidades</h2>
+      @if (c.especialidades.length === 0) {
+        <p class="estado estado--compacto">Nenhuma especialidade cadastrada.</p>
+      } @else {
+        <ul class="lista-tags">
+          @for (e of c.especialidades; track e) { <li>{{ e }}</li> }
+        </ul>
+      }
+
+      <h2>Regiões de atuação</h2>
+      @if (c.regioes.length === 0) {
+        <p class="estado estado--compacto">Nenhuma região cadastrada.</p>
+      } @else {
+        <ul class="lista-tags">
+          @for (r of c.regioes; track r) { <li>{{ r }}</li> }
+        </ul>
+      }
+    </section>
+  </div>
+} @else {
+  <p class="estado">Carregando corretor…</p>
+}

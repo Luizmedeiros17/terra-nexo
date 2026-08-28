@@ -1,0 +1,88 @@
+@if (salvo(); as l) {
+  <section class="sucesso" role="status">
+    <div class="sucesso__icone">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="9" /><path d="m8 12 3 3 5-6" />
+      </svg>
+    </div>
+    <div>
+      <h1>{{ modoEdicao() ? 'Lead atualizado' : 'Lead cadastrado' }}</h1>
+      <p>{{ l.nome }} — protocolo {{ l.protocolo }}</p>
+      <div class="sucesso__acoes">
+        <a class="btn btn--primary" [routerLink]="['/admin/leads', l.id]">Ver lead</a>
+        <a class="btn btn--ghost" routerLink="/admin/leads">Voltar para a lista</a>
+      </div>
+    </div>
+  </section>
+} @else if (carregando()) {
+  <p class="estado">Carregando lead…</p>
+} @else {
+  <header class="pagina__topo">
+    <div>
+      <nav aria-label="Você está aqui">
+        <ol class="trilha">
+          <li><a routerLink="/admin">Painel</a></li>
+          <li><a routerLink="/admin/leads">Leads</a></li>
+          <li><span aria-current="page">{{ modoEdicao() ? 'Editar' : 'Novo lead' }}</span></li>
+        </ol>
+      </nav>
+      <h1>{{ modoEdicao() ? 'Editar lead' : 'Cadastrar lead' }}</h1>
+      <p>Cadastro manual de um contato — útil para leads recebidos por telefone ou fora do portal.</p>
+    </div>
+  </header>
+
+  <form class="formulario" [formGroup]="form" (ngSubmit)="salvar()" novalidate>
+    <section class="bloco">
+      <h2 class="bloco__titulo">Dados de contato</h2>
+
+      <div class="grade-3">
+        <div class="field" [class.is-invalid]="invalido('nome')">
+          <label for="f-nome">Nome *</label>
+          <input type="text" id="f-nome" formControlName="nome" placeholder="Nome completo" />
+          <span class="field__error">{{ invalido('nome') ? 'Informe o nome.' : '' }}</span>
+        </div>
+        <div class="field" [class.is-invalid]="invalido('email')">
+          <label for="f-email">E-mail *</label>
+          <input type="email" id="f-email" formControlName="email" />
+          <span class="field__error">{{ invalido('email') ? 'Informe um e-mail válido.' : '' }}</span>
+        </div>
+        <div class="field" [class.is-invalid]="invalido('telefone')">
+          <label for="f-telefone">Telefone *</label>
+          <input type="text" id="f-telefone" formControlName="telefone" placeholder="(00) 00000-0000" />
+          <span class="field__error">{{ invalido('telefone') ? 'Informe um telefone válido.' : '' }}</span>
+        </div>
+      </div>
+
+      <div class="grade-3">
+        <div class="field">
+          <label for="f-imovel">Código do imóvel de interesse</label>
+          <input type="text" id="f-imovel" formControlName="imovelCodigo" placeholder="Ex.: URB-000123" />
+        </div>
+        <div class="field">
+          <label for="f-horario">Melhor horário para contato</label>
+          <input type="text" id="f-horario" formControlName="melhorHorario" placeholder="Ex.: manhã" />
+        </div>
+        <div class="field">
+          <label for="f-responsavel">Responsável (corretor)</label>
+          <input type="text" id="f-responsavel" formControlName="responsavel" placeholder="Nome do corretor" />
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="f-mensagem">Mensagem</label>
+        <textarea id="f-mensagem" formControlName="mensagem" rows="3"></textarea>
+      </div>
+    </section>
+
+    @if (erro()) {
+      <p class="erro" role="alert">{{ erro() }}</p>
+    }
+
+    <footer class="acoes">
+      <a class="btn btn--ghost" routerLink="/admin/leads">Cancelar</a>
+      <button class="btn btn--primary" type="submit" [disabled]="salvando()">
+        {{ salvando() ? 'Salvando…' : (modoEdicao() ? 'Salvar alterações' : 'Cadastrar lead') }}
+      </button>
+    </footer>
+  </form>
+}

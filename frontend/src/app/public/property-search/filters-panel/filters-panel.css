@@ -1,0 +1,157 @@
+:host {
+  display: block;
+}
+
+.filters {
+  display: grid;
+  gap: 1.35rem;
+  padding: 1.6rem;
+  background: var(--c-surface);
+  border: 1px solid var(--c-line);
+  border-radius: var(--r-lg);
+}
+
+.filters__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.filters__head h2 {
+  font-size: var(--t-lg);
+}
+
+.filters__limpar {
+  background: none;
+  border: 0;
+  padding: 0;
+  color: var(--c-muted);
+  font-size: var(--t-xs);
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.filters__limpar:hover {
+  color: var(--c-err);
+}
+
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: .55rem;
+}
+
+legend {
+  font-size: var(--t-xs);
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--c-muted);
+  margin-bottom: .25rem;
+  padding: 0;
+}
+
+.dupla {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: .6rem;
+}
+
+.chips--scroll {
+  max-height: 190px;
+  overflow-y: auto;
+  padding-right: .3rem;
+}
+
+.chips--scroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.chips--scroll::-webkit-scrollbar-thumb {
+  background: var(--c-line-strong);
+  border-radius: 3px;
+}
+
+.marcadores {
+  gap: .5rem;
+}
+
+.marcador {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  font-size: var(--t-sm);
+  color: var(--c-ink-2);
+  cursor: pointer;
+}
+
+.marcador input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--c-brand);
+  cursor: pointer;
+}
+
+.nota {
+  font-size: var(--t-xs);
+  color: var(--c-muted);
+  line-height: 1.45;
+  margin-top: .2rem;
+}
+
+/* Bloco rural */
+.rurais {
+  border: 1px solid var(--c-rural);
+  border-radius: var(--r-md);
+  background: var(--c-rural-100);
+  overflow: hidden;
+}
+
+.rurais > summary {
+  display: flex;
+  flex-direction: column;
+  gap: .15rem;
+  padding: .9rem 1.1rem;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: var(--t-sm);
+  color: var(--c-rural);
+  list-style: none;
+  position: relative;
+}
+
+.rurais > summary::-webkit-details-marker {
+  display: none;
+}
+
+.rurais > summary small {
+  font-weight: 400;
+  font-size: var(--t-xs);
+  color: var(--c-muted);
+}
+
+.rurais > summary::after {
+  content: '+';
+  position: absolute;
+  right: 1.1rem;
+  top: .8rem;
+  font-size: 1.3rem;
+  line-height: 1;
+  color: var(--c-rural);
+  transition: transform .25s var(--ease);
+}
+
+.rurais[open] > summary::after {
+  transform: rotate(45deg);
+}
+
+.rurais fieldset {
+  padding: 0 1.1rem 1.1rem;
+}
+
+.rurais fieldset:first-of-type {
+  padding-top: .3rem;
+}

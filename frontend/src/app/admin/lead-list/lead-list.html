@@ -1,0 +1,79 @@
+<header class="pagina__topo">
+  <div>
+    <h1>Leads</h1>
+    <p>{{ leads().length }} {{ leads().length === 1 ? 'lead' : 'leads' }} na listagem.</p>
+  </div>
+  <a class="btn btn--primary btn--sm" routerLink="/admin/leads/novo">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+      <path d="M12 5v14M5 12h14" />
+    </svg>
+    Novo lead
+  </a>
+</header>
+
+<section class="filtros" aria-label="Filtros do funil de leads">
+  <div class="field">
+    <label for="fl-q">Buscar</label>
+    <input type="search" id="fl-q" [value]="valorDe('q')" (change)="aoDigitar($event)"
+           placeholder="Nome, e-mail, telefone ou protocolo" />
+  </div>
+
+  <div class="field">
+    <label for="fl-etapa">Etapa</label>
+    <select id="fl-etapa" [value]="valorDe('etapa')" (change)="aoSelecionar('etapa', $event)">
+      @for (e of ETAPAS; track e.valor) {
+        <option [value]="e.valor">{{ e.rotulo }}</option>
+      }
+    </select>
+  </div>
+
+  <div class="field">
+    <label for="fl-origem">Origem</label>
+    <select id="fl-origem" [value]="valorDe('origem')" (change)="aoSelecionar('origem', $event)">
+      @for (o of ORIGENS; track o.valor) {
+        <option [value]="o.valor">{{ o.rotulo }}</option>
+      }
+    </select>
+  </div>
+
+  <button class="btn btn--ghost btn--sm" type="button" (click)="limpar()">Limpar</button>
+</section>
+
+@if (carregando()) {
+  <p class="estado">Carregando leads…</p>
+} @else if (leads().length === 0) {
+  <p class="estado">Nenhum lead encontrado com esses filtros.</p>
+} @else {
+  <div class="tabela-rolagem">
+    <table class="tabela">
+      <caption class="sr-only">Funil de leads</caption>
+      <thead>
+        <tr>
+          <th scope="col">Protocolo</th>
+          <th scope="col">Nome</th>
+          <th scope="col">Contato</th>
+          <th scope="col">Origem</th>
+          <th scope="col">Responsável</th>
+          <th scope="col">Etapa</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (l of leads(); track l.id) {
+          <tr>
+            <td><a [routerLink]="['/admin/leads', l.id]">{{ l.protocolo }}</a></td>
+            <td>{{ l.nome }}</td>
+            <td>
+              {{ l.telefone }}
+              <small>{{ l.email }}</small>
+            </td>
+            <td><span class="pilula">{{ l.origemRotulo }}</span></td>
+            <td>{{ l.responsavel ?? '—' }}</td>
+            <td>
+              <span class="status-lead" [attr.data-etapa]="l.etapa">{{ l.etapaRotulo }}</span>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+}

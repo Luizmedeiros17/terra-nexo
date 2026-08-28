@@ -1,0 +1,852 @@
+@if (criado(); as novo) {
+  <section class="sucesso" role="status">
+    <div class="sucesso__icone">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="9" /><path d="m8 12 3 3 5-6" />
+      </svg>
+    </div>
+    <div>
+      <h1>{{ modoEdicao() ? 'Imóvel atualizado' : 'Imóvel cadastrado' }}</h1>
+      <p>
+        <strong>{{ novo.codigo }}</strong> — {{ novo.titulo }}<br />
+        Situação: {{ novo.situacao === 'PUBLICADO' ? 'publicado no portal' : 'salvo como rascunho' }}.
+      </p>
+      <div class="sucesso__acoes">
+        @if (!modoEdicao()) {
+          <a class="btn btn--primary" [routerLink]="['/admin/imoveis', novo.id, 'editar']">Adicionar fotos e vídeos</a>
+          <button class="btn btn--ghost" type="button" (click)="novoCadastro()">Cadastrar outro</button>
+        }
+        @if (novo.situacao === 'PUBLICADO') {
+          <button class="btn btn--ghost" type="button" (click)="irParaAnuncio()">Ver anúncio</button>
+        }
+        <a class="btn btn--ghost" routerLink="/admin/imoveis">Voltar para a lista</a>
+      </div>
+    </div>
+  </section>
+} @else if (carregando()) {
+  <p class="estado">Carregando imóvel…</p>
+} @else {
+  <header class="pagina__topo">
+    <div>
+      <nav aria-label="Você está aqui">
+        <ol class="trilha">
+          <li><a routerLink="/admin">Painel</a></li>
+          <li><a routerLink="/admin/imoveis">Imóveis</a></li>
+          <li><span aria-current="page">{{ modoEdicao() ? 'Editar' : 'Novo cadastro' }}</span></li>
+        </ol>
+      </nav>
+      <h1>{{ modoEdicao() ? 'Editar imóvel' : 'Cadastrar imóvel' }}</h1>
+      <p>
+        Os campos específicos mudam conforme a categoria. Salve como rascunho a
+        qualquer momento; para publicar, o cadastro precisa estar completo.
+      </p>
+    </div>
+  </header>
+
+  <form class="formulario" [formGroup]="form" (ngSubmit)="salvar('RASCUNHO')" novalidate>
+    <!-- ============ Categoria ============ -->
+    <section class="bloco">
+      <h2 class="bloco__titulo">Classificação</h2>
+
+      <div class="categoria">
+        <label class="categoria__opcao" [class.is-ativa]="!ehRural()">
+          <input type="radio" formControlName="categoria" value="URBANO" />
+          <span class="categoria__icone">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M3 21V9l6-4v16" /><path d="M9 21V11l6-3v13" /><path d="M15 21V10l6 3v8" /><path d="M2 21h20" />
+            </svg>
+          </span>
+          <span>
+            <strong>Urbano</strong>
+            <small>Apartamento, casa, laje, terreno</small>
+          </span>
+        </label>
+
+        <label class="categoria__opcao categoria__opcao--rural" [class.is-ativa]="ehRural()">
+          <input type="radio" formControlName="categoria" value="RURAL" />
+          <span class="categoria__icone">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M2 20h20" /><path d="M3 20c1.6-5.5 4.3-8.2 8-8.2s6.4 2.7 8 8.2" /><path d="M11 11.8V4" /><path d="M11 6c2.2 0 3.8-1.1 4.4-2.7-2.2 0-3.8.9-4.4 2.7Z" />
+            </svg>
+          </span>
+          <span>
+            <strong>Rural</strong>
+            <small>Fazenda, sítio, chácara, área produtiva</small>
+          </span>
+        </label>
+      </div>
+
+      <div class="grade-3">
+        <div class="field" [class.is-invalid]="invalido('tipo')">
+          <label for="f-tipo">Tipo *</label>
+          <select id="f-tipo" formControlName="tipo">
+            @for (t of tiposDisponiveis(); track t) {
+              <option [value]="t">{{ t }}</option>
+            }
+          </select>
+          <span class="field__error">{{ invalido('tipo') ? 'Selecione o tipo do imóvel.' : '' }}</span>
+        </div>
+
+        <div class="field" [class.is-invalid]="invalido('finalidade')">
+          <label for="f-finalidade">Finalidade *</label>
+          <select id="f-finalidade" formControlName="finalidade">
+            <option value="VENDA">Venda</option>
+            <option value="LOCACAO">Locação</option>
+            <option value="VENDA_LOCACAO">Venda ou locação</option>
+            @if (ehRural()) {
+              <option value="ARRENDAMENTO">Arrendamento rural</option>
+            }
+          </select>
+          <span class="field__error">{{ invalido('finalidade') ? 'Selecione a finalidade.' : '' }}</span>
+        </div>
+
+        <div class="field">
+          <label for="f-corretor">Corretor responsável</label>
+          <select id="f-corretor" formControlName="corretorSlug">
+            @for (c of CORRETORES(); track c.slug) {
+              <option [value]="c.slug">{{ c.nome }}</option>
+            }
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Apresentação ============ -->
+    <section class="bloco">
+      <h2 class="bloco__titulo">Apresentação</h2>
+
+      <div class="field" [class.is-invalid]="invalido('titulo')">
+        <label for="f-titulo">Título do anúncio *</label>
+        <input type="text" id="f-titulo" formControlName="titulo"
+               [placeholder]="ehRural() ? 'Ex.: Fazenda de 120 hectares com sede e curral em Paracatu' : 'Ex.: Apartamento reformado com varanda no Centro de Unaí'" />
+        <span class="field__error">{{ invalido('titulo') ? 'Informe o título do anúncio.' : '' }}</span>
+      </div>
+
+      <div class="field">
+        <label for="f-chamada">Chamada curta</label>
+        <input type="text" id="f-chamada" formControlName="chamada"
+               placeholder="Uma frase que resume o diferencial do imóvel" />
+      </div>
+
+      <div class="field">
+        <label for="f-descricao">Descrição completa</label>
+        <textarea id="f-descricao" formControlName="descricao" rows="5"
+                  placeholder="Descreva o imóvel, o entorno e o que o diferencia. Obrigatório para publicar."></textarea>
+      </div>
+
+    </section>
+
+    <!-- ============ Galeria de fotos e vídeos ============ -->
+    <section class="bloco">
+      <h2 class="bloco__titulo">
+        Fotos e vídeos
+        @if (imovelId()) {
+          <label class="btn btn--ghost btn--sm upload-botao">
+            {{ enviandoMidia() ? 'Enviando…' : 'Enviar arquivos' }}
+            <input type="file" multiple accept="image/jpeg,image/png,image/webp,image/gif,video/mp4,video/webm,video/quicktime"
+                   [disabled]="enviandoMidia()" (change)="aoSelecionarArquivos($event)" />
+          </label>
+        }
+      </h2>
+
+      @if (!imovelId()) {
+        <p class="ajuda">
+          Salve o imóvel (mesmo como rascunho) para habilitar o envio de fotos e vídeos.
+        </p>
+      } @else {
+        <p class="ajuda">
+          Fotos: JPEG/PNG/WEBP/GIF, até 12MB. Vídeos: MP4/WEBM/MOV, até 80MB.
+          A primeira fotografia enviada vira a capa do anúncio — você pode trocar depois.
+        </p>
+
+        @if (erroMidia()) {
+          <p class="erro" role="alert">{{ erroMidia() }}</p>
+        }
+
+        @if (midias().length === 0) {
+          <p class="vazio-lista">Nenhuma foto ou vídeo enviado ainda.</p>
+        } @else {
+          <div class="galeria-midia">
+            @for (m of midias(); track m.ordem) {
+              <div class="midia-item">
+                @if (m.tipo === 'FOTO') {
+                  <img [src]="m.url" [alt]="m.textoAlternativo ?? ''" />
+                } @else {
+                  <video [src]="m.url" controls preload="metadata"></video>
+                }
+                @if (m.capa) {
+                  <span class="midia-item__capa">Capa</span>
+                }
+                <div class="midia-item__acoes">
+                  <button type="button" class="btn btn--ghost btn--sm" (click)="moverMidia(m.ordem, 'cima')" title="Mover para trás">←</button>
+                  <button type="button" class="btn btn--ghost btn--sm" (click)="moverMidia(m.ordem, 'baixo')" title="Mover para frente">→</button>
+                  @if (m.tipo === 'FOTO' && !m.capa) {
+                    <button type="button" class="btn btn--ghost btn--sm" (click)="definirCapaMidia(m.ordem)">Definir capa</button>
+                  }
+                  <button type="button" class="btn btn--ghost btn--sm btn--perigo" (click)="removerMidia(m.ordem)">Remover</button>
+                </div>
+              </div>
+            }
+          </div>
+        }
+      }
+    </section>
+
+    <!-- ============ Valores ============ -->
+    <section class="bloco">
+      <h2 class="bloco__titulo">Valores</h2>
+
+      <div class="grade-3">
+        <div class="field">
+          <label for="f-preco">
+            {{ form.value.finalidade === 'LOCACAO' ? 'Aluguel mensal (R$)' : 'Preço (R$)' }}
+          </label>
+          <input type="number" id="f-preco" formControlName="preco" min="0" step="1000" placeholder="0" />
+        </div>
+
+        <div class="field">
+          <label for="f-condominio">Condomínio (R$)</label>
+          <input type="number" id="f-condominio" formControlName="condominio" min="0" step="50" placeholder="0" />
+        </div>
+
+        <div class="field">
+          <label for="f-iptu">{{ ehRural() ? 'ITR (R$)' : 'IPTU (R$)' }}</label>
+          <input type="number" id="f-iptu" formControlName="iptu" min="0" step="50" placeholder="0" />
+        </div>
+
+        @if (form.value.finalidade === 'ARRENDAMENTO') {
+          <div class="field">
+            <label for="f-arrendamento">Arrendamento (R$/ha por ano)</label>
+            <input type="number" id="f-arrendamento" formControlName="arrendamentoPorHectare" min="0" step="100" />
+          </div>
+        }
+      </div>
+
+      <label class="marcador">
+        <input type="checkbox" formControlName="exibirPreco" />
+        <span>Exibir o preço no anúncio</span>
+      </label>
+
+      @if (!form.value.exibirPreco) {
+        <div class="field">
+          <label for="f-texto-preco">Texto exibido no lugar do preço</label>
+          <input type="text" id="f-texto-preco" formControlName="textoAlternativo" placeholder="Consulte-nos" />
+          <small class="ajuda">O valor continua registrado internamente (regra 24.3).</small>
+        </div>
+      }
+    </section>
+
+    <!-- ============ Áreas e ambientes ============ -->
+    <section class="bloco">
+      <h2 class="bloco__titulo">Áreas e ambientes</h2>
+
+      <div class="grade-3">
+        <div class="field" [class.is-invalid]="invalido('areaValor')">
+          <label for="f-area">Área total *</label>
+          <input type="number" id="f-area" formControlName="areaValor" min="0" step="0.1" placeholder="0" />
+          <span class="field__error">{{ invalido('areaValor') ? 'Informe a área total.' : '' }}</span>
+        </div>
+
+        <div class="field" [class.is-invalid]="invalido('areaUnidade')">
+          <label for="f-area-unidade">Unidade *</label>
+          <select id="f-area-unidade" formControlName="areaUnidade">
+            <option value="m²">metros quadrados</option>
+            <option value="ha">hectares</option>
+            <option value="alq">alqueires paulistas</option>
+          </select>
+          <small class="ajuda">O sistema converte e guarda o equivalente em m².</small>
+        </div>
+
+        @if (!ehRural()) {
+          <div class="field">
+            <label for="f-area-construida">Área construída (m²)</label>
+            <input type="number" id="f-area-construida" formControlName="areaConstruidaM2" min="0" step="1" />
+          </div>
+        }
+      </div>
+
+      <div class="grade-4">
+        <div class="field">
+          <label for="f-dorm">Dormitórios</label>
+          <input type="number" id="f-dorm" formControlName="dormitorios" min="0" />
+        </div>
+        <div class="field">
+          <label for="f-suites">Suítes</label>
+          <input type="number" id="f-suites" formControlName="suites" min="0" />
+        </div>
+        <div class="field">
+          <label for="f-banheiros">Banheiros</label>
+          <input type="number" id="f-banheiros" formControlName="banheiros" min="0" />
+        </div>
+        <div class="field">
+          <label for="f-vagas">Vagas</label>
+          <input type="number" id="f-vagas" formControlName="vagas" min="0" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Localização ============ -->
+    <section class="bloco">
+      <h2 class="bloco__titulo">Localização</h2>
+
+      <!-- O CEP puxa o endereço; os demais campos permanecem editáveis. -->
+      <div class="cep">
+        <div class="field" [class.is-invalid]="cepStatus() === 'invalido'">
+          <label for="f-cep">CEP</label>
+          <div class="cep__campo">
+            <input
+              type="text"
+              id="f-cep"
+              formControlName="cep"
+              inputmode="numeric"
+              maxlength="9"
+              autocomplete="postal-code"
+              placeholder="00000-000"
+              (input)="aoDigitarCep($event)"
+              (keydown.enter)="$event.preventDefault(); buscarCep()"
+            />
+            <button class="btn btn--ghost btn--sm" type="button" (click)="buscarCep()"
+                    [disabled]="cepStatus() === 'buscando'">
+              @if (cepStatus() === 'buscando') {
+                <span class="cep__girando" aria-hidden="true"></span>
+                Buscando…
+              } @else {
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+                  <circle cx="11" cy="11" r="7" /><path d="m20 20-3.5-3.5" />
+                </svg>
+                Buscar endereço
+              }
+            </button>
+          </div>
+          @if (cepMensagem()) {
+            <p class="cep__mensagem" [class]="'cep__mensagem--' + cepStatus()" role="status">
+              {{ cepMensagem() }}
+            </p>
+          } @else {
+            <small class="ajuda">
+              Digite o CEP para preencher o endereço automaticamente (consulta ViaCEP).
+            </small>
+          }
+        </div>
+      </div>
+
+      <div class="grade-3">
+        <div class="field" [class.is-invalid]="invalido('municipio')">
+          <label for="f-municipio">Município *</label>
+          <input type="text" id="f-municipio" formControlName="municipio" placeholder="Ex.: Unaí" />
+          <span class="field__error">{{ invalido('municipio') ? 'Informe o município.' : '' }}</span>
+        </div>
+
+        <div class="field" [class.is-invalid]="invalido('uf')">
+          <label for="f-uf">UF *</label>
+          <input type="text" id="f-uf" formControlName="uf" maxlength="2" placeholder="MG" />
+          <span class="field__error">{{ invalido('uf') ? 'Informe a UF (2 letras).' : '' }}</span>
+        </div>
+
+        <div class="field">
+          <label for="f-regiao">Região (slug editorial)</label>
+          <input type="text" id="f-regiao" formControlName="regiaoSlug" placeholder="interior-sp-sorocaba" />
+        </div>
+      </div>
+
+      @if (!ehRural()) {
+        <div class="grade-endereco">
+          <div class="field">
+            <label for="f-logradouro">Logradouro</label>
+            <input type="text" id="f-logradouro" formControlName="logradouro" autocomplete="street-address" />
+          </div>
+          <div class="field">
+            <label for="f-numero">Número</label>
+            <input type="text" id="f-numero" formControlName="numero" inputmode="numeric" placeholder="000"
+                   [attr.aria-describedby]="cepFaixa() ? 'f-numero-faixa' : null" />
+            @if (cepFaixa()) {
+              <small class="ajuda" id="f-numero-faixa">{{ cepFaixa() }}</small>
+            }
+          </div>
+          <div class="field">
+            <label for="f-complemento">Complemento</label>
+            <input type="text" id="f-complemento" formControlName="complemento" placeholder="apto, bloco, sala" />
+          </div>
+          <div class="field">
+            <label for="f-bairro">Bairro</label>
+            <input type="text" id="f-bairro" formControlName="bairro" />
+          </div>
+        </div>
+      }
+
+      <div class="grade-3">
+        <div class="field">
+          <label for="f-lat">Latitude</label>
+          <input type="number" id="f-lat" formControlName="latitude" step="0.0001" placeholder="-23.5629" />
+        </div>
+        <div class="field">
+          <label for="f-lng">Longitude</label>
+          <input type="number" id="f-lng" formControlName="longitude" step="0.0001" placeholder="-46.6683" />
+        </div>
+        <div class="field" [class.is-invalid]="invalido('exposicao')">
+          <label for="f-exposicao">Nível de exposição *</label>
+          <select id="f-exposicao" formControlName="exposicao">
+            @for (e of EXPOSICOES; track e.valor) {
+              <option [value]="e.valor">{{ e.rotulo }}</option>
+            }
+          </select>
+          <span class="field__error">{{ invalido('exposicao') ? 'Selecione o nível de exposição.' : '' }}</span>
+        </div>
+      </div>
+
+      @if (ehRural()) {
+        <p class="nota nota--rural">
+          Para imóveis rurais o padrão é publicar apenas município e região. As
+          coordenadas exatas e o perímetro permanecem privados (regra 24.5).
+        </p>
+      }
+    </section>
+
+    <!-- ============ Características ============ -->
+    <section class="bloco">
+      <h2 class="bloco__titulo">Características</h2>
+      <div class="chips">
+        @for (c of comodidades(); track c) {
+          <label class="chip">
+            <input type="checkbox" [checked]="marcado('caracteristicas', c)"
+                   (change)="alternar('caracteristicas', c)" />
+            <span>{{ c }}</span>
+          </label>
+        }
+      </div>
+    </section>
+
+    <!-- ============ Bloco urbano (seção 9) ============ -->
+    @if (!ehRural()) {
+      <section class="bloco bloco--especifico">
+        <h2 class="bloco__titulo">
+          Dados do imóvel urbano
+          <span class="bloco__selo">Urbano</span>
+        </h2>
+
+        <div class="grade-3">
+          <div class="field">
+            <label for="f-condominio-nome">Nome do condomínio</label>
+            <input type="text" id="f-condominio-nome" formControlName="condominioNome" />
+          </div>
+          <div class="field">
+            <label for="f-andar">Andar</label>
+            <input type="number" id="f-andar" formControlName="andar" min="0" />
+          </div>
+          <div class="field">
+            <label for="f-ano">Ano de construção</label>
+            <input type="number" id="f-ano" formControlName="anoConstrucao" min="1900" max="2100" />
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="f-transporte">Transporte próximo (um por linha)</label>
+          <textarea id="f-transporte" formControlName="transporteProximo" rows="2"
+                    placeholder="Estação Faria Lima — 600 m&#10;Terminal Pinheiros — 1,2 km"></textarea>
+        </div>
+
+        <div class="marcadores">
+          <label class="marcador">
+            <input type="checkbox" formControlName="mobiliado" /><span>Mobiliado</span>
+          </label>
+          <label class="marcador">
+            <input type="checkbox" formControlName="aceitaAnimais" /><span>Aceita animais</span>
+          </label>
+        </div>
+      </section>
+    }
+
+    <!-- ============ Bloco rural (seção 10) ============ -->
+    @if (ehRural()) {
+      <section class="bloco bloco--especifico bloco--rural">
+        <h2 class="bloco__titulo">
+          Dados do imóvel rural
+          <span class="bloco__selo bloco__selo--rural">Rural</span>
+        </h2>
+
+        <p class="nota nota--rural">
+          Informações declaratórias. A plataforma armazena e apresenta os dados
+          indicando a fonte, sem realizar validação jurídica ou fundiária.
+        </p>
+
+        <h3 class="bloco__subtitulo">Composição da área (hectares)</h3>
+        <div class="grade-3">
+          <div class="field">
+            <label for="f-produtiva">Área produtiva</label>
+            <input type="number" id="f-produtiva" formControlName="areaProdutivaHa" min="0" step="0.1" />
+          </div>
+          <div class="field">
+            <label for="f-pastagem">Pastagem</label>
+            <input type="number" id="f-pastagem" formControlName="areaPastagemHa" min="0" step="0.1" />
+          </div>
+          <div class="field">
+            <label for="f-cultivada">Área cultivada</label>
+            <input type="number" id="f-cultivada" formControlName="areaCultivadaHa" min="0" step="0.1" />
+          </div>
+          <div class="field">
+            <label for="f-mata">Mata</label>
+            <input type="number" id="f-mata" formControlName="areaMataHa" min="0" step="0.1" />
+          </div>
+          <div class="field">
+            <label for="f-reserva">Reserva legal informada</label>
+            <input type="number" id="f-reserva" formControlName="reservaLegalHa" min="0" step="0.1" />
+          </div>
+          <div class="field">
+            <label for="f-irrigada">Área irrigada</label>
+            <input type="number" id="f-irrigada" formControlName="areaIrrigadaHa" min="0" step="0.1" />
+          </div>
+        </div>
+
+        <h3 class="bloco__subtitulo">Terreno e solo</h3>
+        <div class="chips">
+          @for (t of TERRENOS; track t) {
+            <label class="chip">
+              <input type="checkbox" [checked]="marcado('terreno', t)" (change)="alternar('terreno', t)" />
+              <span>{{ t }}</span>
+            </label>
+          }
+        </div>
+
+        <div class="grade-2">
+          <div class="field">
+            <label for="f-solo">Solo predominante</label>
+            <input type="text" id="f-solo" formControlName="soloPredominante" placeholder="Ex.: Latossolo vermelho" />
+          </div>
+          <div class="field">
+            <label for="f-fertilidade">Fertilidade informada</label>
+            <select id="f-fertilidade" formControlName="soloFertilidade">
+              <option value="">Não informada</option>
+              <option value="Alta">Alta</option>
+              <option value="Média">Média</option>
+              <option value="Baixa">Baixa</option>
+            </select>
+          </div>
+        </div>
+
+        <h3 class="bloco__subtitulo">Atividades</h3>
+        <div class="chips">
+          @for (a of ATIVIDADES; track a) {
+            <label class="chip">
+              <input type="checkbox" [checked]="marcado('atividades', a)" (change)="alternar('atividades', a)" />
+              <span>{{ a }}</span>
+            </label>
+          }
+        </div>
+
+        <!-- Culturas -->
+        <h3 class="bloco__subtitulo">
+          Culturas
+          <button class="btn btn--ghost btn--sm" type="button" (click)="adicionarCultura()">Adicionar cultura</button>
+        </h3>
+
+        @if (culturas.length === 0) {
+          <p class="vazio-lista">Nenhuma cultura informada.</p>
+        }
+
+        <div formArrayName="culturas" class="lista-dinamica">
+          @for (c of culturas.controls; track $index; let i = $index) {
+            <fieldset [formGroupName]="i" class="item-dinamico">
+              <legend class="sr-only">Cultura {{ i + 1 }}</legend>
+              <div class="field" [class.is-invalid]="invalidoItem(culturas, i, 'nome')">
+                <label [attr.for]="'cultura-nome-' + i">Cultura *</label>
+                <input type="text" [id]="'cultura-nome-' + i" formControlName="nome" placeholder="Ex.: Soja" />
+                <span class="field__error">{{ invalidoItem(culturas, i, 'nome') ? 'Informe o nome da cultura ou remova esta linha.' : '' }}</span>
+              </div>
+              <div class="field">
+                <label [attr.for]="'cultura-cat-' + i">Categoria</label>
+                <select [id]="'cultura-cat-' + i" formControlName="categoria">
+                  @for (cat of CATEGORIAS_CULTURA; track cat) {
+                    <option [value]="cat">{{ cat }}</option>
+                  }
+                </select>
+              </div>
+              <div class="field">
+                <label [attr.for]="'cultura-area-' + i">Área (ha)</label>
+                <input type="number" [id]="'cultura-area-' + i" formControlName="areaHa" min="0" step="0.1" />
+              </div>
+              <div class="field">
+                <label [attr.for]="'cultura-safra-' + i">Safra</label>
+                <input type="text" [id]="'cultura-safra-' + i" formControlName="safra" placeholder="2025/2026" />
+              </div>
+              <div class="field">
+                <label [attr.for]="'cultura-prod-' + i">Produtividade informada</label>
+                <input type="text" [id]="'cultura-prod-' + i" formControlName="produtividade" placeholder="62 sacas/ha" />
+              </div>
+              <button class="remover" type="button" (click)="removerCultura(i)" aria-label="Remover cultura">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+                  <path d="M6 6l12 12M18 6 6 18" />
+                </svg>
+              </button>
+            </fieldset>
+          }
+        </div>
+
+        <!-- Pecuária -->
+        <h3 class="bloco__subtitulo">Pecuária</h3>
+        <div class="grade-3">
+          <div class="field">
+            <label for="f-pec-tipo">Tipo de criação</label>
+            <input type="text" id="f-pec-tipo" formControlName="pecuariaTipo" placeholder="Ex.: Gado de corte" />
+          </div>
+          <div class="field">
+            <label for="f-pec-cap">Capacidade (cabeças)</label>
+            <input type="number" id="f-pec-cap" formControlName="pecuariaCapacidade" min="0" />
+          </div>
+          <div class="field">
+            <label for="f-pec-div">Divisões de pasto</label>
+            <input type="number" id="f-pec-div" formControlName="pecuariaDivisoes" min="0" />
+          </div>
+        </div>
+        <div class="chips">
+          @for (e of ESTRUTURAS_PECUARIA; track e) {
+            <label class="chip">
+              <input type="checkbox" [checked]="marcado('pecuariaEstruturas', e)"
+                     (change)="alternar('pecuariaEstruturas', e)" />
+              <span>{{ e }}</span>
+            </label>
+          }
+        </div>
+
+        <!-- Água -->
+        <h3 class="bloco__subtitulo">Recursos hídricos</h3>
+        <div class="chips">
+          @for (a of AGUAS; track a) {
+            <label class="chip">
+              <input type="checkbox" [checked]="marcado('recursosHidricos', a)"
+                     (change)="alternar('recursosHidricos', a)" />
+              <span>{{ a }}</span>
+            </label>
+          }
+        </div>
+
+        <!-- Benfeitorias -->
+        <h3 class="bloco__subtitulo">
+          Benfeitorias
+          <button class="btn btn--ghost btn--sm" type="button" (click)="adicionarBenfeitoria()">Adicionar benfeitoria</button>
+        </h3>
+
+        @if (benfeitorias.length === 0) {
+          <p class="vazio-lista">Nenhuma benfeitoria informada.</p>
+        }
+
+        <div formArrayName="benfeitorias" class="lista-dinamica">
+          @for (b of benfeitorias.controls; track $index; let i = $index) {
+            <fieldset [formGroupName]="i" class="item-dinamico">
+              <legend class="sr-only">Benfeitoria {{ i + 1 }}</legend>
+              <div class="field" [class.is-invalid]="invalidoItem(benfeitorias, i, 'tipo')">
+                <label [attr.for]="'benf-tipo-' + i">Tipo *</label>
+                <input type="text" [id]="'benf-tipo-' + i" formControlName="tipo" placeholder="Ex.: Casa sede" />
+                <span class="field__error">{{ invalidoItem(benfeitorias, i, 'tipo') ? 'Informe o tipo ou remova esta linha.' : '' }}</span>
+              </div>
+              <div class="field">
+                <label [attr.for]="'benf-qtd-' + i">Quantidade</label>
+                <input type="number" [id]="'benf-qtd-' + i" formControlName="quantidade" min="1" />
+              </div>
+              <div class="field">
+                <label [attr.for]="'benf-area-' + i">Área (m²)</label>
+                <input type="number" [id]="'benf-area-' + i" formControlName="areaM2" min="0" step="1" />
+              </div>
+              <div class="field">
+                <label [attr.for]="'benf-cons-' + i">Conservação</label>
+                <select [id]="'benf-cons-' + i" formControlName="conservacao">
+                  @for (c of CONSERVACAO; track c) {
+                    <option [value]="c">{{ c }}</option>
+                  }
+                </select>
+              </div>
+              <button class="remover" type="button" (click)="removerBenfeitoria(i)" aria-label="Remover benfeitoria">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+                  <path d="M6 6l12 12M18 6 6 18" />
+                </svg>
+              </button>
+            </fieldset>
+          }
+        </div>
+
+        <!-- Acesso -->
+        <h3 class="bloco__subtitulo">Infraestrutura e acesso</h3>
+        <div class="grade-4">
+          <div class="field">
+            <label for="f-acesso-tipo">Tipo de acesso</label>
+            <select id="f-acesso-tipo" formControlName="acessoTipo">
+              <option value="Asfalto">Asfalto</option>
+              <option value="Asfalto até a porteira">Asfalto até a porteira</option>
+              <option value="Estrada de terra">Estrada de terra</option>
+              <option value="Estrada de cascalho">Estrada de cascalho</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="f-dist-asfalto">Distância do asfalto (km)</label>
+            <input type="number" id="f-dist-asfalto" formControlName="distanciaAsfaltoKm" min="0" step="0.1" />
+          </div>
+          <div class="field">
+            <label for="f-dist-cidade">Distância da cidade (km)</label>
+            <input type="number" id="f-dist-cidade" formControlName="distanciaCidadeKm" min="0" step="0.1" />
+          </div>
+          <div class="field">
+            <label for="f-mun-ref">Município de referência</label>
+            <input type="text" id="f-mun-ref" formControlName="municipioReferencia" />
+          </div>
+        </div>
+
+        <div class="marcadores">
+          <label class="marcador">
+            <input type="checkbox" formControlName="acessoAnoTodo" /><span>Acesso o ano todo</span>
+          </label>
+          <label class="marcador">
+            <input type="checkbox" formControlName="energiaTrifasica" /><span>Energia trifásica</span>
+          </label>
+          <label class="marcador">
+            <input type="checkbox" formControlName="internet" /><span>Internet</span>
+          </label>
+          <label class="marcador">
+            <input type="checkbox" formControlName="sinalCelular" /><span>Sinal de celular</span>
+          </label>
+        </div>
+
+        <!-- Documentação -->
+        <h3 class="bloco__subtitulo">Documentação informada</h3>
+        <div class="marcadores">
+          <label class="marcador">
+            <input type="checkbox" formControlName="carInformado" /><span>CAR</span>
+          </label>
+          <label class="marcador">
+            <input type="checkbox" formControlName="ccirInformado" /><span>CCIR</span>
+          </label>
+          <label class="marcador">
+            <input type="checkbox" formControlName="sigefInformado" /><span>SIGEF</span>
+          </label>
+          <label class="marcador">
+            <input type="checkbox" formControlName="matriculaInformada" /><span>Matrícula</span>
+          </label>
+          <label class="marcador">
+            <input type="checkbox" formControlName="georreferenciado" /><span>Georreferenciamento</span>
+          </label>
+        </div>
+
+        <div class="grade-3">
+          <div class="field">
+            <label for="f-situacao-doc">Situação declarada</label>
+            <input type="text" id="f-situacao-doc" formControlName="situacaoDeclarada"
+                   placeholder="Ex.: documentação informada como regular" />
+          </div>
+          <div class="field">
+            <label for="f-fonte">Fonte da informação</label>
+            <input type="text" id="f-fonte" formControlName="fonteInformacao" />
+          </div>
+          <div class="field">
+            <label for="f-data-ref">Data de referência</label>
+            <input type="date" id="f-data-ref" formControlName="dataReferencia" />
+          </div>
+        </div>
+
+        <!-- Detalhamento por documento — uso interno, nunca publicado -->
+        <h4 class="bloco__subtitulo bloco__subtitulo--menor">Matrícula e CAR</h4>
+        <div class="grade-3">
+          <div class="field">
+            <label for="f-matricula-numero">Número da matrícula</label>
+            <input type="text" id="f-matricula-numero" formControlName="matriculaNumero" />
+          </div>
+          <div class="field">
+            <label for="f-car-recibo">CAR — número do recibo</label>
+            <input type="text" id="f-car-recibo" formControlName="carReciboNumero" />
+          </div>
+        </div>
+        <div class="marcadores">
+          <label class="marcador">
+            <input type="checkbox" formControlName="carDemonstrativoCompletoInformado" />
+            <span>CAR — demonstrativo completo informado</span>
+          </label>
+          <label class="marcador">
+            <input type="checkbox" formControlName="carMapaPoligonoInformado" />
+            <span>Mapa/polígono do CAR informado</span>
+          </label>
+        </div>
+
+        <h4 class="bloco__subtitulo bloco__subtitulo--menor">SIGEF, SNCR/INCRA e CNIR/CAFIR</h4>
+        <div class="grade-3">
+          <div class="field">
+            <label for="f-sigef-situacao">SIGEF — situação do georreferenciamento</label>
+            <input type="text" id="f-sigef-situacao" formControlName="sigefSituacaoGeorreferenciamento"
+                   placeholder="Ex.: certificado, em análise, não iniciado" />
+          </div>
+          <div class="field">
+            <label for="f-sncr-situacao">SNCR/INCRA — situação cadastral</label>
+            <input type="text" id="f-sncr-situacao" formControlName="sncrIncraSituacaoCadastral" />
+          </div>
+          <div class="field">
+            <label for="f-cnir-cib">CNIR/CAFIR — CIB</label>
+            <input type="text" id="f-cnir-cib" formControlName="cnirCafirCib" />
+          </div>
+        </div>
+        <div class="grade-3">
+          <div class="field">
+            <label for="f-cnir-situacao">CNIR/CAFIR — situação cadastral</label>
+            <input type="text" id="f-cnir-situacao" formControlName="cnirCafirSituacaoCadastral" />
+          </div>
+        </div>
+        <div class="marcadores">
+          <label class="marcador">
+            <input type="checkbox" formControlName="sigefPlantaMemorialDisponivel" />
+            <span>Planta/memorial disponível no SIGEF (dados públicos)</span>
+          </label>
+        </div>
+
+        <p class="nota">
+          Os números de matrícula, CAR, CCIR e os demais campos de documentação ficam em área
+          privada e nunca são publicados no portal — aqui registramos apenas quais documentos
+          existem, na busca pública.
+        </p>
+      </section>
+    }
+
+    <!-- ============ Destaques comerciais ============ -->
+    <section class="bloco">
+      <h2 class="bloco__titulo">Condições e destaque</h2>
+      <div class="marcadores">
+        <label class="marcador">
+          <input type="checkbox" formControlName="destaque" /><span>Exibir em destaque na home</span>
+        </label>
+        <label class="marcador">
+          <input type="checkbox" formControlName="exclusivo" /><span>Exclusividade</span>
+        </label>
+        <label class="marcador">
+          <input type="checkbox" formControlName="lancamento" /><span>Lançamento</span>
+        </label>
+        <label class="marcador">
+          <input type="checkbox" formControlName="oportunidade" /><span>Oportunidade</span>
+        </label>
+        <label class="marcador">
+          <input type="checkbox" formControlName="aceitaPermuta" /><span>Aceita permuta</span>
+        </label>
+        <label class="marcador">
+          <input type="checkbox" formControlName="aceitaFinanciamento" /><span>Aceita financiamento</span>
+        </label>
+      </div>
+
+      <div class="field">
+        <label for="f-proprietario">Proprietário</label>
+        <input type="text" id="f-proprietario" formControlName="proprietario"
+               placeholder="Nome do proprietário (uso interno)" />
+        <small class="ajuda">Dados do proprietário nunca são publicados (regra 24.4).</small>
+      </div>
+    </section>
+
+    @if (erro()) {
+      <p class="erro" role="alert">{{ erro() }}</p>
+    }
+
+    <!-- ============ Ações ============ -->
+    <footer class="acoes">
+      <a class="btn btn--ghost" routerLink="/admin">Cancelar</a>
+      <div class="acoes__principais">
+        <button class="btn btn--ghost" type="submit" [disabled]="salvando()">
+          {{ salvando() ? 'Salvando…' : 'Salvar rascunho' }}
+        </button>
+        <button class="btn btn--primary" type="button" (click)="salvar('PUBLICADO')" [disabled]="salvando()">
+          {{ salvando() ? 'Publicando…' : 'Publicar imóvel' }}
+        </button>
+      </div>
+    </footer>
+  </form>
+}

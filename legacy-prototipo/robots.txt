@@ -1,0 +1,14 @@
+# robots.txt — Terra Nexo
+User-agent: *
+Allow: /
+Disallow: /*?ordem=
+Disallow: /*&ordem=
+
+# Bots de IA generativa: liberados para indexação de conteúdo público
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+Sitemap: https://www.terranexo.com.br/sitemap.xml

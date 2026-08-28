@@ -1,0 +1,214 @@
+@let d = dados();
+
+<header class="pagina__topo">
+  <div>
+    <h1>Painel</h1>
+    <p>Visão geral da carteira e das pendências que precisam de ação.</p>
+  </div>
+  <div class="pagina__acoes">
+    <a class="btn btn--ghost btn--sm" routerLink="/admin/imoveis">Ver todos os imóveis</a>
+    <a class="btn btn--primary btn--sm" routerLink="/admin/imoveis/novo">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+        <path d="M12 5v14M5 12h14" />
+      </svg>
+      Cadastrar imóvel
+    </a>
+  </div>
+</header>
+
+@if (carregando()) {
+  <p class="carregando">Carregando indicadores…</p>
+} @else if (d) {
+  <!-- ============ Pendências ============ -->
+  @if (d.alertas.length) {
+    <section class="alertas" aria-label="Pendências">
+      @for (a of d.alertas; track a.mensagem) {
+        <article class="alerta" [class]="'alerta--' + a.tipo">
+          <span class="alerta__icone" aria-hidden="true">
+            @if (a.tipo === 'urgente') {
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="9" /><path d="M12 8v5M12 16.5v.01" />
+              </svg>
+            } @else if (a.tipo === 'atencao') {
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M10.3 4.3 2.6 18a2 2 0 0 0 1.7 3h15.4a2 2 0 0 0 1.7-3L13.7 4.3a2 2 0 0 0-3.4 0Z" />
+                <path d="M12 9v4M12 17v.01" />
+              </svg>
+            } @else {
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="9" /><path d="M12 11v5M12 8v.01" />
+              </svg>
+            }
+          </span>
+          <p>{{ a.mensagem }}</p>
+          <a [routerLink]="a.acaoUrl">{{ a.acaoRotulo }}</a>
+        </article>
+      }
+    </section>
+  }
+
+  <!-- ============ Indicadores ============ -->
+  <section class="kpis" aria-label="Indicadores da carteira">
+    <article class="kpi kpi--destaque">
+      <p class="kpi__rotulo">Imóveis publicados</p>
+      <p class="kpi__valor">{{ d.imoveis.publicados | number }}</p>
+      <p class="kpi__nota">de {{ d.imoveis.total | number }} cadastrados</p>
+    </article>
+
+    <article class="kpi">
+      <p class="kpi__rotulo">Valor em carteira</p>
+      <p class="kpi__valor">{{ formatarValor(d.imoveis.valorEmCarteira) }}</p>
+      <p class="kpi__nota">soma dos imóveis publicados para venda</p>
+    </article>
+
+    <article class="kpi">
+      <p class="kpi__rotulo">Leads novos</p>
+      <p class="kpi__valor">{{ d.leads.novos | number }}</p>
+      <p class="kpi__nota">{{ d.leads.semAtendimento }} sem atendimento · {{ d.leads.total }} no total</p>
+    </article>
+
+    <article class="kpi">
+      <p class="kpi__rotulo">Sem atualização</p>
+      <p class="kpi__valor">{{ d.imoveis.semAtualizacaoRecente | number }}</p>
+      <p class="kpi__nota">anúncios parados há mais de 60 dias</p>
+    </article>
+
+    <article class="kpi">
+      <p class="kpi__rotulo">Rascunhos</p>
+      <p class="kpi__valor">{{ d.imoveis.rascunhos | number }}</p>
+      <p class="kpi__nota">{{ d.imoveis.aguardandoRevisao }} aguardando revisão</p>
+    </article>
+
+    <article class="kpi">
+      <p class="kpi__rotulo">Em destaque</p>
+      <p class="kpi__valor">{{ d.imoveis.destaques | number }}</p>
+      <p class="kpi__nota">exibidos na página inicial</p>
+    </article>
+  </section>
+
+  <div class="grade">
+    <!-- ============ Composição urbano × rural ============ -->
+    <section class="cartao" aria-labelledby="tit-composicao">
+      <header class="cartao__topo">
+        <h2 id="tit-composicao">Composição da carteira</h2>
+        <span class="cartao__nota">{{ d.imoveis.total }} imóveis</span>
+      </header>
+
+      <div class="composicao">
+        <div class="composicao__barra" role="img"
+             [attr.aria-label]="d.imoveis.urbanos + ' imóveis urbanos e ' + d.imoveis.rurais + ' rurais'">
+          <span class="composicao__parte composicao__parte--urbano" [style.width.%]="composicao().urbanoPct"></span>
+          <span class="composicao__parte composicao__parte--rural" [style.width.%]="composicao().ruralPct"></span>
+        </div>
+
+        <ul class="legenda">
+          <li>
+            <span class="legenda__marca legenda__marca--urbano" aria-hidden="true"></span>
+            Urbanos
+            <strong>{{ d.imoveis.urbanos }}</strong>
+          </li>
+          <li>
+            <span class="legenda__marca legenda__marca--rural" aria-hidden="true"></span>
+            Rurais
+            <strong>{{ d.imoveis.rurais }}</strong>
+          </li>
+        </ul>
+      </div>
+
+      <h3 class="cartao__subtitulo">Por situação</h3>
+      <ul class="barras">
+        @for (s of porSituacao(); track s.chave) {
+          <li>
+            <span class="barras__rotulo">{{ s.rotulo }}</span>
+            <span class="barras__trilho">
+              <span class="barras__preenchimento" [style.width.%]="s.proporcao"></span>
+            </span>
+            <strong class="barras__valor">{{ s.quantidade }}</strong>
+          </li>
+        }
+      </ul>
+    </section>
+
+    <!-- ============ Distribuição por responsável ============ -->
+    <section class="cartao" aria-labelledby="tit-corretores">
+      <header class="cartao__topo">
+        <h2 id="tit-corretores">Carteira por corretor</h2>
+      </header>
+      <ul class="barras">
+        @for (c of porCorretor(); track c.chave) {
+          <li>
+            <span class="barras__rotulo">{{ c.rotulo }}</span>
+            <span class="barras__trilho">
+              <span class="barras__preenchimento" [style.width.%]="c.proporcao"></span>
+            </span>
+            <strong class="barras__valor">{{ c.quantidade }}</strong>
+          </li>
+        }
+      </ul>
+
+      <h3 class="cartao__subtitulo">Principais municípios</h3>
+      <ul class="barras">
+        @for (m of porMunicipio(); track m.chave) {
+          <li>
+            <span class="barras__rotulo">{{ m.rotulo }}</span>
+            <span class="barras__trilho">
+              <span class="barras__preenchimento" [style.width.%]="m.proporcao"></span>
+            </span>
+            <strong class="barras__valor">{{ m.quantidade }}</strong>
+          </li>
+        }
+      </ul>
+    </section>
+  </div>
+
+  <!-- ============ Últimos cadastros ============ -->
+  <section class="cartao" aria-labelledby="tit-ultimos">
+    <header class="cartao__topo">
+      <h2 id="tit-ultimos">Últimos cadastros</h2>
+      <a class="cartao__link" routerLink="/admin/imoveis">Ver todos</a>
+    </header>
+
+    <div class="tabela-rolagem">
+      <table class="tabela">
+        <caption class="sr-only">Imóveis atualizados recentemente</caption>
+        <thead>
+          <tr>
+            <th scope="col">Código</th>
+            <th scope="col">Imóvel</th>
+            <th scope="col">Categoria</th>
+            <th scope="col">Localização</th>
+            <th scope="col">Valor</th>
+            <th scope="col">Situação</th>
+            <th scope="col">Atualizado</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (im of d.ultimosCadastros; track im.id) {
+            <tr>
+              <td class="tabela__codigo">{{ im.codigo }}</td>
+              <td>
+                <a [routerLink]="im.url">{{ im.titulo }}</a>
+                <small>{{ im.tipo }} · {{ im.finalidadeRotulo }}</small>
+              </td>
+              <td>
+                <span class="pilula" [class.pilula--rural]="im.categoria === 'RURAL'">
+                  {{ im.categoriaRotulo }}
+                </span>
+              </td>
+              <td>{{ im.localizacao }}</td>
+              <td class="tabela__valor">{{ im.precoTexto }}{{ im.precoSufixo ?? '' }}</td>
+              <td>
+                <span class="situacao" [class.situacao--publicado]="im.situacao === 'PUBLICADO'">
+                  {{ im.situacao === 'PUBLICADO' ? 'Publicado' : im.situacao.toLowerCase() }}
+                </span>
+              </td>
+              <td class="tabela__data">{{ im.atualizadoEm }}</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </section>
+} @else {
+  <p class="carregando">Não foi possível carregar os indicadores. Verifique se a API está no ar.</p>
+}

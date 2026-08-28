@@ -1,0 +1,161 @@
+@if (salvo(); as o) {
+  <section class="sucesso" role="status">
+    <div class="sucesso__icone">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="9" /><path d="m8 12 3 3 5-6" />
+      </svg>
+    </div>
+    <div>
+      <h1>{{ modoEdicao() ? 'Proprietário atualizado' : 'Proprietário cadastrado' }}</h1>
+      <p>{{ o.nome }} — {{ o.municipio }}-{{ o.uf }}</p>
+      <div class="sucesso__acoes">
+        <a class="btn btn--primary" [routerLink]="['/admin/proprietarios', o.id]">Ver proprietário</a>
+        <a class="btn btn--ghost" routerLink="/admin/proprietarios">Voltar para a lista</a>
+      </div>
+    </div>
+  </section>
+} @else if (carregando()) {
+  <p class="estado">Carregando proprietário…</p>
+} @else {
+  <header class="pagina__topo">
+    <div>
+      <nav aria-label="Você está aqui">
+        <ol class="trilha">
+          <li><a routerLink="/admin">Painel</a></li>
+          <li><a routerLink="/admin/proprietarios">Proprietários</a></li>
+          <li><span aria-current="page">{{ modoEdicao() ? 'Editar' : 'Novo proprietário' }}</span></li>
+        </ol>
+      </nav>
+      <h1>{{ modoEdicao() ? 'Editar proprietário' : 'Cadastrar proprietário' }}</h1>
+      <p>Pessoa física ou jurídica dona de um ou mais imóveis cadastrados na plataforma.</p>
+    </div>
+  </header>
+
+  <form class="formulario" [formGroup]="form" (ngSubmit)="salvar()" novalidate>
+    <section class="bloco">
+      <h2 class="bloco__titulo">Identificação</h2>
+
+      <div class="grade-3">
+        <div class="field" [class.is-invalid]="invalido('tipoPessoa')">
+          <label for="f-tipo">Tipo de pessoa *</label>
+          <select id="f-tipo" formControlName="tipoPessoa">
+            <option value="FISICA">Pessoa física</option>
+            <option value="JURIDICA">Pessoa jurídica</option>
+          </select>
+        </div>
+        <div class="field" [class.is-invalid]="invalido('nome')">
+          <label for="f-nome">Nome *</label>
+          <input type="text" id="f-nome" formControlName="nome" placeholder="Nome completo ou razão social" />
+          <span class="field__error">{{ invalido('nome') ? 'Informe o nome do proprietário.' : '' }}</span>
+        </div>
+        <div class="field">
+          <label for="f-documento">CPF/CNPJ</label>
+          <input type="text" id="f-documento" formControlName="documento" />
+        </div>
+      </div>
+
+      <div class="grade-3">
+        <div class="field">
+          <label for="f-email">E-mail</label>
+          <input type="email" id="f-email" formControlName="email" />
+        </div>
+        <div class="field">
+          <label for="f-telefone">Telefone</label>
+          <input type="text" id="f-telefone" formControlName="telefone" placeholder="(00) 00000-0000" />
+        </div>
+        <div class="field">
+          <label for="f-telefone-alt">Telefone alternativo</label>
+          <input type="text" id="f-telefone-alt" formControlName="telefoneAlternativo" />
+        </div>
+      </div>
+    </section>
+
+    <section class="bloco">
+      <h2 class="bloco__titulo">Endereço</h2>
+
+      <div class="grade-3">
+        <div class="field" [class.is-invalid]="invalido('municipio')">
+          <label for="f-municipio">Cidade *</label>
+          <input type="text" id="f-municipio" formControlName="municipio" list="cidades-projeto-owner" />
+          <datalist id="cidades-projeto-owner">
+            @for (c of CIDADES; track c) {
+              <option [value]="c"></option>
+            }
+          </datalist>
+          <span class="field__error">{{ invalido('municipio') ? 'Informe a cidade.' : '' }}</span>
+        </div>
+        <div class="field" [class.is-invalid]="invalido('uf')">
+          <label for="f-uf">UF *</label>
+          <input type="text" id="f-uf" formControlName="uf" maxlength="2" placeholder="MG" />
+          <span class="field__error">{{ invalido('uf') ? 'Informe a UF (2 letras).' : '' }}</span>
+        </div>
+        <div class="field">
+          <label for="f-cep">CEP</label>
+          <input type="text" id="f-cep" formControlName="cep" placeholder="00000-000" />
+        </div>
+      </div>
+
+      <div class="grade-endereco">
+        <div class="field">
+          <label for="f-logradouro">Logradouro</label>
+          <input type="text" id="f-logradouro" formControlName="logradouro" />
+        </div>
+        <div class="field">
+          <label for="f-numero">Número</label>
+          <input type="text" id="f-numero" formControlName="numero" />
+        </div>
+        <div class="field">
+          <label for="f-complemento">Complemento</label>
+          <input type="text" id="f-complemento" formControlName="complemento" />
+        </div>
+        <div class="field">
+          <label for="f-bairro">Bairro</label>
+          <input type="text" id="f-bairro" formControlName="bairro" />
+        </div>
+      </div>
+    </section>
+
+    <section class="bloco">
+      <h2 class="bloco__titulo">
+        Imóveis vinculados
+        <button class="btn btn--ghost btn--sm" type="button" (click)="adicionarImovel()">Adicionar imóvel</button>
+      </h2>
+
+      @if (imoveisVinculados.length === 0) {
+        <p class="vazio-lista">Nenhum imóvel vinculado a este proprietário.</p>
+      }
+
+      <div formArrayName="imoveisVinculados" class="lista-dinamica">
+        @for (i of imoveisVinculados.controls; track $index; let idx = $index) {
+          <div class="item-tag">
+            <input type="text" [formControlName]="idx" placeholder="Código do imóvel (ex.: URB-000123)" />
+            <button class="remover" type="button" (click)="removerImovel(idx)" aria-label="Remover imóvel vinculado">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+                <path d="M6 6l12 12M18 6 6 18" />
+              </svg>
+            </button>
+          </div>
+        }
+      </div>
+    </section>
+
+    <section class="bloco">
+      <h2 class="bloco__titulo">Observações</h2>
+      <div class="field">
+        <label for="f-observacoes">Notas internas</label>
+        <textarea id="f-observacoes" formControlName="observacoes" rows="3"></textarea>
+      </div>
+    </section>
+
+    @if (erro()) {
+      <p class="erro" role="alert">{{ erro() }}</p>
+    }
+
+    <footer class="acoes">
+      <a class="btn btn--ghost" routerLink="/admin/proprietarios">Cancelar</a>
+      <button class="btn btn--primary" type="submit" [disabled]="salvando()">
+        {{ salvando() ? 'Salvando…' : (modoEdicao() ? 'Salvar alterações' : 'Cadastrar proprietário') }}
+      </button>
+    </footer>
+  </form>
+}

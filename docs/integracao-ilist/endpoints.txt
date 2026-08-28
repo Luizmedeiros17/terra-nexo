@@ -1,0 +1,43 @@
+GET    /Properties  ->  {{API-URL}}/api/properties
+GET    /Properties/{id}  ->  {{API-URL}}/api/properties/927748
+POST   /Properties  ->  {{API-URL}}/api/properties
+GET    /[List] PropertyCharacteristics  ->  {{API-URL}}/api/lookups/PropertyCharacteristics
+GET    /[Lookup] PropertyCategories  ->  {{API-URL}}/api/lookups/propertycategories
+GET    /[Lookup] PropertySubCategories  ->  {{API-URL}}/api/lookups/propertysubcategories
+GET    /[Lookup] Aims  ->  {{API-URL}}/api/lookups/aims
+GET    /[Lookup] Floors  ->  {{API-URL}}/api/lookups/floors
+GET    /[Lookup] EnergyCertificates  ->  {{API-URL}}/api/lookups/energycertificates
+GET    /[Lookup] Languages  ->  {{API-URL}}/api/lookups/languages
+GET    /[Lookup] ParkingTypes  ->  {{API-URL}}/api/lookups/parkingtypes
+GET    /[Lookup] Measures  ->  {{API-URL}}/api/lookups/measures
+GET    /[Lookup] Places  ->  {{API-URL}}/api/lookups/places
+GET    /[Lookup] FramesTypes  ->  {{API-URL}}/api/lookups/FramesTypes
+GET    /[Lookup] GlazedWindows  ->  {{API-URL}}/api/lookups/GlazedWindows
+GET    /[Lookup] FloorsTypes  ->  {{API-URL}}/api/lookups/FloorsTypes
+GET    /[Lookup] PropertyAmenities  ->  {{API-URL}}/api/lookups/PropertyAmenities
+GET    /[Lookup] PropertySecurity  ->  {{API-URL}}/api/lookups/PropertySecurity
+GET    /[Lookup] HeatingType  ->  {{API-URL}}/api/lookups/HeatingType
+GET    /[Lookup] HeatingMedium  ->  {{API-URL}}/api/lookups/HeatingMedium
+GET    /[Lookup] HeatingMore  ->  {{API-URL}}/api/lookups/HeatingMore
+GET    /[Lookup] EstateStatus  ->  {{API-URL}}/api/lookups/EstateStatus
+GET    /[Lookup] View  ->  {{API-URL}}/api/lookups/View
+GET    /[Lookup] Orientation  ->  {{API-URL}}/api/lookups/Orientation
+GET    /[Lookup] SuitableFor  ->  {{API-URL}}/api/lookups/SuitableFor
+GET    /[Lookup] PropertySpecialFeatures  ->  {{API-URL}}/api/lookups/PropertySpecialFeatures
+GET    /[Lookup] PropertyUniqueFeatures  ->  {{API-URL}}/api/lookups/PropertyUniqueFeatures
+GET    /[Lookup] PropertyAdvantages  ->  {{API-URL}}/api/lookups/PropertyAdvantages
+GET    /[Lookup] NearTo  ->  {{API-URL}}/api/lookups/NearTo
+GET    /[Lookup] CommercialAmenities  ->  {{API-URL}}/api/lookups/CommercialAmenities
+GET    /[Lookup] SuitableForCommercials  ->  {{API-URL}}/api/lookups/SuitableForCommercials
+GET    /[Lookup] CommercialAdvantages  ->  {{API-URL}}/api/lookups/CommercialAdvantages
+GET    /[Lookup] CurrentTypes  ->  {{API-URL}}/api/lookups/CurrentTypes
+GET    /[Lookup] LandUsage  ->  {{API-URL}}/api/lookups/LandUsage
+GET    /[Lookup] CityBuildingPlan  ->  {{API-URL}}/api/lookups/CityBuildingPlan
+GET    /[Lookup] LandZone  ->  {{API-URL}}/api/lookups/LandZone
+GET    /[Lookup] SuitableForLands  ->  {{API-URL}}/api/lookups/SuitableForLands
+GET    /[Lookup] LandSpecialFeatures  ->  {{API-URL}}/api/lookups/LandSpecialFeatures
+GET    /[Lookup] LandUniqueFeatures  ->  {{API-URL}}/api/lookups/LandUniqueFeatures
+GET    /[Lookup] AccessFrom  ->  {{API-URL}}/api/lookups/AccessFrom
+GET    /[Lookup] ImageTypes  ->  {{API-URL}}/api/lookups/ImageTypes
+GET    /[Lookup] HomeOwnerships  ->  {{API-URL}}/api/lookups/HomeOwnerships
+GET    /[Lookup] Geography  ->  {{API-URL}}/api/lookups/Geography

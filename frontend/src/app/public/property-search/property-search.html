@@ -1,0 +1,169 @@
+@let r = resultado();
+
+<section class="pagehead">
+  <div class="wrap">
+    <nav aria-label="Você está aqui">
+      <ol class="breadcrumb">
+        <li><a routerLink="/">Início</a></li>
+        <li><span aria-current="page">Imóveis</span></li>
+      </ol>
+    </nav>
+
+    <h1>{{ r?.seo?.h1 ?? 'Imóveis' }}</h1>
+    <p>
+      Imóveis urbanos e rurais publicados pela Terra Nexo. Combine categoria, região, valor,
+      área e características — inclusive os critérios rurais de produção, água e documentação.
+    </p>
+  </div>
+</section>
+
+<section class="section section--tight">
+  <div class="wrap listing">
+    <!-- ============ Filtros ============ -->
+    <div class="listing__aside" [class.is-open]="painelAberto()">
+      <tn-filters-panel
+        [filtros]="filtros()"
+        [facetas]="r?.facetas ?? []"
+        [mostrarRurais]="mostrarFiltrosRurais()"
+        (mudou)="aplicar($event)"
+        (alternou)="alternarMulti($event.chave, $event.valor)"
+        (limpou)="limparTudo()"
+      />
+    </div>
+
+    <!-- ============ Resultados ============ -->
+    <div class="listing__main">
+      <div class="results__bar">
+        <div class="results__count" aria-live="polite">
+          @if (carregando()) {
+            <span class="results__loading">Buscando imóveis…</span>
+          } @else if (r) {
+            <strong>{{ r.paginacao.totalElementos }}</strong>
+            {{ r.paginacao.totalElementos === 1 ? 'imóvel encontrado' : 'imóveis encontrados' }}
+            @if (r.paginacao.totalPaginas > 1) {
+              <span class="results__pagina">· página {{ r.paginacao.pagina }} de {{ r.paginacao.totalPaginas }}</span>
+            }
+          }
+        </div>
+
+        <div class="results__acoes">
+          <button class="btn btn--ghost btn--sm filtros-toggle" type="button" (click)="alternarPainel()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true">
+              <path d="M4 6h16M7 12h10M10 18h4" />
+            </svg>
+            Filtros
+            @if (filtrosAtivos().length) {
+              <span class="contador">{{ filtrosAtivos().length }}</span>
+            }
+          </button>
+
+          <label class="results__sort">
+            <span>Ordenar por</span>
+            <select [value]="r?.ordenacao ?? 'relevancia'" (change)="ordenarPor($any($event.target).value)">
+              @for (o of r?.ordenacoes ?? []; track o.valor) {
+                <option [value]="o.valor">{{ o.rotulo }}</option>
+              }
+            </select>
+          </label>
+        </div>
+      </div>
+
+      @if (filtrosAtivos().length) {
+        <div class="ativos">
+          @for (f of filtrosAtivos(); track f.rotulo) {
+            <button class="ativos__chip" type="button" (click)="remover(f)"
+                    [attr.aria-label]="'Remover filtro ' + f.rotulo">
+              {{ f.rotulo }}
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                <path d="M6 6l12 12M18 6 6 18" />
+              </svg>
+            </button>
+          }
+          <button class="ativos__limpar" type="button" (click)="limparTudo()">Limpar tudo</button>
+        </div>
+      }
+
+      @if (erro()) {
+        <div class="aviso aviso--erro">
+          <p>{{ erro() }}</p>
+        </div>
+      } @else if (carregando() && !r) {
+        <div class="cards">
+          @for (i of [1, 2, 3, 4, 5, 6]; track i) {
+            <div class="esqueleto" aria-hidden="true">
+              <div class="esqueleto__media"></div>
+              <div class="esqueleto__linha esqueleto__linha--curta"></div>
+              <div class="esqueleto__linha"></div>
+              <div class="esqueleto__linha esqueleto__linha--media"></div>
+            </div>
+          }
+        </div>
+      } @else if (r && r.conteudo.length === 0) {
+        <div class="vazio">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true">
+            <circle cx="11" cy="11" r="7" />
+            <path d="m20 20-3.5-3.5" />
+          </svg>
+          <h2>Nenhum imóvel com esses critérios</h2>
+          <p>Tente ampliar a faixa de valor, remover filtros rurais específicos ou buscar em outro município.</p>
+          <button class="btn btn--primary" type="button" (click)="limparTudo()">Limpar filtros</button>
+        </div>
+      } @else if (r) {
+        <div class="cards" [class.is-atualizando]="carregando()">
+          @for (imovel of r.conteudo; track imovel.id; let i = $index) {
+            <tn-property-card [imovel]="imovel" [prioritaria]="i < 3" />
+          }
+        </div>
+
+        @if (r.paginacao.totalPaginas > 1) {
+          <nav class="paginacao" aria-label="Paginação dos resultados">
+            @if (!r.paginacao.primeira) {
+              <a class="paginacao__seta" routerLink="/imoveis"
+                 [queryParams]="queryParamsDaPagina(r.paginacao.pagina - 1)" rel="prev">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M19 12H5M11 6l-6 6 6 6" />
+                </svg>
+                Anterior
+              </a>
+            }
+
+            <ul class="paginacao__lista">
+              @for (p of paginas(); track $index) {
+                <li>
+                  @if (p === '…') {
+                    <span class="paginacao__gap">…</span>
+                  } @else if (p === r.paginacao.pagina) {
+                    <span class="paginacao__num is-atual" aria-current="page">{{ p }}</span>
+                  } @else {
+                    <a class="paginacao__num" routerLink="/imoveis" [queryParams]="queryParamsDaPagina($any(p))">{{ p }}</a>
+                  }
+                </li>
+              }
+            </ul>
+
+            @if (!r.paginacao.ultima) {
+              <a class="paginacao__seta" routerLink="/imoveis"
+                 [queryParams]="queryParamsDaPagina(r.paginacao.pagina + 1)" rel="next">
+                Próxima
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M5 12h14M13 6l6 6-6 6" />
+                </svg>
+              </a>
+            }
+          </nav>
+        }
+
+        <aside class="ajuda">
+          <div>
+            <h2>Não encontrou o que procurava?</h2>
+            <p>
+              Boa parte da nossa carteira rural circula antes de ir ao ar. Conte o que você
+              procura e um consultor envia opções compatíveis.
+            </p>
+          </div>
+          <a class="btn btn--accent" href="/#contato">Falar com um consultor</a>
+        </aside>
+      }
+    </div>
+  </div>
+</section>

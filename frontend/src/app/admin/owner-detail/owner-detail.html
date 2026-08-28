@@ -1,0 +1,52 @@
+@if (proprietario(); as o) {
+  <a class="voltar" routerLink="/admin/proprietarios">← Voltar para a listagem</a>
+
+  <header class="pagina__topo">
+    <div>
+      <h1>{{ o.nome }}</h1>
+      <p>
+        <span class="pilula">{{ o.tipoPessoaRotulo }}</span>
+        {{ o.municipio }}-{{ o.uf }}
+        @if (o.documento) { · {{ o.documento }} }
+      </p>
+    </div>
+    <div class="cabecalho__acoes">
+      <a class="btn btn--ghost btn--sm" [routerLink]="['/admin/proprietarios', o.id, 'editar']">Editar</a>
+      <button class="btn btn--ghost btn--sm btn--perigo" type="button" (click)="excluir()" [disabled]="excluindo()">
+        {{ excluindo() ? 'Excluindo…' : 'Excluir' }}
+      </button>
+    </div>
+  </header>
+
+  <div class="grade">
+    <section class="painel">
+      <h2>Dados cadastrais</h2>
+      <dl class="ficha">
+        <div><dt>Documento</dt><dd>{{ o.documento ?? '—' }}</dd></div>
+        <div><dt>E-mail</dt><dd>{{ o.email ?? '—' }}</dd></div>
+        <div><dt>Telefone</dt><dd>{{ o.telefone ?? '—' }}</dd></div>
+        <div><dt>Telefone alternativo</dt><dd>{{ o.telefoneAlternativo ?? '—' }}</dd></div>
+        <div><dt>Endereço</dt><dd>{{ o.enderecoCompleto }}</dd></div>
+        <div><dt>Cadastrado em</dt><dd>{{ o.criadoEm | date: 'dd/MM/yyyy' }}</dd></div>
+      </dl>
+
+      @if (o.observacoes) {
+        <h3>Observações</h3>
+        <p class="observacoes">{{ o.observacoes }}</p>
+      }
+    </section>
+
+    <section class="painel">
+      <h2>Imóveis vinculados</h2>
+      @if (o.imoveisVinculados.length === 0) {
+        <p class="estado estado--compacto">Nenhum imóvel vinculado a este proprietário.</p>
+      } @else {
+        <ul class="lista-tags">
+          @for (codigo of o.imoveisVinculados; track codigo) { <li>{{ codigo }}</li> }
+        </ul>
+      }
+    </section>
+  </div>
+} @else {
+  <p class="estado">Carregando proprietário…</p>
+}

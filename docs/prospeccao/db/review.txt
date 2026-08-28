@@ -1,0 +1,45 @@
+=== Empresas sem CNPJ (revisar) ===
+('Unaí', 'Agropecuária', 'Mundo Agropecuário')
+('Unaí', 'Irrigação', 'Irricampo Unaí – Sistemas de Irrigação')
+('Unaí', 'Irrigação', 'Ideal Irrigação')
+('Paracatu', 'Imobiliária', 'MM Imobiliária')
+('Formosa', 'Imobiliária', 'Trato Imóveis')
+('Formosa', 'Laticínios', 'Queijaria Pé do Morro')
+('Luziânia', 'Imobiliária', 'Guimarães Imóveis')
+('Luziânia', 'Laticínios', 'Mourão Laticínios')
+('Cristalina', 'Agropecuária', 'Agroquima Cristalina')
+('Cristalina', 'Imobiliária', 'Diego Gomes Imóveis')
+('Catalão', 'Agropecuária', 'Agropecuária Rampelotti')
+('Catalão', 'Agropecuária', 'Agrotelas Produtos Agropecuários')
+('Catalão', 'Imobiliária', 'Ribeiro e Bones Soluções Imobiliárias (Attitude Imóveis)')
+('João Pinheiro', 'Imobiliária', 'Caldeira Corretor de Imóveis')
+('João Pinheiro', 'Imobiliária', 'Edson Araújo Corretor')
+('João Pinheiro', 'Irrigação', 'Agrimaq - Equipamentos Irrigação')
+
+=== Empresas sem NENHUM contato (fixo/celular/whatsapp/email) ===
+('Paracatu', 'Imobiliária', 'MM Imobiliária')
+('Paracatu', 'Leilão de Animais', 'Paracatu Leilões')
+('Formosa', 'Silos/Armazéns', 'COOPA-DF')
+('Luziânia', 'Imobiliária', 'Guimarães Imóveis')
+('Luziânia', 'Leilão de Animais', 'M.A Braz - Leilões Rurais')
+('Cristalina', 'Imobiliária', 'Essencial Imobiliária')
+('Cristalina', 'Irrigação', 'Central Irrigação')
+('Cristalina', 'Irrigação', 'PC Pivô Irrigação')
+('Cristalina', 'Silos/Armazéns', 'COOPA-DF (unidade Cristalina)')
+('João Pinheiro', 'Imobiliária', 'Caldeira Corretor de Imóveis')
+
+=== Possiveis nomes duplicados/similares (mesmo nome_fantasia em cidades diferentes, checar se é rede) ===
+('Mundial Leilões', 'Cristalina/Leilão de Animais | Catalão/Leilão de Animais', 2)
+
+=== Situacao cadastral distinta de ATIVA/branco (double-check nao vazou baixada) ===
+
+=== Contagem final por cidade ===
+('Catalão', 7)
+('Cristalina', 9)
+('Formosa', 10)
+('João Pinheiro', 8)
+('Luziânia', 8)
+('Paracatu', 13)
+('Unaí', 22)
+
+TOTAL: 77

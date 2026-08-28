@@ -1,0 +1,21 @@
+# robots.txt — Terra Nexo
+User-agent: *
+Allow: /
+
+# Combinações arbitrárias de filtros não devem ser rastreadas (seção 20).
+# As páginas indexáveis usam apenas categoria, finalidade, tipo único e município.
+Disallow: /*?*ordenar=
+Disallow: /*&ordenar=
+Disallow: /*?*caracteristica=
+Disallow: /*?*terreno=
+Disallow: /*?*cultura=
+Disallow: /*?*benfeitoria=
+Disallow: /*?*documentacao=
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+Sitemap: https://www.terranexo.com.br/sitemap.xml

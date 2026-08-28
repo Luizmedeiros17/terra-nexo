@@ -1,0 +1,660 @@
+<title>Integração iList</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,600&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+  :root {
+    --bg: #f7f4ef;
+    --surface: #ffffff;
+    --surface-2: #faf8f5;
+    --ink: #14181c;
+    --ink-2: #3d454e;
+    --muted: #6c757e;
+    --line: #e3ddd3;
+    --line-strong: #d2c9ba;
+
+    --brand: #0f3b3f;
+    --brand-600: #0b2d30;
+    --brand-100: #dfeceb;
+    --accent: #b9884b;
+    --accent-100: #f5ead9;
+    --rural: #4b7a3f;
+    --rural-100: #e6f0e2;
+
+    --ok: #2f7d4f;
+    --ok-100: #e3f1e7;
+    --warn: #9a6a08;
+    --warn-100: #f7ecd3;
+    --err: #b3392f;
+    --err-100: #f6e2df;
+
+    --f-display: 'Playfair Display', Georgia, 'Times New Roman', serif;
+    --f-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --f-mono: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Consolas, monospace;
+
+    --r-sm: 8px;
+    --r-md: 14px;
+    --r-full: 999px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0e1114;
+      --surface: #171c21;
+      --surface-2: #1d232a;
+      --ink: #eef1f4;
+      --ink-2: #c3cad2;
+      --muted: #8d97a3;
+      --line: #262d35;
+      --line-strong: #38414b;
+
+      --brand: #7fc9c4;
+      --brand-600: #a5ded9;
+      --brand-100: #16302f;
+      --accent: #d5a05c;
+      --accent-100: #2b2114;
+      --rural: #8fc37f;
+      --rural-100: #1c2a19;
+
+      --ok: #7fd19f;
+      --ok-100: #163325;
+      --warn: #e0b555;
+      --warn-100: #332a13;
+      --err: #e2897d;
+      --err-100: #331e1c;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --bg: #0e1114;
+    --surface: #171c21;
+    --surface-2: #1d232a;
+    --ink: #eef1f4;
+    --ink-2: #c3cad2;
+    --muted: #8d97a3;
+    --line: #262d35;
+    --line-strong: #38414b;
+
+    --brand: #7fc9c4;
+    --brand-600: #a5ded9;
+    --brand-100: #16302f;
+    --accent: #d5a05c;
+    --accent-100: #2b2114;
+    --rural: #8fc37f;
+    --rural-100: #1c2a19;
+
+    --ok: #7fd19f;
+    --ok-100: #163325;
+    --warn: #e0b555;
+    --warn-100: #332a13;
+    --err: #e2897d;
+    --err-100: #331e1c;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--f-body);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 4rem 1.5rem 6rem;
+  }
+
+  .eyebrow {
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+    font-size: .78rem;
+    font-weight: 600;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1rem;
+  }
+
+  .eyebrow::before {
+    content: '';
+    width: 22px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  h1 {
+    font-family: var(--f-display);
+    font-weight: 600;
+    font-size: clamp(2rem, 1.5rem + 2vw, 2.9rem);
+    line-height: 1.12;
+    letter-spacing: -.01em;
+    text-wrap: balance;
+    margin: 0 0 .6rem;
+    color: var(--ink);
+  }
+
+  .lede {
+    font-size: 1.1rem;
+    color: var(--ink-2);
+    max-width: 62ch;
+    margin: 0 0 2.6rem;
+  }
+
+  .lede strong { color: var(--ink); }
+
+  /* ---- verdict band ---- */
+  .verdict {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    border-radius: var(--r-md);
+    overflow: hidden;
+    margin-bottom: 3rem;
+  }
+
+  .verdict__cell {
+    background: var(--surface);
+    padding: 1.4rem 1.5rem;
+  }
+
+  .verdict__label {
+    font-size: .72rem;
+    font-weight: 600;
+    letter-spacing: .07em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: .5rem;
+  }
+
+  .verdict__value {
+    font-family: var(--f-display);
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: .3rem;
+  }
+
+  .verdict__sub { font-size: .85rem; color: var(--muted); }
+
+  .verdict__value.is-ok { color: var(--ok); }
+  .verdict__value.is-warn { color: var(--warn); }
+  .verdict__value.is-err { color: var(--err); }
+
+  /* ---- sections ---- */
+  section { margin-bottom: 3.2rem; }
+
+  h2 {
+    font-family: var(--f-display);
+    font-size: 1.55rem;
+    font-weight: 600;
+    letter-spacing: -.005em;
+    text-wrap: balance;
+    margin: 0 0 .3rem;
+    color: var(--ink);
+  }
+
+  .section-num {
+    font-family: var(--f-mono);
+    font-size: .8rem;
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  h2 + .deck {
+    color: var(--muted);
+    font-size: .98rem;
+    max-width: 60ch;
+    margin: 0 0 1.4rem;
+  }
+
+  p { margin: 0 0 1rem; max-width: 68ch; color: var(--ink-2); }
+  p:last-child { margin-bottom: 0; }
+  strong { color: var(--ink); font-weight: 600; }
+
+  a { color: var(--brand); text-decoration-color: color-mix(in srgb, var(--brand) 40%, transparent); }
+  a:hover { text-decoration-color: var(--brand); }
+
+  code {
+    font-family: var(--f-mono);
+    font-size: .86em;
+    background: var(--surface-2);
+    border: 1px solid var(--line);
+    padding: .1em .38em;
+    border-radius: 5px;
+    color: var(--ink);
+  }
+
+  /* ---- entity map ---- */
+  .entities {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: .9rem;
+    margin: 1.6rem 0;
+  }
+
+  .entity {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--r-md);
+    padding: 1.1rem 1.2rem;
+  }
+
+  .entity__role {
+    font-size: .68rem;
+    font-weight: 600;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: .4rem;
+  }
+
+  .entity__name {
+    font-weight: 600;
+    margin-bottom: .3rem;
+  }
+
+  .entity__desc { font-size: .86rem; color: var(--muted); line-height: 1.5; }
+
+  .entity-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--line-strong);
+    font-size: 1.3rem;
+  }
+
+  /* ---- endpoint table ---- */
+  .table-scroll { overflow-x: auto; border: 1px solid var(--line); border-radius: var(--r-md); background: var(--surface); }
+
+  table { width: 100%; border-collapse: collapse; font-size: .88rem; }
+
+  th {
+    text-align: left;
+    font-size: .7rem;
+    font-weight: 600;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: .8rem 1rem;
+    background: var(--surface-2);
+    border-bottom: 1px solid var(--line);
+    white-space: nowrap;
+  }
+
+  td {
+    padding: .7rem 1rem;
+    border-bottom: 1px solid var(--line);
+    color: var(--ink-2);
+    vertical-align: top;
+  }
+
+  tr:last-child td { border-bottom: 0; }
+
+  .method {
+    font-family: var(--f-mono);
+    font-size: .74rem;
+    font-weight: 600;
+    padding: .12em .5em;
+    border-radius: 5px;
+    white-space: nowrap;
+  }
+  .method--get { background: var(--ok-100); color: var(--ok); }
+  .method--post { background: var(--accent-100); color: var(--accent); }
+
+  .path { font-family: var(--f-mono); font-size: .82rem; color: var(--ink); }
+
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: .35rem;
+    font-size: .74rem;
+    font-weight: 600;
+    padding: .15em .6em;
+    border-radius: var(--r-full);
+    white-space: nowrap;
+  }
+  .pill--ok { background: var(--ok-100); color: var(--ok); }
+  .pill--warn { background: var(--warn-100); color: var(--warn); }
+  .pill--err { background: var(--err-100); color: var(--err); }
+  .pill::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+
+  /* ---- evidence callout ---- */
+  .evidence {
+    border-left: 3px solid var(--accent);
+    background: var(--surface);
+    border-radius: 0 var(--r-md) var(--r-md) 0;
+    padding: 1.1rem 1.3rem;
+    margin: 1.4rem 0;
+  }
+
+  .evidence__label {
+    font-size: .7rem;
+    font-weight: 700;
+    letter-spacing: .07em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: .5rem;
+  }
+
+  .evidence pre {
+    font-family: var(--f-mono);
+    font-size: .8rem;
+    background: var(--surface-2);
+    border: 1px solid var(--line);
+    border-radius: var(--r-sm);
+    padding: .8rem 1rem;
+    overflow-x: auto;
+    margin: .6rem 0;
+    color: var(--ink-2);
+  }
+
+  .evidence p:last-child { margin-bottom: 0; }
+
+  /* ---- fit diagram ---- */
+  .fit {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--r-md);
+    padding: 1.4rem;
+    margin: 1.6rem 0;
+    flex-wrap: wrap;
+  }
+
+  .fit__col {
+    flex: 1;
+    min-width: 180px;
+    padding: 0 1rem;
+  }
+
+  .fit__col + .fit__col { border-left: 1px dashed var(--line-strong); }
+
+  .fit__title {
+    font-size: .72rem;
+    font-weight: 600;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: .6rem;
+  }
+
+  .fit__item {
+    font-family: var(--f-mono);
+    font-size: .8rem;
+    color: var(--ink);
+    padding: .3rem 0;
+  }
+
+  .fit__item small { display: block; font-family: var(--f-body); color: var(--muted); font-size: .78rem; margin-top: .1rem; }
+
+  /* ---- checklist ---- */
+  .steps { list-style: none; margin: 1.4rem 0 0; padding: 0; display: grid; gap: .7rem; }
+
+  .steps li {
+    display: flex;
+    gap: .8rem;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--r-md);
+    padding: .9rem 1.1rem;
+  }
+
+  .steps__num {
+    font-family: var(--f-mono);
+    font-size: .78rem;
+    font-weight: 600;
+    color: var(--accent);
+    flex: none;
+    padding-top: .1rem;
+  }
+
+  .steps strong { display: block; margin-bottom: .15rem; }
+  .steps span { font-size: .88rem; color: var(--muted); }
+
+  footer {
+    margin-top: 4rem;
+    padding-top: 1.6rem;
+    border-top: 1px solid var(--line);
+    font-size: .82rem;
+    color: var(--muted);
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 640px) {
+    .verdict { grid-template-columns: 1fr; }
+    .fit__col + .fit__col { border-left: 0; border-top: 1px dashed var(--line-strong); padding-top: 1rem; margin-top: 1rem; }
+  }
+</style>
+
+<div class="wrap">
+
+  <p class="eyebrow">Terra Nexo · Nota técnica</p>
+  <h1>Integração com o iList da RE/MAX, via Attria</h1>
+  <p class="lede">Levantamento da API pública por trás da página "Integração iList (RE/MAX)" da Attria, e do que ela permite dentro da arquitetura atual do Terra Nexo. <strong>Nada foi implementado</strong> — isto é só o mapeamento de viabilidade.</p>
+
+  <div class="verdict">
+    <div class="verdict__cell">
+      <div class="verdict__label">Direção dos dados</div>
+      <div class="verdict__value is-warn">Assimétrica por tipo</div>
+      <div class="verdict__sub">Imóveis só entram; leads só saem (via Zapier)</div>
+    </div>
+    <div class="verdict__cell">
+      <div class="verdict__label">Cobertura do catálogo</div>
+      <div class="verdict__value is-warn">Só imóveis urbanos</div>
+      <div class="verdict__sub">Modelo de dados não tem campo rural</div>
+    </div>
+    <div class="verdict__cell">
+      <div class="verdict__label">Onde plugaria</div>
+      <div class="verdict__value is-ok">Adaptador novo, aditivo</div>
+      <div class="verdict__sub">Não mexe no que já existe</div>
+    </div>
+  </div>
+
+  <section>
+    <h2><span class="section-num">01</span> Quem é quem</h2>
+    <p class="deck">A página da Attria não tem nenhum detalhe técnico — é só um formulário de contato. A API real está hospedada em outro domínio, de outra empresa.</p>
+
+    <div class="entities">
+      <div class="entity">
+        <div class="entity__role">Portal / corretora</div>
+        <div class="entity__name">Terra Nexo</div>
+        <div class="entity__desc">Nosso site. Quem consumiria os dados.</div>
+      </div>
+      <div class="entity-arrow">→</div>
+      <div class="entity">
+        <div class="entity__role">Marketplace de integrações</div>
+        <div class="entity__name">Attria</div>
+        <div class="entity__desc">Cadastra o pedido, mas não documenta a API — só um formulário e um e-mail de contato.</div>
+      </div>
+      <div class="entity-arrow">→</div>
+      <div class="entity">
+        <div class="entity__role">Provedor real da API</div>
+        <div class="entity__name">e-agents.gr</div>
+        <div class="entity__desc">Empresa grega dona da plataforma. iList é o nome que a RE/MAX Brasil usa para o mesmo produto que atende a rede Spitogatos na Grécia.</div>
+      </div>
+    </div>
+
+    <p>A doc técnica real ("ilist Websites API") está publicada no Postman por essa empresa, em <code>ilist.e-agents.gr</code> — achei o JSON completo da coleção e extraí os 43 endpoints documentados (cópia salva em <code>docs/integracao-ilist/</code>).</p>
+  </section>
+
+  <section>
+    <h2><span class="section-num">02</span> O que a API expõe</h2>
+    <p class="deck">Autenticação por token fixo por imobiliária (header <code>authorization</code>), limite de 10 chamadas/minuto. 43 endpoints ao todo — só 3 tratam de imóveis; os outros 40 são tabelas de referência.</p>
+
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr><th>Método</th><th>Rota</th><th>O que faz</th><th>Direção</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="method method--get">GET</span></td>
+            <td class="path">/api/properties</td>
+            <td>Só valida o token — não lista nada</td>
+            <td><span class="pill pill--ok">leitura</span></td>
+          </tr>
+          <tr>
+            <td><span class="method method--post">POST</span></td>
+            <td class="path">/api/properties</td>
+            <td>Busca por filtro (categoria, área, preço…), paginada, com sync incremental via <code>isSync</code></td>
+            <td><span class="pill pill--ok">leitura</span></td>
+          </tr>
+          <tr>
+            <td><span class="method method--get">GET</span></td>
+            <td class="path">/api/properties/{id}</td>
+            <td>Detalhe completo de um imóvel — preço, m², fotos, características</td>
+            <td><span class="pill pill--ok">leitura</span></td>
+          </tr>
+          <tr>
+            <td><span class="method method--get">GET</span></td>
+            <td class="path">/api/lookups/* <small style="font-family:var(--f-body);color:var(--muted)">(40 rotas)</small></td>
+            <td>Categorias, comodidades, aquecimento, certificado energético, geografia…</td>
+            <td><span class="pill pill--ok">leitura</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>Não existe <code>PUT</code>, <code>DELETE</code> nem um <code>POST</code> de criação de imóvel em lugar nenhum da documentação. A própria descrição da coleção é direta sobre o propósito: permitir que o site "sincronize os imóveis de uma imobiliária que usa o iList" — numa via só.</p>
+  </section>
+
+  <section>
+    <h2><span class="section-num">03</span> É bidirecional?</h2>
+    <p class="deck">Pela documentação pública, não. Mas achei um indício de que a plataforma por trás suporta mais do que expõe.</p>
+
+    <p>Nas respostas de exemplo salvas na própria coleção, o header de CORS do servidor aparece assim:</p>
+
+    <div class="evidence">
+      <div class="evidence__label">Evidência — header de resposta real, capturado nos exemplos da coleção</div>
+      <pre>Access-Control-Allow-Methods: POST, GET, OPTIONS, PUT, DELETE</pre>
+      <p>O servidor aceita <code>PUT</code> e <code>DELETE</code> a nível de infraestrutura — quase certamente porque o mesmo backend atende o painel interno do iList e o app do corretor, que precisam editar e excluir imóveis. Só não foram <strong>documentados nem liberados</strong> para o token que uma "Website API" de terceiro recebe.</p>
+    </div>
+
+    <p>Ou seja: escrever de volta no iList é tecnicamente plausível na plataforma, mas não é algo que dá pra construir hoje só com o que está público. Precisaria de uma conversa direta com a Attria/RE/MAX pedindo escopo de escrita — o e-mail de contato está na própria página do formulário — ou de outro mecanismo que eles não documentam (ex.: uma feed URL que o próprio iList importe, comum em outras plataformas de CRM imobiliário, mas sem qualquer menção nas fontes que encontrei).</p>
+
+    <p>Vale separar isso de um segundo tipo de "bidirecional" que também é comum nesse tipo de integração: enviar de volta não o imóvel, mas o <strong>lead</strong> captado no site (o Terra Nexo já tem esse módulo pronto, <code>POST /api/v1/public/leads</code>). Procurei por <code>lead</code>, <code>contact</code> e <code>webhook</code> na coleção inteira e não achei nenhum endpoint desse tipo — a "Websites API" documentada é só sobre imóveis.</p>
+  </section>
+
+  <section>
+    <h2><span class="section-num">04</span> Onde encaixaria no projeto</h2>
+    <p class="deck">O ponto de entrada natural já existe: <code>PropertyRepository.save(...)</code> já faz upsert por id. Um importador do iList seria um adaptador novo chamando esse mesmo método — não muda nada do que já está construído.</p>
+
+    <div class="fit">
+      <div class="fit__col">
+        <div class="fit__title">Novo, a construir</div>
+        <div class="fit__item">IListClient <small>chama a API, respeita o limite de 10 req/min</small></div>
+        <div class="fit__item">IListPropertyMapper <small>traduz os 40+ lookups pros enums do Property</small></div>
+        <div class="fit__item">Job agendado ou botão "importar" <small>chama isSync:false, itera o feed</small></div>
+      </div>
+      <div class="fit__col">
+        <div class="fit__title">Já existe, reaproveita</div>
+        <div class="fit__item">PropertyRepository.save() <small>upsert por id, já pronto</small></div>
+        <div class="fit__item">property.domain.Property <small>destino do mapeamento</small></div>
+        <div class="fit__item">application.yml <small>token do iList entra como env var, igual TERRANEXO_CORS_ALLOWED_ORIGINS</small></div>
+      </div>
+      <div class="fit__col">
+        <div class="fit__title">Fica de fora</div>
+        <div class="fit__item">Property.Rural <small>iList não tem hectares, CAR/CCIR, pecuária — nada mapeia</small></div>
+        <div class="fit__item">Escrita/exclusão no iList <small>sem endpoint documentado</small></div>
+      </div>
+    </div>
+
+    <p>Na prática: um imóvel <strong>rural</strong> — a especialidade do Terra Nexo — nunca vai chegar via iList, porque o schema de lá (<code>Category_ID</code>, <code>SqrMeters</code>, <code>Rooms</code>, <code>EnergyClass_ID</code>) é o modelo europeu padrão de imóvel residencial/comercial, sem qualquer campo de área rural, cultura, benfeitoria ou documentação fundiária. Essa integração, se sair, cobre só o lado <strong>urbano</strong> do catálogo.</p>
+  </section>
+
+  <section>
+    <h2><span class="section-num">05</span> A pista do Zapier — e por que ela não é o que parece</h2>
+    <p class="deck">Existe um segundo caminho programático além da API: o iList tem uma integração oficial publicada no Zapier, sob o nome "iList by GryphTech" (GryphTech é a empresa por trás do app oficial <em>iList RE/MAX Mobile</em>). Fui conferir o que ela expõe.</p>
+
+    <div class="evidence">
+      <div class="evidence__label">Evidência — página pública da integração no Zapier</div>
+      <p>O app <strong>"iList by GryphTech"</strong> no Zapier tem exatamente <strong>uma ação e nenhum gatilho</strong>:</p>
+      <pre>Action: Add Lead — "Adds a new lead into iList"
+Campos: iList Agent ID*, iList ListingID, First Name, Last Name*,
+        Email, Phone, Lead Comments*, Lead Source
+(* obrigatório)</pre>
+      <p>Sem nenhum trigger. Ou seja: o Zapier não consegue <em>disparar</em> um Zap quando um imóvel ou lead novo aparece no iList — só consegue <em>empurrar</em> um lead novo para dentro dele.</p>
+    </div>
+
+    <p>Isso é o oposto exato da pergunta original. A API cobre <strong>ler imóveis do iList</strong>; o Zapier cobre <strong>escrever leads no iList</strong>. Nenhuma das duas peças documentadas permite <strong>exportar contatos de dentro do iList</strong> para fora — nem via API, nem via Zapier.</p>
+
+    <p>Achei uma menção secundária (não confirmada por fonte primária) de que o iList sincroniza contatos com o Outlook — se for real, seria um terceiro caminho possível: iList → Outlook (nativo) → Terra Nexo (via Microsoft Graph API, que é bem documentada). Mas isso adicionaria o Outlook como intermediário e uma dependência a mais, e eu não confirmei que esse recurso existe de fato — fica como hipótese a validar, não como achado.</p>
+
+    <p><strong>Sobre "estando logado, exportar imóveis e contatos selecionados"</strong>: não encontrei nenhuma documentação pública — nem em página de ajuda, nem em conteúdo de curso da Universidade RE/MAX, nem em material de terceiros — que descreva um botão de exportação seletiva dentro do iList. Isso não prova que não existe: é o tipo de recurso de UI que raramente aparece em busca pública, só documentado dentro do próprio produto. A forma mais confiável de confirmar isso é alguém com login real no iList entrar e conferir diretamente se existe uma opção de "exportar selecionados" na tela de imóveis e na de contatos — é um teste de 5 minutos que nenhuma pesquisa pública substitui.</p>
+
+    <p>O que dá pra afirmar com confiança, hoje, combinando as duas fontes verificadas: um pipeline <strong>parcialmente bidirecional, mas assimétrico por tipo de dado</strong>, já é possível sem pedir nada a mais a ninguém —</p>
+
+    <div class="fit">
+      <div class="fit__col">
+        <div class="fit__title">iList → Terra Nexo</div>
+        <div class="fit__item">Imóveis <small>via API de leitura (seção 02)</small></div>
+      </div>
+      <div class="fit__col">
+        <div class="fit__title">Terra Nexo → iList</div>
+        <div class="fit__item">Leads novos <small>via ação "Add Lead" do Zapier</small></div>
+      </div>
+      <div class="fit__col">
+        <div class="fit__title">Não confirmado</div>
+        <div class="fit__item">Exportar contatos existentes do iList <small>precisa checar dentro do produto</small></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="section-num">06</span> Próximos passos, se decidir seguir</h2>
+
+    <ol class="steps">
+      <li>
+        <span class="steps__num">1</span>
+        <div>
+          <strong>Checar dentro de um login real do iList se existe "exportar selecionados"</strong>
+          <span>Cinco minutos de alguém logado, olhando a tela de imóveis e a de contatos, resolvem uma dúvida que pesquisa pública não resolve.</span>
+        </div>
+      </li>
+      <li>
+        <span class="steps__num">2</span>
+        <div>
+          <strong>Confirmar escopo de escrita/leitura adicional direto com a Attria/RE/MAX</strong>
+          <span>Perguntar explicitamente se PUT/DELETE de imóveis (seção 03) ou exportação de contatos podem ser liberados para o token da imobiliária — a resposta atual dessa nota é "não documentado", não "negado".</span>
+        </div>
+      </li>
+      <li>
+        <span class="steps__num">3</span>
+        <div>
+          <strong>Conseguir um token de teste real da API + credenciais do Zapier</strong>
+          <span>O token de exemplo na doc é só ilustrativo. Sem um token de produção (ou sandbox) não dá pra validar volume real de imóveis nem testar a ação "Add Lead" de verdade.</span>
+        </div>
+      </li>
+      <li>
+        <span class="steps__num">4</span>
+        <div>
+          <strong>Mapear os 40 lookups contra o vocabulário atual do Terra Nexo</strong>
+          <span>É o grosso do trabalho de engenharia — decidir, campo a campo, o que tem equivalente (categoria, aim/finalidade) e o que não tem (nada rural).</span>
+        </div>
+      </li>
+      <li>
+        <span class="steps__num">5</span>
+        <div>
+          <strong>Decidir se vale a pena para só o catálogo urbano + leads</strong>
+          <span>Como hoje o Terra Nexo tem 1 imóvel urbano de exemplo e a base real é rural, a sincronização de imóveis entrega valor concentrado numa fração pequena do catálogo — mas o envio de leads via Zapier vale para o site inteiro, incluindo os rurais. Vale pesar essa diferença antes de priorizar.</span>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <footer>
+    <span>Fontes: coleção Postman pública do iList (e-agents.gr), páginas da Attria, integração "iList by GryphTech" no Zapier — cópias em <code>docs/integracao-ilist/</code></span>
+    <span>26 ago 2026</span>
+  </footer>
+
+</div>

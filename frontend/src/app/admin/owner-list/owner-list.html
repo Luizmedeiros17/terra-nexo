@@ -1,0 +1,65 @@
+<header class="pagina__topo">
+  <div>
+    <h1>Proprietários</h1>
+    <p>{{ proprietarios().length }} {{ proprietarios().length === 1 ? 'registro' : 'registros' }} na listagem.</p>
+  </div>
+  <a class="btn btn--primary btn--sm" routerLink="/admin/proprietarios/novo">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+      <path d="M12 5v14M5 12h14" />
+    </svg>
+    Novo proprietário
+  </a>
+</header>
+
+<section class="filtros" aria-label="Filtros de proprietários">
+  <div class="field">
+    <label for="fo-q">Buscar</label>
+    <input type="search" id="fo-q" [value]="valorDe('q')" (change)="aoDigitar($event)"
+           placeholder="Nome, documento ou e-mail" />
+  </div>
+
+  <div class="field">
+    <label for="fo-cidade">Cidade</label>
+    <select id="fo-cidade" [value]="valorDe('cidade')" (change)="aoSelecionar('cidade', $event)">
+      @for (c of CIDADES; track c.valor) {
+        <option [value]="c.valor">{{ c.rotulo }}</option>
+      }
+    </select>
+  </div>
+
+  <button class="btn btn--ghost btn--sm" type="button" (click)="limpar()">Limpar</button>
+</section>
+
+@if (carregando()) {
+  <p class="estado">Carregando proprietários…</p>
+} @else if (proprietarios().length === 0) {
+  <p class="estado">Nenhum registro encontrado com esses filtros.</p>
+} @else {
+  <div class="tabela-rolagem">
+    <table class="tabela">
+      <caption class="sr-only">Cadastro de proprietários de imóveis</caption>
+      <thead>
+        <tr>
+          <th scope="col">Nome</th>
+          <th scope="col">Tipo</th>
+          <th scope="col">Documento</th>
+          <th scope="col">Cidade</th>
+          <th scope="col">Contato</th>
+          <th scope="col">Imóveis vinculados</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (o of proprietarios(); track o.id) {
+          <tr>
+            <td><a [routerLink]="['/admin/proprietarios', o.id]">{{ o.nome }}</a></td>
+            <td><span class="pilula">{{ o.tipoPessoaRotulo }}</span></td>
+            <td>{{ o.documento ?? '—' }}</td>
+            <td>{{ o.municipio }}-{{ o.uf }}</td>
+            <td>{{ o.telefone ?? o.email ?? '—' }}</td>
+            <td>{{ o.qtdImoveisVinculados }}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+}

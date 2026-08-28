@@ -1,0 +1,67 @@
+<header class="pagina__topo">
+  <div>
+    <h1>Corretores</h1>
+    <p>{{ corretores().length }} {{ corretores().length === 1 ? 'corretor' : 'corretores' }} na listagem.</p>
+  </div>
+  <a class="btn btn--primary btn--sm" routerLink="/admin/corretores/novo">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+      <path d="M12 5v14M5 12h14" />
+    </svg>
+    Novo corretor
+  </a>
+</header>
+
+<section class="filtros" aria-label="Filtros da equipe de corretores">
+  <div class="field">
+    <label for="fb-q">Buscar</label>
+    <input type="search" id="fb-q" [value]="valorDe('q')" (change)="aoDigitar($event)"
+           placeholder="Nome ou cargo" />
+  </div>
+
+  <div class="field">
+    <label for="fb-ativo">Status</label>
+    <select id="fb-ativo" [value]="valorDe('ativo')" (change)="aoSelecionar('ativo', $event)">
+      <option value="">Todos</option>
+      <option value="true">Ativos</option>
+      <option value="false">Inativos</option>
+    </select>
+  </div>
+
+  <button class="btn btn--ghost btn--sm" type="button" (click)="limpar()">Limpar</button>
+</section>
+
+@if (carregando()) {
+  <p class="estado">Carregando corretores…</p>
+} @else if (corretores().length === 0) {
+  <p class="estado">Nenhum corretor encontrado com esses filtros.</p>
+} @else {
+  <div class="tabela-rolagem">
+    <table class="tabela">
+      <caption class="sr-only">Equipe de corretores</caption>
+      <thead>
+        <tr>
+          <th scope="col">Nome</th>
+          <th scope="col">Cargo</th>
+          <th scope="col">CRECI</th>
+          <th scope="col">Regiões</th>
+          <th scope="col">Imóveis</th>
+          <th scope="col">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (c of corretores(); track c.id) {
+          <tr>
+            <td><a [routerLink]="['/admin/corretores', c.id]">{{ c.nome }}</a></td>
+            <td>{{ c.cargo ?? '—' }}</td>
+            <td>{{ c.creci ?? '—' }}</td>
+            <td>{{ c.regioes.join(', ') || '—' }}</td>
+            <td>{{ c.imoveis }}</td>
+            <td>
+              <span class="status-corretor" [attr.data-ativo]="c.ativo">{{ c.ativo ? 'Ativo' : 'Inativo' }}</span>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+}
