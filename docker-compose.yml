@@ -34,7 +34,7 @@ services:
       API_URL: http://backend:8080
       PORT: "4000"
       # Libera o cabeçalho Host para acesso via IP da rede local (validação SSRF do @angular/ssr)
-      NG_ALLOWED_HOSTS: "localhost,10.1.0.160"
+      NG_ALLOWED_HOSTS: "localhost,10.0.10.160"
     ports:
       - "4000:4000"
     depends_on:
