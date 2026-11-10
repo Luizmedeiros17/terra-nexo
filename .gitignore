@@ -38,3 +38,7 @@ coverage/
 *.tmp
 *.swp
 ~$*
+
+# Python
+__pycache__/
+*.pyc

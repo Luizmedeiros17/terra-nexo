@@ -3,28 +3,25 @@ package br.com.terranexo.property.infrastructure;
 import br.com.terranexo.property.domain.Category;
 import br.com.terranexo.property.domain.Property;
 import br.com.terranexo.property.domain.PropertyRepository;
+import br.com.terranexo.shared.infrastructure.InMemoryStore;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
 import java.util.Optional;
-import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
  * Persistência em memória do protótipo. Ao adotar PostgreSQL/PostGIS, esta classe
- * é substituída por um adaptador JPA — nenhuma outra camada muda.
+ * é substituída por um adaptador JPA — nenhuma outra camada muda. Imóveis salvos
+ * vão para o início da lista (mais recentes primeiro).
  */
 @Repository
-public class InMemoryPropertyRepository implements PropertyRepository {
+public class InMemoryPropertyRepository extends InMemoryStore<Property> implements PropertyRepository {
 
     private static final Pattern CODIGO_NO_FINAL = Pattern.compile("([a-zA-Z]{3}-\\d{6})$");
 
-    private final List<Property> imoveis = new CopyOnWriteArrayList<>(PropertySeed.carregar());
-
-    @Override
-    public List<Property> findAll() {
-        return List.copyOf(imoveis);
+    public InMemoryPropertyRepository() {
+        super(PropertySeed.carregar(), Property::id, true);
     }
 
     /**
@@ -38,7 +35,7 @@ public class InMemoryPropertyRepository implements PropertyRepository {
             return Optional.empty();
         }
         String alvo = codeOrSlug.trim();
-        Optional<Property> direto = imoveis.stream()
+        Optional<Property> direto = itens.stream()
                 .filter(p -> p.slug().equalsIgnoreCase(alvo) || p.codigo().equalsIgnoreCase(alvo))
                 .findFirst();
         if (direto.isPresent()) {
@@ -47,44 +44,14 @@ public class InMemoryPropertyRepository implements PropertyRepository {
         Matcher m = CODIGO_NO_FINAL.matcher(alvo);
         if (m.find()) {
             String codigo = m.group(1);
-            return imoveis.stream().filter(p -> p.codigo().equalsIgnoreCase(codigo)).findFirst();
+            return itens.stream().filter(p -> p.codigo().equalsIgnoreCase(codigo)).findFirst();
         }
         return Optional.empty();
     }
 
     @Override
-    public Optional<Property> findById(String id) {
-        return imoveis.stream().filter(p -> p.id().equals(id)).findFirst();
-    }
-
-    @Override
-    public Property save(Property property) {
-        imoveis.removeIf(p -> p.id().equals(property.id()));
-        imoveis.add(0, property);
-        return property;
-    }
-
-    @Override
-    public void deleteById(String id) {
-        imoveis.removeIf(p -> p.id().equals(id));
-    }
-
-    @Override
     public String proximoCodigo(Category categoria) {
-        String prefixo = categoria == Category.RURAL ? "RUR" : "URB";
-        int maior = imoveis.stream()
-                .map(Property::codigo)
-                .filter(c -> c.startsWith(prefixo + "-"))
-                .map(c -> c.substring(prefixo.length() + 1))
-                .mapToInt(n -> {
-                    try {
-                        return Integer.parseInt(n);
-                    } catch (NumberFormatException e) {
-                        return 0;
-                    }
-                })
-                .max()
-                .orElse(categoria == Category.RURAL ? 200 : 100);
-        return "%s-%06d".formatted(prefixo, maior + 1);
+        boolean rural = categoria == Category.RURAL;
+        return proximoSequencial(itens.stream().map(Property::codigo), rural ? "RUR" : "URB", 6, rural ? 200 : 100);
     }
 }

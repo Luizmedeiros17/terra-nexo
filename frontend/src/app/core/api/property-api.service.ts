@@ -3,6 +3,7 @@ import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { API_BASE_URL } from './api.tokens';
+import { filtrosParaParams } from './query-params';
 import {
   Corretor,
   LeadRequest,
@@ -22,7 +23,7 @@ export class PropertyApiService {
 
   buscar(filtros: SearchFilters): Observable<SearchResponse> {
     return this.http.get<SearchResponse>(`${this.base}/properties`, {
-      params: toHttpParams(filtros),
+      params: filtrosParaParams(filtros),
     });
   }
 
@@ -61,27 +62,4 @@ export class PropertyApiService {
   enviarLead(lead: LeadRequest): Observable<LeadResponse> {
     return this.http.post<LeadResponse>(`${this.base}/leads`, lead);
   }
-}
-
-/**
- * Converte os filtros em query string, omitindo vazios para manter a URL
- * limpa e rastreável (seção 20). Arrays viram parâmetros repetidos.
- */
-export function toHttpParams(filtros: SearchFilters): HttpParams {
-  let params = new HttpParams();
-  for (const [chave, valor] of Object.entries(filtros)) {
-    if (valor === null || valor === undefined || valor === '') {
-      continue;
-    }
-    if (Array.isArray(valor)) {
-      for (const item of valor) {
-        if (item !== null && item !== undefined && item !== '') {
-          params = params.append(chave, String(item));
-        }
-      }
-      continue;
-    }
-    params = params.set(chave, String(valor));
-  }
-  return params;
 }

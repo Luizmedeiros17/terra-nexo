@@ -3,12 +3,12 @@ package br.com.terranexo.lead.application;
 import br.com.terranexo.lead.api.dto.CreateLeadRequest;
 import br.com.terranexo.lead.domain.Lead;
 import br.com.terranexo.lead.domain.LeadRepository;
+import br.com.terranexo.shared.text.Textos;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.text.Normalizer;
 import java.time.Clock;
 import java.time.OffsetDateTime;
 import java.util.Comparator;
@@ -67,9 +67,9 @@ public class LeadService {
         return repository.findAll().stream()
                 .filter(l -> etapa == null || l.etapa() == etapa)
                 .filter(l -> origem == null || l.origem() == origem)
-                .filter(l -> q == null || q.isBlank() || normalizar(
+                .filter(l -> q == null || q.isBlank() || Textos.normalizar(
                         l.nome() + " " + l.email() + " " + l.telefone() + " " + l.protocolo())
-                        .contains(normalizar(q)))
+                        .contains(Textos.normalizar(q)))
                 .sorted(Comparator.comparing(Lead::criadoEm).reversed())
                 .toList();
     }
@@ -113,15 +113,5 @@ public class LeadService {
             throw new IllegalArgumentException("Lead não encontrado: " + id);
         }
         repository.deleteById(id);
-    }
-
-    private String normalizar(String valor) {
-        if (valor == null) {
-            return "";
-        }
-        return Normalizer.normalize(valor, Normalizer.Form.NFD)
-                .replaceAll("\\p{InCombiningDiacriticalMarks}+", "")
-                .toLowerCase()
-                .trim();
     }
 }

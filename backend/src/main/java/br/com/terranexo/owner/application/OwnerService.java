@@ -3,10 +3,10 @@ package br.com.terranexo.owner.application;
 import br.com.terranexo.owner.api.dto.CreateOwnerRequest;
 import br.com.terranexo.owner.domain.Owner;
 import br.com.terranexo.owner.domain.OwnerRepository;
+import br.com.terranexo.shared.text.Textos;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.text.Normalizer;
 import java.time.Clock;
 import java.time.OffsetDateTime;
 import java.util.Comparator;
@@ -33,11 +33,11 @@ public class OwnerService {
     public List<Owner> listar(String cidade, String q) {
         return repository.findAll().stream()
                 .filter(o -> cidade == null || cidade.isBlank()
-                        || normalizar(o.endereco().municipio()).equals(normalizar(cidade)))
-                .filter(o -> q == null || q.isBlank() || normalizar(
+                        || Textos.normalizar(o.endereco().municipio()).equals(Textos.normalizar(cidade)))
+                .filter(o -> q == null || q.isBlank() || Textos.normalizar(
                         o.nome() + " " + Optional.ofNullable(o.documento()).orElse("")
                                 + " " + Optional.ofNullable(o.email()).orElse(""))
-                        .contains(normalizar(q)))
+                        .contains(Textos.normalizar(q)))
                 .sorted(Comparator.comparing(Owner::nome))
                 .toList();
     }
@@ -84,15 +84,5 @@ public class OwnerService {
         } catch (RuntimeException e) {
             throw new IllegalArgumentException("Tipo de pessoa inválido: " + valor);
         }
-    }
-
-    private String normalizar(String valor) {
-        if (valor == null) {
-            return "";
-        }
-        return Normalizer.normalize(valor, Normalizer.Form.NFD)
-                .replaceAll("\\p{InCombiningDiacriticalMarks}+", "")
-                .toLowerCase()
-                .trim();
     }
 }

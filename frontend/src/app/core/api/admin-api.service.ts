@@ -1,8 +1,9 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { API_BASE_URL } from './api.tokens';
+import { filtrosParaParams } from './query-params';
 import { Dashboard, FiltroAdmin, NovoImovel } from '../../shared/models/admin.model';
 import { PropertyCard } from '../../shared/models/property.model';
 
@@ -22,13 +23,7 @@ export class AdminApiService {
   }
 
   imoveis(filtros: FiltroAdmin = {}): Observable<PropertyCard[]> {
-    let params = new HttpParams();
-    for (const [chave, valor] of Object.entries(filtros)) {
-      if (valor !== null && valor !== undefined && valor !== '') {
-        params = params.set(chave, String(valor));
-      }
-    }
-    return this.http.get<PropertyCard[]>(`${this.base}/properties`, { params });
+    return this.http.get<PropertyCard[]>(`${this.base}/properties`, { params: filtrosParaParams(filtros) });
   }
 
   cadastrar(imovel: NovoImovel): Observable<PropertyCard> {

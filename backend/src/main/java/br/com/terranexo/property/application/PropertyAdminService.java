@@ -11,10 +11,10 @@ import br.com.terranexo.property.domain.PropertyRepository;
 import br.com.terranexo.property.domain.PropertyStatus;
 import br.com.terranexo.property.domain.Purpose;
 import br.com.terranexo.property.infrastructure.MediaStorageService;
+import br.com.terranexo.shared.text.Textos;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
-import java.text.Normalizer;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -462,9 +462,7 @@ public class PropertyAdminService {
     /** Slug público: minúsculo, sem acento, separado por hífen (seção 20). */
     private String gerarSlug(String titulo, String municipio, String uf) {
         String base = "%s %s %s".formatted(titulo, municipio, uf);
-        String semAcento = Normalizer.normalize(base, Normalizer.Form.NFD)
-                .replaceAll("\\p{InCombiningDiacriticalMarks}+", "");
-        String slug = semAcento.toLowerCase(Locale.ROOT)
+        String slug = Textos.semAcento(base).toLowerCase(Locale.ROOT)
                 .replaceAll("[^a-z0-9]+", "-")
                 .replaceAll("(^-|-$)", "");
         return slug.length() > 90 ? slug.substring(0, 90).replaceAll("-$", "") : slug;

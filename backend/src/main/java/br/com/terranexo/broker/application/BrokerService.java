@@ -5,10 +5,10 @@ import br.com.terranexo.broker.domain.Broker;
 import br.com.terranexo.broker.domain.BrokerRepository;
 import br.com.terranexo.property.domain.Property;
 import br.com.terranexo.property.domain.PropertyRepository;
+import br.com.terranexo.shared.text.Textos;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.text.Normalizer;
 import java.time.Clock;
 import java.time.OffsetDateTime;
 import java.util.Comparator;
@@ -40,7 +40,7 @@ public class BrokerService {
         return repository.findAll().stream()
                 .filter(b -> ativo == null || b.ativo() == ativo)
                 .filter(b -> q == null || q.isBlank()
-                        || normalizar(b.nome() + " " + b.cargo()).contains(normalizar(q)))
+                        || Textos.normalizar(b.nome() + " " + b.cargo()).contains(Textos.normalizar(q)))
                 .sorted(Comparator.comparing(Broker::nome))
                 .toList();
     }
@@ -86,7 +86,7 @@ public class BrokerService {
     }
 
     private String slugUnico(String nome) {
-        String base = normalizar(nome).replaceAll("[^a-z0-9]+", "-").replaceAll("(^-|-$)", "");
+        String base = Textos.normalizar(nome).replaceAll("[^a-z0-9]+", "-").replaceAll("(^-|-$)", "");
         if (base.isBlank()) {
             base = "corretor";
         }
@@ -96,15 +96,5 @@ public class BrokerService {
             slug = base + "-" + sufixo++;
         }
         return slug;
-    }
-
-    private String normalizar(String valor) {
-        if (valor == null) {
-            return "";
-        }
-        return Normalizer.normalize(valor, Normalizer.Form.NFD)
-                .replaceAll("\\p{InCombiningDiacriticalMarks}+", "")
-                .toLowerCase()
-                .trim();
     }
 }

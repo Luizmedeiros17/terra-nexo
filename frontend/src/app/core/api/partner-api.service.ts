@@ -3,6 +3,7 @@ import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { API_BASE_URL } from './api.tokens';
+import { filtrosParaParams } from './query-params';
 import {
   AtualizarStatusPayload,
   CreatePartnerPayload,
@@ -20,13 +21,7 @@ export class PartnerApiService {
   private readonly base = `${inject(API_BASE_URL)}/v1/admin/partners`;
 
   listar(filtros: FiltroPartner = {}): Observable<PartnerCard[]> {
-    let params = new HttpParams();
-    for (const [chave, valor] of Object.entries(filtros)) {
-      if (valor !== null && valor !== undefined && valor !== '') {
-        params = params.set(chave, String(valor));
-      }
-    }
-    return this.http.get<PartnerCard[]>(this.base, { params });
+    return this.http.get<PartnerCard[]>(this.base, { params: filtrosParaParams(filtros) });
   }
 
   detalhe(id: string): Observable<PartnerDetail> {

@@ -5,12 +5,12 @@ import br.com.terranexo.partner.domain.Partner;
 import br.com.terranexo.partner.domain.PartnerRepository;
 import br.com.terranexo.partner.domain.ProspectStatus;
 import br.com.terranexo.partner.domain.Segment;
+import br.com.terranexo.shared.text.Textos;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
-import java.text.Normalizer;
 import java.time.Clock;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
@@ -41,13 +41,13 @@ public class PartnerService {
 
     public List<Partner> listar(String cidade, Segment setor, ProspectStatus status, String q) {
         return repository.findAll().stream()
-                .filter(p -> cidade == null || normalizar(p.municipio()).equals(normalizar(cidade)))
+                .filter(p -> cidade == null || Textos.normalizar(p.municipio()).equals(Textos.normalizar(cidade)))
                 .filter(p -> setor == null || p.setor() == setor)
                 .filter(p -> status == null || p.status() == status)
-                .filter(p -> q == null || q.isBlank() || normalizar(
+                .filter(p -> q == null || q.isBlank() || Textos.normalizar(
                         p.nomeFantasia() + " " + Optional.ofNullable(p.razaoSocial()).orElse("")
                                 + " " + Optional.ofNullable(p.cnpj()).orElse(""))
-                        .contains(normalizar(q)))
+                        .contains(Textos.normalizar(q)))
                 .sorted(Comparator.comparing(Partner::municipio).thenComparing(Partner::nomeFantasia))
                 .toList();
     }
@@ -177,15 +177,5 @@ public class PartnerService {
 
     public record Resumo(int total, Map<String, Long> porCidade, Map<String, Long> porSetor,
                           Map<String, Long> porStatus) {
-    }
-
-    private String normalizar(String valor) {
-        if (valor == null) {
-            return "";
-        }
-        return Normalizer.normalize(valor, Normalizer.Form.NFD)
-                .replaceAll("\\p{InCombiningDiacriticalMarks}+", "")
-                .toLowerCase()
-                .trim();
     }
 }

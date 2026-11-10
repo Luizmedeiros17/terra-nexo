@@ -7,6 +7,7 @@ import br.com.terranexo.property.application.PropertyAdminService;
 import br.com.terranexo.property.domain.Property;
 import br.com.terranexo.property.domain.PropertyRepository;
 import br.com.terranexo.property.domain.PropertyStatus;
+import br.com.terranexo.shared.text.Textos;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
@@ -23,7 +24,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.text.Normalizer;
 import java.util.Comparator;
 import java.util.List;
 
@@ -77,9 +77,9 @@ public class AdminPropertyController {
                 .filter(p -> situacao == null || p.situacao().name().equalsIgnoreCase(situacao))
                 .filter(p -> categoria == null || p.categoria().name().equalsIgnoreCase(categoria))
                 .filter(p -> corretor == null || p.corretorSlug().equalsIgnoreCase(corretor))
-                .filter(p -> municipio == null || normalizar(p.endereco().municipio()).equals(normalizar(municipio)))
+                .filter(p -> municipio == null || Textos.normalizar(p.endereco().municipio()).equals(Textos.normalizar(municipio)))
                 .filter(p -> q == null || q.isBlank()
-                        || normalizar(p.titulo() + " " + p.codigo()).contains(normalizar(q)))
+                        || Textos.normalizar(p.titulo() + " " + p.codigo()).contains(Textos.normalizar(q)))
                 .sorted(Comparator.comparing(Property::atualizadoEm).reversed())
                 .limit(Math.max(1, limite))
                 .map(mapper::toCard)
@@ -124,15 +124,5 @@ public class AdminPropertyController {
     }
 
     public record Opcao(String valor, String rotulo) {
-    }
-
-    private String normalizar(String valor) {
-        if (valor == null) {
-            return "";
-        }
-        return Normalizer.normalize(valor, Normalizer.Form.NFD)
-                .replaceAll("\\p{InCombiningDiacriticalMarks}+", "")
-                .toLowerCase()
-                .trim();
     }
 }

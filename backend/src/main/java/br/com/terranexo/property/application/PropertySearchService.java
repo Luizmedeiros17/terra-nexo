@@ -4,10 +4,10 @@ import br.com.terranexo.property.domain.Category;
 import br.com.terranexo.property.domain.Property;
 import br.com.terranexo.property.domain.PropertyRepository;
 import br.com.terranexo.property.domain.Purpose;
+import br.com.terranexo.shared.text.Textos;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
-import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.LinkedHashMap;
@@ -180,23 +180,23 @@ public class PropertySearchService {
 
         if (naoVazio(q.culturas())) {
             Set<String> nomes = r.culturas().stream()
-                    .map(c -> normalizar(c.nome()))
+                    .map(c -> Textos.normalizar(c.nome()))
                     .collect(Collectors.toSet());
             for (String desejada : q.culturas()) {
-                if (!nomes.contains(normalizar(desejada))) return false;
+                if (!nomes.contains(Textos.normalizar(desejada))) return false;
             }
         }
         if (naoVazio(q.benfeitorias())) {
             Set<String> tipos = r.benfeitorias().stream()
-                    .map(b -> normalizar(b.tipo()))
+                    .map(b -> Textos.normalizar(b.tipo()))
                     .collect(Collectors.toSet());
             for (String desejada : q.benfeitorias()) {
-                if (!tipos.contains(normalizar(desejada))) return false;
+                if (!tipos.contains(Textos.normalizar(desejada))) return false;
             }
         }
         if (naoVazio(q.documentacao())) {
             for (String doc : q.documentacao()) {
-                boolean informado = switch (normalizar(doc)) {
+                boolean informado = switch (Textos.normalizar(doc)) {
                     case "car" -> r.documentacao().carInformado();
                     case "ccir" -> r.documentacao().ccirInformado();
                     case "sigef" -> r.documentacao().sigefInformado();
@@ -221,13 +221,13 @@ public class PropertySearchService {
         if (!texto(termo)) {
             return true;
         }
-        String alvo = normalizar(String.join(" ",
+        String alvo = Textos.normalizar(String.join(" ",
                 p.titulo(), p.chamada(), p.tipo(), p.codigo(),
                 p.endereco().municipio(), nullSafe(p.endereco().bairro()), p.endereco().uf(),
                 String.join(" ", p.caracteristicas()),
                 p.isRural() ? resumoRuralParaBusca(p.rural()) : ""));
         // Todas as palavras do termo precisam aparecer — busca conjuntiva.
-        for (String palavra : normalizar(termo).split("\\s+")) {
+        for (String palavra : Textos.normalizar(termo).split("\\s+")) {
             if (!palavra.isBlank() && !alvo.contains(palavra)) {
                 return false;
             }
@@ -289,13 +289,13 @@ public class PropertySearchService {
     private SearchResult.FacetGroup grupo(String chave, String rotulo, Map<String, Long> contagens,
                                           Function<String, String> rotuloDoValor, Set<String> selecionados) {
         Set<String> selecionadosNormalizados = selecionados.stream()
-                .map(this::normalizar).collect(Collectors.toSet());
+                .map(Textos::normalizar).collect(Collectors.toSet());
         List<SearchResult.FacetValue> valores = contagens.entrySet().stream()
                 .map(e -> new SearchResult.FacetValue(
                         e.getKey(),
                         rotuloDoValor.apply(e.getKey()),
                         e.getValue(),
-                        selecionadosNormalizados.contains(normalizar(e.getKey()))))
+                        selecionadosNormalizados.contains(Textos.normalizar(e.getKey()))))
                 .sorted(Comparator.comparingLong(SearchResult.FacetValue::quantidade).reversed()
                         .thenComparing(SearchResult.FacetValue::rotulo))
                 .toList();
@@ -337,25 +337,15 @@ public class PropertySearchService {
         if (exigidas == null || exigidas.isEmpty()) {
             return true;
         }
-        Set<String> normalizadas = disponiveis.stream().map(this::normalizar).collect(Collectors.toSet());
-        return exigidas.stream().allMatch(e -> normalizadas.contains(normalizar(e)));
+        Set<String> normalizadas = disponiveis.stream().map(Textos::normalizar).collect(Collectors.toSet());
+        return exigidas.stream().allMatch(e -> normalizadas.contains(Textos.normalizar(e)));
     }
 
     private boolean igualNormalizado(String a, String b) {
-        return a != null && b != null && normalizar(a).equals(normalizar(b));
+        return a != null && b != null && Textos.normalizar(a).equals(Textos.normalizar(b));
     }
 
     private String nullSafe(String s) {
         return s == null ? "" : s;
-    }
-
-    /** Minúsculas sem acento — usado em comparações e na busca textual. */
-    private String normalizar(String valor) {
-        if (valor == null) {
-            return "";
-        }
-        String semAcento = Normalizer.normalize(valor, Normalizer.Form.NFD)
-                .replaceAll("\\p{InCombiningDiacriticalMarks}+", "");
-        return semAcento.toLowerCase().trim();
     }
 }

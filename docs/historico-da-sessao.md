@@ -411,3 +411,49 @@ Formosa, Luziânia, Cristalina, Catalão, João Pinheiro); marca própria
    repositório em memória, upload de mídia, testes automatizados.
 4. Se o cliente reabrir o assunto, a pesquisa de integração iList/RE/MAX já
    está pronta em `docs/integracao-ilist/` — não precisa refazer, só retomar.
+
+# Sessão de 10/11/2026
+
+## 1. Refatoração (sem mudança de comportamento)
+
+**Backend**
+- `shared/text/Textos` — `normalizar()` (minúsculas, sem acento, trim) e
+  `semAcento()`. Substitui 7 cópias idênticas do método privado `normalizar()`
+  (BrokerService, LeadService, OwnerService, PartnerService,
+  AdminPropertyController, PropertySearchService, InMemoryPartnerRepository)
+  e o trecho de remoção de acento de `PropertyAdminService.gerarSlug()`.
+- `shared/infrastructure/InMemoryStore<T>` — classe base dos 5 repositórios em
+  memória: `findAll/findById/save/deleteById` + geração de id sequencial
+  (`proximoIdSequencial("cor")`, `proximoSequencial(..., "RUR", 6, 200)`).
+  Os repositórios ficaram só com as consultas específicas de cada domínio.
+  `InMemoryPropertyRepository` mantém "salvos vão para o início da lista".
+
+**Frontend**
+- `core/api/query-params.ts` — `filtrosParaParams()` substitui o laço de
+  montagem de `HttpParams` repetido em 6 serviços de API (inclusive o antigo
+  `toHttpParams` de `property-api.service.ts`, que suportava arrays).
+  Nenhum filtro admin tem campo array, então a query string gerada é idêntica.
+
+**Repositório**
+- `.pyc` de `docs/prospeccao/db/__pycache__` removido do Git e ignorado.
+
+## 2. Validação
+- `docker compose build` dos dois serviços (log lido; 1º build falhou por um
+  escape `\p` na regex de `Textos`, corrigido) → `up --force-recreate` → healthy.
+- Snapshot de 29 endpoints GET (públicos e admin, incluindo buscas com/sem
+  acento) antes e depois: conteúdo idêntico, exceto timestamps de seed e a
+  ordem das fontes de água em `resumoRural` (ver pendências).
+- CRUD real via proxy (porta 4000): proprietário criar → buscar sem acento →
+  editar (sem duplicar) → excluir; corretor criado com `cor-006` e excluído.
+  Dados de teste removidos (owners=3, brokers=5, leads=0).
+- Playwright em 10 páginas públicas/admin: zero erros de console/página/HTTP.
+
+## 3. Pendências encontradas (não alteradas)
+1. `resumoRural` lista recursos hídricos em ordem aleatória a cada reinício do
+   backend: o seed usa `Set.of(...)`, cuja ordem de iteração muda por execução
+   da JVM. Correção sugerida: `LinkedHashSet`/ordenar ao montar o resumo.
+2. GET de registro inexistente responde 400 (os services lançam
+   `IllegalArgumentException`) em vez de 404.
+3. CSS do admin continua duplicado por componente (`.bloco`, `.tabela`,
+   `.filtros`...) — candidato a uma folha compartilhada, exige verificação
+   visual página a página.
