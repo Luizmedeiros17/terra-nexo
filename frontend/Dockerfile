@@ -29,4 +29,6 @@ EXPOSE 4000
 HEALTHCHECK --interval=30s --timeout=3s --start-period=15s \
   CMD wget -qO- http://localhost:4000/healthz >/dev/null 2>&1 || exit 1
 
-CMD ["node", "dist/terranexo-web/server/server.mjs"]
+# Em hospedagens que injetam o host público (Render: RENDER_EXTERNAL_HOSTNAME),
+# libera esse host na validação do @angular/ssr quando NG_ALLOWED_HOSTS não vem definido.
+CMD ["sh", "-c", "if [ -z \"$NG_ALLOWED_HOSTS\" ] && [ -n \"$RENDER_EXTERNAL_HOSTNAME\" ]; then export NG_ALLOWED_HOSTS=\"$RENDER_EXTERNAL_HOSTNAME\"; fi; exec node dist/terranexo-web/server/server.mjs"]
